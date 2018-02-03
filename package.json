@@ -11,18 +11,26 @@
   },
   "devDependencies": {
     "axios": "^0.17",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.1",
+    "babel-preset-env": "^1.6.1",
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.1",
     "jquery": "^3.2",
     "laravel-mix": "^1.0",
+    "less": "^2.7.3",
     "lodash": "^4.17.4",
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "css-loader": "^0.28.9",
     "is-windows": "^1.0.1",
     "iview": "^2.9.1",
+    "less-loader": "^4.0.5",
     "shebang-command": "^1.2.0",
     "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
     "web-storage-cache": "^1.0.3"
   }
 }
