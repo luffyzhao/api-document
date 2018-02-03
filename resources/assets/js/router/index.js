@@ -42,6 +42,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to) => {
+  router.app.$store.commit('openPage', to)
   iView.LoadingBar.finish()
   window.scrollTo(0, 0)
 })

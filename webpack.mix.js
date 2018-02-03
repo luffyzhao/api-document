@@ -1,5 +1,12 @@
 let mix = require('laravel-mix');
 
+const webpack = require('webpack')
+
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, '.', dir)
+}
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +18,43 @@ let mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+  output: {
+    // 依据该路径进行编译以及异步加载
+    publicPath: '',
+    // 注意开发期间不加 hash，以免自动刷新失败
+    chunkFilename: `js/chunk[name].${ mix.inProduction() ? '[chunkhash].' : '' }js`
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.common.js',
+      '@': resolve('resources/assets/js')
+    }
+  },
+  plugins: [
+    // 不打包 moment.js 的语言文件以减小体积
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  ]
+})
+
+
 mix.js('resources/assets/js/app.js', 'public/js')
-   .copy('node_modules/iview/dist/styles/iview.css', 'public/css/app.css');
+  .extract([
+    'axios',
+    'lodash',
+    'vue',
+    'vue-router',
+    'iview'
+  ])
+  .autoload({
+    vue: ['Vue']
+  });
+
+mix.copyDirectory('node_modules/iview/dist/styles/', 'public/css');
+
+mix.sass('resources/assets/sass/app.scss', 'public/css').options({
+  processCssUrls: true
+});
+
+mix.sass('resources/assets/sass/github-markdown.scss', 'public/css')

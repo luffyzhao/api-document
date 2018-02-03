@@ -5,6 +5,7 @@ import iView from 'iview'
 import App from '@/App.vue'
 import {fetch,post,patch,put,head,destroy} from '@/libs/Ajax'
 import {router} from '@/router/index'
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(iView)
@@ -25,5 +26,11 @@ Vue.prototype.$delete = destroy
 const app = new Vue({
     el: '#app',
     router,
+    store,
+    mounted () {
+      this.$nextTick(function () {
+        this.$store.commit('init')
+      });
+    },
     render: h => h(App)
 });
