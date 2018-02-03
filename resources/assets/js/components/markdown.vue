@@ -83,7 +83,7 @@ export default {
   font-size: 12px;
   font-family: 'Monaco', courier, monospace;
   outline: none;
-  line-height: 1;
+  line-height: 2;
 }
 .markdown-preview{
   border-left: 1px solid #ccc;
