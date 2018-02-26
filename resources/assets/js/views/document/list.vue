@@ -120,8 +120,9 @@ export default {
       this.updateModalShow = true
     },
     writingButton(row){
-      this.updateId = row.id
-      this.writingModalShow = true
+      this.$router.push({
+          name: "document.writing"
+        })
     },
     visibleChangeCreate(visible) {
       this.createModalShow = visible

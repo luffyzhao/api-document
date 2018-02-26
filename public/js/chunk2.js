@@ -1,18 +1,107 @@
 webpackJsonp([2],{
 
-/***/ 185:
+/***/ 180:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(10)
+/* script */
+var __vue_script__ = __webpack_require__(376)
+/* template */
+var __vue_template__ = __webpack_require__(384)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-44d4d72c", Component.options)
+  } else {
+    hotAPI.reload("data-v-44d4d72c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 376:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Util__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue__);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    };
+  },
+  components: {
+    loginLock: __WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue___default.a
+  },
+  methods: {
+    login(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          __WEBPACK_IMPORTED_MODULE_0__libs_Util__["a" /* default */].cache.set('token', 'dsfasdf');
+          this.$router.replace({ name: 'home' });
+        } else {
+          this.$Message.error('登录验证失败！');
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 377:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(209)
+  __webpack_require__(378)
 }
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(382)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(383)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +118,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\common\\profile.vue"
+Component.options.__file = "resources\\assets\\js\\components\\login-lock.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +127,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-45dc31e5", Component.options)
+    hotAPI.createRecord("data-v-3fdff026", Component.options)
   } else {
-    hotAPI.reload("data-v-45dc31e5", Component.options)
+    hotAPI.reload("data-v-3fdff026", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,23 +141,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 209:
+/***/ 378:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(210);
+var content = __webpack_require__(379);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(14)("d8ed1a82", content, false, {});
+var update = __webpack_require__(14)("040cff07", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-45dc31e5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./profile.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-45dc31e5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./profile.vue");
+   module.hot.accept("!!../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3fdff026\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./login-lock.vue", function() {
+     var newContent = require("!!../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3fdff026\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./login-lock.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -79,57 +168,122 @@ if(false) {
 
 /***/ }),
 
-/***/ 210:
+/***/ 379:
 /***/ (function(module, exports, __webpack_require__) {
 
+var escape = __webpack_require__(380);
 exports = module.exports = __webpack_require__(13)(false);
 // imports
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n.login {\n  width: 100%;\n  height: 100%;\n  background-image: url(" + escape(__webpack_require__(381)) + ");\n  background-size: cover;\n  background-position: 50%;\n  position: relative;\n}\n.login .login-con {\n    position: absolute;\n    right: 160px;\n    top: 50%;\n    -webkit-transform: translateY(-60%);\n    transform: translateY(-60%);\n    width: 300px;\n}\n.login .login-con .form-con {\n      padding: 10px 0 0;\n}\n.login .login-con .login-tip {\n      font-size: 10px;\n      text-align: center;\n      color: #c3c3c3;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 211:
+/***/ 380:
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
+}
+
+
+/***/ }),
+
+/***/ 381:
+/***/ (function(module, exports) {
+
+module.exports = "/images/bg.jpg?38b7b76162212ed6715dc7ff6bf22ff5";
+
+/***/ }),
+
+/***/ 382:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Util__ = __webpack_require__(15);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data() {
-    return {
-      form: {
-        username: '',
-        email: '',
-        phone: ''
-      },
-      formSetPassword: {
-        password: '',
-        newPassword: '',
-        confirmPassword: ''
-      },
-      setPassword: false
-    };
+    return {};
   },
-  methods: {
-    handlePassword(e) {
-      setTimeout(() => {
-        this.$refs['modalSetPassword'].close();
-      }, 3000);
-    }
-  },
-  components: {}
+  components: {},
+  methods: {}
 });
 
 /***/ }),
 
-/***/ 212:
+/***/ 383:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "login" }, [
+    _c(
+      "div",
+      { staticClass: "login-con" },
+      [
+        _c("Card", { attrs: { bordered: false } }, [
+          _c(
+            "p",
+            { attrs: { slot: "title" }, slot: "title" },
+            [_vm._t("title")],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-con" },
+            [
+              _vm._t("form"),
+              _vm._v(" "),
+              _c("p", { staticClass: "login-tip" }, [
+                _vm._v("\n          luffy-iview-framework\n        ")
+              ])
+            ],
+            2
+          )
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-3fdff026", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 384:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -137,260 +291,125 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "login-lock",
     [
-      _c("Card", { attrs: { bordered: false } }, [
-        _c(
-          "p",
-          { attrs: { slot: "title" }, slot: "title" },
-          [_c("Icon", { attrs: { type: "ios-person" } }), _vm._v("个人信息")],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c(
-              "Form",
-              {
-                ref: "form",
-                attrs: {
-                  model: _vm.form,
-                  "label-position": "right",
-                  "label-width": 100
-                }
-              },
-              [
-                _c(
-                  "FormItem",
-                  {
-                    attrs: {
-                      label: "用户姓名:",
-                      prop: "username",
-                      rules: {
-                        required: true,
-                        message: "用户姓名不能为空！",
-                        trigger: "blur"
-                      }
-                    }
-                  },
-                  [
-                    _c("Input", {
-                      staticStyle: { width: "300px" },
-                      model: {
-                        value: _vm.form.username,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "username", $$v)
-                        },
-                        expression: "form.username"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  {
-                    attrs: {
-                      label: "登录邮箱:",
-                      prop: "email",
-                      rules: {
-                        required: true,
-                        type: "email",
-                        message: "请输出正确的邮箱号码！",
-                        trigger: "blur"
-                      }
-                    }
-                  },
-                  [
-                    _c("Input", {
-                      staticStyle: { width: "300px" },
-                      model: {
-                        value: _vm.form.email,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "email", $$v)
-                        },
-                        expression: "form.email"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  { attrs: { label: "手机号码:" } },
-                  [
-                    _c("Input", {
-                      staticStyle: { width: "300px" },
-                      model: {
-                        value: _vm.form.phone,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "phone", $$v)
-                        },
-                        expression: "form.phone"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("FormItem", { attrs: { label: "部门:" } }, [
-                  _c("span", [_vm._v("网站管理员")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  { attrs: { label: "登录密码:" } },
-                  [
-                    _c(
-                      "Button",
-                      {
-                        attrs: { type: "text" },
-                        on: {
-                          click: function($event) {
-                            _vm.setPassword = true
-                          }
-                        }
-                      },
-                      [_vm._v("修改密码")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  [
-                    _c(
-                      "Button",
-                      {
-                        staticStyle: { width: "100px" },
-                        attrs: { type: "primary" }
-                      },
-                      [_vm._v("保存")]
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ]),
+      _c(
+        "p",
+        { attrs: { slot: "title" }, slot: "title" },
+        [_c("Icon", { attrs: { type: "log-in" } }), _vm._v(" 欢迎登录")],
+        1
+      ),
       _vm._v(" "),
       _c(
-        "Modal",
-        {
-          ref: "modalSetPassword",
-          attrs: {
-            title: "修改密码",
-            "ok-text": "提交",
-            "cancel-text": "取消",
-            loading: true
-          },
-          on: { "on-ok": _vm.handlePassword },
-          model: {
-            value: _vm.setPassword,
-            callback: function($$v) {
-              _vm.setPassword = $$v
-            },
-            expression: "setPassword"
-          }
-        },
+        "Form",
+        { ref: "form", attrs: { slot: "form", model: _vm.form }, slot: "form" },
         [
           _c(
-            "Form",
+            "FormItem",
             {
-              ref: "formSetPassword",
-              attrs: { model: _vm.formSetPassword, "label-width": 100 }
+              attrs: {
+                prop: "email",
+                rules: {
+                  required: true,
+                  message: "邮箱格式不正确！",
+                  type: "email",
+                  min: 6,
+                  max: 20,
+                  trigger: "blur"
+                }
+              }
             },
             [
               _c(
-                "FormItem",
+                "Input",
                 {
                   attrs: {
-                    label: "原密码",
-                    prop: "password",
-                    rules: {
-                      required: true,
-                      message: "原密码不能为空！",
-                      trigger: "blur"
-                    }
+                    type: "text",
+                    autocomplete: "off",
+                    placeholder: "E-mail"
+                  },
+                  model: {
+                    value: _vm.form.email,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "email", $$v)
+                    },
+                    expression: "form.email"
                   }
                 },
                 [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.password,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "password", $$v)
-                      },
-                      expression: "formSetPassword.password"
-                    }
+                  _c("Icon", {
+                    attrs: { slot: "prepend", type: "ios-email-outline" },
+                    slot: "prepend"
                   })
                 ],
                 1
-              ),
-              _vm._v(" "),
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "FormItem",
+            {
+              attrs: {
+                prop: "password",
+                rules: {
+                  required: true,
+                  message: "密码不能为空！",
+                  min: 6,
+                  max: 20,
+                  trigger: "blur"
+                }
+              }
+            },
+            [
               _c(
-                "FormItem",
+                "Input",
                 {
                   attrs: {
-                    label: "新密码",
-                    prop: "newPassword",
-                    rules: {
-                      required: true,
-                      message: "密码不能为空！",
-                      trigger: "blur"
+                    type: "password",
+                    autocomplete: "off",
+                    placeholder: "Password"
+                  },
+                  on: {
+                    "on-enter": function($event) {
+                      _vm.login("form")
                     }
+                  },
+                  model: {
+                    value: _vm.form.password,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "password", $$v)
+                    },
+                    expression: "form.password"
                   }
                 },
                 [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.newPassword,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "newPassword", $$v)
-                      },
-                      expression: "formSetPassword.newPassword"
-                    }
+                  _c("Icon", {
+                    attrs: { slot: "prepend", type: "ios-locked-outline" },
+                    slot: "prepend"
                   })
                 ],
                 1
-              ),
-              _vm._v(" "),
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "FormItem",
+            [
               _c(
-                "FormItem",
+                "Button",
                 {
-                  attrs: {
-                    label: "确认密码",
-                    prop: "confirmPassword",
-                    rules: {
-                      required: true,
-                      message: "确认密码不能为空！",
-                      trigger: "blur"
+                  attrs: { type: "primary", long: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.login("form")
                     }
                   }
                 },
-                [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.confirmPassword,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "confirmPassword", $$v)
-                      },
-                      expression: "formSetPassword.confirmPassword"
-                    }
-                  })
-                ],
-                1
+                [_vm._v("登录")]
               )
             ],
             1
@@ -408,7 +427,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-45dc31e5", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-44d4d72c", module.exports)
   }
 }
 

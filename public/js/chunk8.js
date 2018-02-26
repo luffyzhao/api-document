@@ -1,14 +1,14 @@
-webpackJsonp([6],{
+webpackJsonp([8],{
 
-/***/ 181:
+/***/ 184:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(385)
+var __vue_script__ = __webpack_require__(391)
 /* template */
-var __vue_template__ = __webpack_require__(386)
+var __vue_template__ = __webpack_require__(392)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\error-page\\404.vue"
+Component.options.__file = "resources\\assets\\js\\views\\Lock.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1dfd65bd", Component.options)
+    hotAPI.createRecord("data-v-bee31190", Component.options)
   } else {
-    hotAPI.reload("data-v-1dfd65bd", Component.options)
+    hotAPI.reload("data-v-bee31190", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 385:
+/***/ 391:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64,14 +64,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 386:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n404\n    ")])
+  return _c("div", [_vm._v("\nlock\n    ")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -79,7 +79,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-1dfd65bd", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-bee31190", module.exports)
   }
 }
 

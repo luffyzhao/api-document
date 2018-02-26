@@ -45,6 +45,15 @@ export const lockRouter = {
   component: resolve => { require(['@/views/Lock.vue'], resolve) }
 }
 
+export const documentWriting = {
+  path: '/document.writing',
+  meta: {
+    title: '编辑文档'
+  },
+  name: 'document.writing',
+  component: resolve => { require(['@/views/document/writing.vue'], resolve) }
+}
+
 export const commonRouter = {
   path: '/',
   name: 'commonRouter',
