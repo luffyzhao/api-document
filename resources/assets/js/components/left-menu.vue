@@ -6,7 +6,7 @@
       <span class="layout-text">首页</span>
     </MenuItem>
     <template v-for="(pages, index) in routerPages">
-      <Submenu v-if="pages.children.length > 0" :name="pages.name">
+      <Submenu v-if="pages.children.length >= 1" :name="pages.name">
         <template slot="title">
           <Icon :type="pages.icon"></Icon>
           <span class="layout-text"> {{ pages.title }} </span>
@@ -16,7 +16,7 @@
           <span class="layout-text">{{ page.title }}</span>
         </MenuItem>
       </Submenu>
-      <MenuItem v-else name="pages.name">
+      <MenuItem v-else :name="pages.name">
         <Icon type="ios-home"></Icon>
         <span class="layout-text">{{ pages.title }}</span>
       </MenuItem>
@@ -43,36 +43,23 @@
       },
       routerPages () {
         let routers = []
-        let groupIndex = -1
-        this.$router.options.routes.filter((n) => n.name==='admin' && n.path === '/admin')[0].children.forEach((item, index) => {
-          if(item.meta.parent !== null){
-            groupIndex = routers.findIndex((n) => n.name === item.meta.parent)
-            if(groupIndex === -1){
-              routers.push({
-                name: item.meta.parent,
-                title: item.meta.parent,
-                icon: item.meta.parent_icon,
-                children: [{
-                  name: item.name,
-                  title: item.meta.title,
-                  icon: item.meta.icon
-                }]
-              })
-            }else{
-              routers[groupIndex].children.push({
-                name: item.name,
-                title: item.meta.title,
-                icon: item.meta.icon
-              })
-            }
-          }else{
-            routers.push({
-              name: item.name,
-              title: item.meta.title,
-              icon: item.meta.icon,
-              children: []
-            })
-          }
+        let routersForMenu = this.$router.options.routes.filter((n) => n.name==='admin' && n.path === '/admin')[0].children;
+        routersForMenu.filter((n) => typeof(n.meta.parent) === 'undefined').forEach((item, index) => {
+          routers.push({
+            name: item.name,
+            title: item.meta.title,
+            icon: item.meta.icon,
+            children: []
+          })
+        })
+
+        routersForMenu.filter((n) => typeof(n.meta.parent) !== 'undefined').forEach((item, index) => {
+          routers.find((n) => n.name === item.meta.parent).children.push({
+            name: item.name,
+            title: item.meta.title,
+            icon: item.meta.icon,
+          })
+
         })
         return routers
       }

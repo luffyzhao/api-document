@@ -8,7 +8,7 @@ export const appRouter = [
     title: '后台管理',
     component: Main,
     children: [
-       { path: 'document.list', name: 'admin.document.list', meta: {title: '文档管理', icon: 'ios-list-outline', parent_icon: 'clipboard', parent: '文档管理'}, component: resolve => { require(['@/views/document/list.vue'], resolve) } }
+       { path: 'book.list', name: 'admin.book.list', meta: {title: '项目管理', icon: 'ios-bookmarks-outline'}, component: resolve => { require(['@/views/book/list.vue'], resolve) } },
     ]
   }
 ]

@@ -3,11 +3,8 @@
     <Card :bordered="false" class="box-flex-search">
         <p slot="title">搜索</p>
         <Form ref="documentSearch" :model="documentSearch" inline :label-width="80">
-          <FormItem label="文档名称">
-            <Input type="text" v-model="documentSearch.name" placeholder="文档名称"></Input>
-          </FormItem>
-          <FormItem label="文档版本">
-            <Input type="text" v-model="documentSearch.version" placeholder="文档版本"></Input>
+          <FormItem label="项目名称">
+            <Input type="text" v-model="documentSearch.name" placeholder="项目名称"></Input>
           </FormItem>
           <FormItem :label-width="1">
             <ButtonGroup>
@@ -27,52 +24,28 @@
 
     <Create v-on:visibleChange="visibleChangeCreate" :show="createModalShow"></Create>
     <Update v-on:visibleChange="visibleChangeUpdate" :show="updateModalShow" :row="updateId"></Update>
-    <Writing v-on:visibleChange="visibleChangeWriting" :show="writingModalShow" :row="updateId"></Writing>
   </div>
 </template>
 
 <script lang="babel">
 import Create from './create.vue'
 import Update from './update.vue'
-import Writing from './writing.vue'
 
 export default {
   data() {
     return {
       documentColumns: [{
-          "title": "文档名称",
+          "title": "项目名称",
           "key": "name"
         },
         {
-          "title": "版本号",
-          "key": "version",
+          "title": "创建时间",
+          "key": "created_at",
           "width": 200
         },
         {
-          "title": "作者",
-          "key": "author",
-          "width": 200
-        },
-        {
-          "title": "环境域名",
-          "render": (h, {
-            row,
-            column,
-            index
-          }) => {
-            return (
-              <div class="poptip-button-box">
-                <poptip content={row.develop_url} placement="top"><i-button size="small" type="error">开发</i-button></poptip>
-                <poptip content={row.test_url} placement="top"><i-button size="small" type="warning">测试</i-button></poptip>
-                <poptip content={row.production_url} placement="top"><i-button size="small" type="success">生产</i-button></poptip>
-              </div>
-            );
-          },
-          "width": 200
-        },
-        {
-          "title": "最后发布时间",
-          "key": "lasttime",
+          "title": "最后修改时间",
+          "key": "updated_at",
           "width": 200
         },
         {
@@ -83,6 +56,7 @@ export default {
             index
           }) => {
             return (<button-group>
+              <i-button size="small">查看文档</i-button>
               <i-button size="small" on-click={()=>{this.updateButton(row)}}>更新</i-button>
               <i-button size="small">删除</i-button>
               <i-button on-click={()=>{this.writingButton(row)}} size="small">编写文档</i-button>
@@ -93,21 +67,15 @@ export default {
       ],
       documentDatas: [{
         "id": 21,
-        "name": "Name9",
-        "version": '1.0.0',
-        "author": '小白菜',
-        "develop_url": 'http://localhost:8080/#/admin/document.list',
-        "test_url": 'http://localhost:8080/#/admin/document.list',
-        "production_url": 'http://localhost:8080/#/admin/document.list',
-        "lasttime": '2018-01-01 20:00:10'
+        "name": " PHP项目地址端口",
+        "created_at": '2018-01-01 20:00:10',
+        "updated_at": '2018-01-01 20:00:10'
       }],
       documentSearch: {
-        name: '',
-        version: ''
+        name: ''
       },
       createModalShow: false,
       updateModalShow: false,
-      writingModalShow: false,
       updateId: 0
     }
   },
@@ -129,15 +97,11 @@ export default {
     },
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible
-    },
-    visibleChangeWriting(visible){
-      this.writingModalShow = visible
     }
   },
   components: {
     Create,
-    Update,
-    Writing
+    Update
   }
 }
 </script>

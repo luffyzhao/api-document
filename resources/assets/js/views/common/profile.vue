@@ -13,9 +13,6 @@
             <FormItem label="手机号码:">
               <Input v-model="form.phone" style="width: 300px"></Input>
             </FormItem>
-            <FormItem label="部门:">
-              <span>网站管理员</span>
-            </FormItem>
             <FormItem label="登录密码:">
               <Button type="text" @click="setPassword = true">修改密码</Button>
             </FormItem>

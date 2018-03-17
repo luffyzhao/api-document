@@ -3,7 +3,7 @@ import Util from '@/libs/Util'
 const app = {
   state: {
     currentPage: 'home',
-    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock'],
+    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock', 'document.writing'],
     openPageList: [{
       meta: {title: '首页'},
       path: '/home',
@@ -32,18 +32,7 @@ const app = {
     },
     openPage (state, router) {
       if (!Util.exist(router.name, state.notCachePages)) {
-        let openPageList = state.openPageList
-        let openedPageLen = openPageList.length
-        let i = 0
-        let tagHasOpened = false
-        while (i < openedPageLen) {
-          if (router.name === openPageList[i].name) {
-            tagHasOpened = true
-            break
-          }
-          i++
-        }
-        if (!tagHasOpened) {
+        if (state.openPageList.findIndex((n) => n.name === router.name) === -1) {
           state.openPageList.push({
             meta: router.meta,
             path: router.path,

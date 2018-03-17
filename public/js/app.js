@@ -3827,36 +3827,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     routerPages() {
       let routers = [];
-      let groupIndex = -1;
-      this.$router.options.routes.filter(n => n.name === 'admin' && n.path === '/admin')[0].children.forEach((item, index) => {
-        if (item.meta.parent !== null) {
-          groupIndex = routers.findIndex(n => n.name === item.meta.parent);
-          if (groupIndex === -1) {
-            routers.push({
-              name: item.meta.parent,
-              title: item.meta.parent,
-              icon: item.meta.parent_icon,
-              children: [{
-                name: item.name,
-                title: item.meta.title,
-                icon: item.meta.icon
-              }]
-            });
-          } else {
-            routers[groupIndex].children.push({
-              name: item.name,
-              title: item.meta.title,
-              icon: item.meta.icon
-            });
-          }
-        } else {
-          routers.push({
-            name: item.name,
-            title: item.meta.title,
-            icon: item.meta.icon,
-            children: []
-          });
-        }
+      let routersForMenu = this.$router.options.routes.filter(n => n.name === 'admin' && n.path === '/admin')[0].children;
+      routersForMenu.filter(n => typeof n.meta.parent === 'undefined').forEach((item, index) => {
+        routers.push({
+          name: item.name,
+          title: item.meta.title,
+          icon: item.meta.icon,
+          children: []
+        });
+      });
+
+      routersForMenu.filter(n => typeof n.meta.parent !== 'undefined').forEach((item, index) => {
+        routers.find(n => n.name === item.meta.parent).children.push({
+          name: item.name,
+          title: item.meta.title,
+          icon: item.meta.icon
+        });
       });
       return routers;
     }
@@ -3893,7 +3879,7 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.routerPages, function(pages, index) {
         return [
-          pages.children.length > 0
+          pages.children.length >= 1
             ? _c(
                 "Submenu",
                 { attrs: { name: pages.name } },
@@ -3930,7 +3916,7 @@ var render = function() {
               )
             : _c(
                 "MenuItem",
-                { attrs: { name: "pages.name" } },
+                { attrs: { name: pages.name } },
                 [
                   _c("Icon", { attrs: { type: "ios-home" } }),
                   _vm._v(" "),
@@ -4119,8 +4105,8 @@ var appRouter = [{
   name: 'admin',
   title: '后台管理',
   component: __WEBPACK_IMPORTED_MODULE_0__views_Main_vue___default.a,
-  children: [{ path: 'document.list', name: 'admin.document.list', meta: { title: '文档管理', icon: 'ios-list-outline', parent_icon: 'clipboard', parent: '文档管理' }, component: function component(resolve) {
-      __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(187)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+  children: [{ path: 'book.list', name: 'admin.book.list', meta: { title: '项目管理', icon: 'ios-bookmarks-outline' }, component: function component(resolve) {
+      __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(419)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     } }]
 }];
 
@@ -4145,9 +4131,7 @@ var appRouter = [{
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
-  state: {
-    dontCache: [] // 在这里定义你不想要缓存的页面的name属性值(参见路由配置router.js)
-  },
+  state: {},
   mutations: {},
   actions: {},
   modules: {
@@ -5118,7 +5102,7 @@ var index_esm = {
 var app = {
   state: {
     currentPage: 'home',
-    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock'],
+    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock', 'document.writing'],
     openPageList: [{
       meta: { title: '首页' },
       path: '/home',
@@ -5147,18 +5131,9 @@ var app = {
     },
     openPage: function openPage(state, router) {
       if (!__WEBPACK_IMPORTED_MODULE_1__libs_Util__["a" /* default */].exist(router.name, state.notCachePages)) {
-        var openPageList = state.openPageList;
-        var openedPageLen = openPageList.length;
-        var i = 0;
-        var tagHasOpened = false;
-        while (i < openedPageLen) {
-          if (router.name === openPageList[i].name) {
-            tagHasOpened = true;
-            break;
-          }
-          i++;
-        }
-        if (!tagHasOpened) {
+        if (state.openPageList.findIndex(function (n) {
+          return n.name === router.name;
+        }) === -1) {
           state.openPageList.push({
             meta: router.meta,
             path: router.path,

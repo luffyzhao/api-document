@@ -92,4 +92,14 @@ export default {
   display: block;
   width: 100%;
 }
+
+.markdown-preview ul{
+  list-style-type: disc;
+}
+
+.markdown-preview ol{
+  list-style-type: decimal;
+}
+
+
 </style>

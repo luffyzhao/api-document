@@ -236,10 +236,6 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("FormItem", { attrs: { label: "部门:" } }, [
-                  _c("span", [_vm._v("网站管理员")])
-                ]),
-                _vm._v(" "),
                 _c(
                   "FormItem",
                   { attrs: { label: "登录密码:" } },

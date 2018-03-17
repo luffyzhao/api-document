@@ -1,10 +1,10 @@
 <template>
     <div>
-404
+       404
     </div>
 </template>
 
-<script>
+<script> 
     export default {
     }
 </script>
