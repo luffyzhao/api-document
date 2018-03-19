@@ -181,6 +181,9 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
+        // 备份
+        Spatie\Backup\BackupServiceProvider::class,
     ],
 
     /*
