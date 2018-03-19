@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "027faf1f95a0cac869a831fdc7cb5848",
+    "content-hash": "63b4067feb43747c35e7f78745f24e70",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -745,6 +745,53 @@
                 "storage"
             ],
             "time": "2018-03-01T10:27:04+00:00"
+        },
+        {
+            "name": "luffy-laravel/repositories",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lovezhao311/luffy-laravel-repositories.git",
+                "reference": "319b63480fcd59ed2475cc87e3dd9e4bfe7ecae6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/lovezhao311/luffy-laravel-repositories/319b63480fcd59ed2475cc87e3dd9e4bfe7ecae6.zip",
+                "reference": "319b63480fcd59ed2475cc87e3dd9e4bfe7ecae6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.*",
+                "illuminate/support": "5.*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Luffy\\Repositories\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Luffy Zhao",
+                    "email": "luffyzhao@vip.126.com"
+                }
+            ],
+            "description": "Laravel Repositories",
+            "keywords": [
+                "database",
+                "eloquent",
+                "laravel",
+                "repositories",
+                "repository"
+            ],
+            "time": "2017-10-23T09:02:53+00:00"
         },
         {
             "name": "monolog/monolog",
