@@ -13,12 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group([
-    'middleware' => 'auth:api',
-    'prefix' => 'auth'
-], function ($router) {
+Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('login', 'Api\AuthController@login');
-    Route::post('logout', 'Api\AuthController@logout');
-    Route::post('refresh', 'Api\AuthController@refresh');
-    Route::get('me', 'Api\AuthController@me');
+});
+
+Route::group([
+    'middleware' => 'auth:api'
+], function ($router) {
+    // 验证
+    Route::post('auth/logout', 'Api\AuthController@logout');
+    Route::post('auth/refresh', 'Api\AuthController@refresh');
+    Route::get('auth/me', 'Api\AuthController@me');
+    // 项目
+    Route::resource('book', 'Api\BookController', ['only' => ['index', 'store', 'update', 'destroy']]);
 });

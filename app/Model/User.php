@@ -28,4 +28,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    /**
+     * 多对多关联文档
+     * @method apis
+     * @return boolean [description]
+     * author
+     */
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }
