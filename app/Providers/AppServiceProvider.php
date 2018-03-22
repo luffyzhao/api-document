@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repository\Interfaces\BookRepositoryInterface;
 use App\Repository\BookRepository;
+use App\Repository\RoleRepository;
 use App\Model\Book;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,8 +26,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(BookRepositoryInterface::class, function () {
-            return new BookRepository(new Book);
+        $this->app->singleton('App\Repository\Interfaces\BookRepositoryInterface', function () {
+            return new BookRepository($this->app);
+        });
+
+        $this->app->singleton('App\Repository\Interfaces\RoleRepositoryInterface', function () {
+            return new RoleRepository($this->app);
+        });
+
+        // 添加门面
+        $this->app->singleton('App\Support\Facades\RestFulResponse', function () {
+            return new \App\Support\RestFulResponse();
         });
     }
 }

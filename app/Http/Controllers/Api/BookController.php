@@ -31,7 +31,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return response()->json($this->bookRepository->myPaginate([]));
+        return $this->response($this->bookRepository->myPaginate()->toArray());
     }
 
     /**
@@ -44,13 +44,13 @@ class BookController extends Controller
     {
         $this->validate($request, [
           'name' => ['required', 'max:255'],
-          'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/'],
+          'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/', Rule::unique('book')],
           'description' => ['max:255'],
           'status' => ['required', Rule::in([0,1])]
         ]);
         $input = $request->only(['name', 'identify', 'description', 'status']);
 
-        return response()->json($this->bookRepository->create($input));
+        return $this->response($this->bookRepository->create($input)->toArray());
     }
 
     /**
@@ -69,7 +69,11 @@ class BookController extends Controller
         ]);
         $input = $request->only(['name', 'description', 'status']);
 
-        return response()->json($this->bookRepository->update($id, $input));
+        if ($this->bookRepository->update($input, $id)) {
+            return $this->response([], '更新成功');
+        } else {
+            return $this->response([], '更新失败', 500);
+        }
     }
 
     /**

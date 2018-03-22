@@ -2,28 +2,26 @@
 namespace App\Repository;
 
 use App\Model\Book;
+use Illuminate\Support\Facades\Auth;
+use App\Repository\Eloquent\Repository;
 use App\Repository\Interfaces\BookRepositoryInterface;
 
-class BookRepository implements BookRepositoryInterface
+class BookRepository extends Repository implements BookRepositoryInterface
 {
-    private $model;
-
-    public function __construct(Book $model)
+    public function model()
     {
-        $this->model = $model;
+        return Book::class;
     }
-
     /**
-     * 分页
-     * @method paginate
-     * @param  array    $input   [description]
-     * @param  integer  $perPage [description]
-     * @return [type]            [description]
+     * 获取我的项目并分页
+     * @method myPaginate
+     * @return [type]     [description]
      * author
      */
-    public function myPaginate(array $input, int $perPage = 20)
+    public function myPaginate($perPage = 20, $columns = ['*'])
     {
-        return request()->user()->books()->paginate($perPage);
+        $this->model = $this->model->where('user_id', Auth::user()->id);
+        return parent::paginate($perPage, $columns);
     }
 
     /**
@@ -35,23 +33,9 @@ class BookRepository implements BookRepositoryInterface
      */
     public function create(array $input)
     {
-        return request()->user()->books()->save(new Book($input));
-    }
-
-    /**
-     * [update description]
-     * @method update
-     * @param  int    $id    [description]
-     * @param  array  $input [description]
-     * @return [type]        [description]
-     * author
-     */
-    public function update(int $id, array $input)
-    {
-        Book::where('id', $id)
-        ->where('user_id', request()->user()->id)
-        ->update($input);
-
-        return $this->model->find($id);
+        if (!array_key_exists('user_id', $input)) {
+            $input['user_id'] = Auth::user()->id;
+        }
+        return parent::create($input);
     }
 }

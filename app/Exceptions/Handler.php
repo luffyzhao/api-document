@@ -5,6 +5,8 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
+use App\Support\Facades\RestFulResponse;
 
 class Handler extends ExceptionHandler
 {
@@ -49,6 +51,24 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($request->expectsJson()) {
+            if ($exception instanceof AuthenticationException) {
+                return response()->json(
+                  RestFulResponse::setMsg('没有找到对应的登录用户')->setExtra($exception->getMessage())->setCode(401)->create(),
+                  401
+                );
+            } elseif ($exception instanceof ValidationException) {
+                return response()->json(
+                  RestFulResponse::setMsg('验证不通过!')->setExtra($exception->errors())->setCode(423)->create(),
+                  423
+                );
+            } else {
+                return response()->json(
+                  RestFulResponse::setMsg('系统错误,请联系管理员!')->setExtra($exception->getMessage())->setCode(500)->create(),
+                  500
+                );
+            }
+        }
         return parent::render($request, $exception);
     }
 
@@ -62,7 +82,7 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         return $request->expectsJson()
-                    ? response()->json(['message' => $exception->getMessage()], 401)
+                    ? RestFulResponse::setMsg('没有找到对应的登录用户')->setExtra($exception->getMessage())->setCode(401)->create()
                     : redirect()->guest(route('login'));
     }
 }

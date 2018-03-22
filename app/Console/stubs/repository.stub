@@ -1,0 +1,15 @@
+<?php
+namespace App\Repository;
+
+use App\Model\DummyClass;
+use App\Repository\Interfaces\DummyClassRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
+use App\Repository\Eloquent\Repository;
+
+class DummyClassRepository extends Repository implements DummyClassRepositoryInterface
+{
+    public function model()
+    {
+        return DummyClass::class;
+    }
+}

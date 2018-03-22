@@ -26,4 +26,6 @@ Route::group([
     Route::get('auth/me', 'Api\AuthController@me');
     // 项目
     Route::resource('book', 'Api\BookController', ['only' => ['index', 'store', 'update', 'destroy']]);
+    // 角色
+    Route::resource('role', 'Api\RoleController', ['only' => ['index', 'store', 'update', 'destroy']]);
 });
