@@ -1,9 +1,7 @@
 <?php
 
 return [
-
     'backup' => [
-
         /*
          * The name of this application. You can use this name to monitor
          * the backups.
@@ -11,9 +9,7 @@ return [
         'name' => env('APP_URL'),
 
         'source' => [
-
             'files' => [
-
                 /*
                  * The list of directories that should be part of the backup. You can
                  * specify individual files as well.
@@ -37,18 +33,17 @@ return [
              * Currently only MySQL-databases are supported.
              */
             'databases' => [
-                'mysql'
+                'mysql',
             ],
         ],
 
         'destination' => [
-
             /*
              * The filesystems you on which the backups will be stored. Choose one or more
              * of the filesystems you configured in app/config/filesystems.php
              */
             'filesystems' => [
-                'local'
+                'local',
             ],
         ],
     ],
@@ -61,7 +56,6 @@ return [
         'strategy' => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
 
         'defaultStrategy' => [
-
             /*
              * The amount of days that all daily backups must be kept.
              */
@@ -91,10 +85,9 @@ return [
              * After clean up the backups remove the oldest backup until
              * this amount of megabytes is reached.
              */
-            'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 5000
-        ]
+            'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 5000,
+        ],
     ],
-
 
     /*
      *  In this array you can specify which backups should be monitored.
@@ -120,7 +113,6 @@ return [
     ],
 
     'notifications' => [
-
         /*
          * This class will be used to send all notifications.
          */
@@ -133,12 +125,12 @@ return [
          * Slack requires the installation of the maknz/slack package
          */
         'events' => [
-            'whenBackupWasSuccessful'     => ['log'],
-            'whenCleanupWasSuccessful'    => ['log'],
-            'whenHealthyBackupWasFound'   => ['log'],
-            'whenBackupHasFailed'         => ['log', 'mail'],
-            'whenCleanupHasFailed'        => ['log', 'mail'],
-            'whenUnHealthyBackupWasFound' => ['log', 'mail']
+            'whenBackupWasSuccessful' => ['log'],
+            'whenCleanupWasSuccessful' => ['log'],
+            'whenHealthyBackupWasFound' => ['log'],
+            'whenBackupHasFailed' => ['log', 'mail'],
+            'whenCleanupHasFailed' => ['log', 'mail'],
+            'whenUnHealthyBackupWasFound' => ['log', 'mail'],
         ],
 
         /*
@@ -153,9 +145,9 @@ return [
          * Here you can how messages should be sent to Slack.
          */
         'slack' => [
-            'channel'  => '#backups',
+            'channel' => '#backups',
             'username' => 'Backup bot',
-            'icon'     => ':robot:',
+            'icon' => ':robot:',
         ],
-    ]
+    ],
 ];
