@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
 class RepositoryMake extends GeneratorCommand
@@ -29,7 +28,6 @@ class RepositoryMake extends GeneratorCommand
      * @var string
      */
     protected $type = 'Repository command';
-
 
     /**
      * Execute the console command.
@@ -64,7 +62,8 @@ class RepositoryMake extends GeneratorCommand
     /**
      * Build the class with the given name.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      */
     protected function buildClass($name)
@@ -73,18 +72,22 @@ class RepositoryMake extends GeneratorCommand
 
         return $this->replaceClass($stub, $name);
     }
+
     /**
-     * 模型是否存在
+     * 模型是否存在.
+     *
      * @method existsModel
-     * @param  [type]      $name [description]
-     * @return [type]            [description]
-     * author
+     *
+     * @param [type] $name [description]
+     *
+     * @return [type] [description]
+     *                author
      */
     public function existsModel($name)
     {
-        $class= "Model\\" . $name;
-        $parentModelClass= $this->parseModel($class);
-        if (! class_exists($parentModelClass)) {
+        $class = 'Model\\'.$name;
+        $parentModelClass = $this->parseModel($class);
+        if (!class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', ['name' => $parentModelClass]);
             }
@@ -92,54 +95,66 @@ class RepositoryMake extends GeneratorCommand
     }
 
     /**
-     * 是存在接口类
+     * 是存在接口类.
+     *
      * @method existsInterfaces
-     * @param  [type]           $name [description]
-     * @return [type]                 [description]
-     * author
+     *
+     * @param [type] $name [description]
+     *
+     * @return [type] [description]
+     *                author
      */
     public function existsInterfaces($name)
     {
-        $class = "Repository\\Interfaces\\" . $name . "RepositoryInterfaces";
-        $parentModelClass= $this->parseModel($class);
-        if (! class_exists($parentModelClass)) {
+        $class = 'Repository\\Interfaces\\'.$name.'RepositoryInterfaces';
+        $parentModelClass = $this->parseModel($class);
+        if (!class_exists($parentModelClass)) {
             $this->makeInterfaces($parentModelClass, $name);
         }
     }
 
     /**
-     * 创建
+     * 创建.
+     *
      * @method makeInterfaces
-     * @param  [type]         $parentModelClass [description]
-     * @return [type]                           [description]
-     * author
+     *
+     * @param [type] $parentModelClass [description]
+     *
+     * @return [type] [description]
+     *                author
      */
     public function makeInterfaces($class, $name)
     {
-        $path = $this->getPath(
+        $path = $this->getPathInterface(
           $this->qualifyClass($class)
         );
 
         $this->makeDirectory($path);
-        $this->files->put($path, $this->buildInterfacesClass($class));
+        $this->files->put($path, $this->buildInterfacesClass($name));
     }
 
     /**
-     * 从模板生成Class
+     * 从模板生成Class.
+     *
      * @method buildInterfacesClass
-     * @param  [type]               $class [description]
-     * @return [type]                      [description]
-     * author
+     *
+     * @param [type] $class [description]
+     *
+     * @return [type] [description]
+     *                author
      */
     public function buildInterfacesClass($class)
     {
         $stub = $this->files->get($this->getInterfacesStub());
+
         return $this->replaceClass($stub, $class);
     }
+
     /**
      * Get the fully-qualified model class name.
      *
-     * @param  string  $model
+     * @param string $model
+     *
      * @return string
      */
     protected function parseModel($model)
@@ -150,7 +165,7 @@ class RepositoryMake extends GeneratorCommand
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (! Str::startsWith($model, $rootNamespace = $this->laravel->getNamespace())) {
+        if (!Str::startsWith($model, $rootNamespace = $this->laravel->getNamespace())) {
             $model = $rootNamespace.$model;
         }
 
@@ -167,7 +182,6 @@ class RepositoryMake extends GeneratorCommand
         return __DIR__.'/../stubs/repository.stub';
     }
 
-
     /**
      * Get the stub file for the generator.
      *
@@ -177,21 +191,24 @@ class RepositoryMake extends GeneratorCommand
     {
         return __DIR__.'/../stubs/repository.interface.stub';
     }
+
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Repository';
+        return $rootNamespace.'\Repository';
     }
 
     /**
      * Get the destination class path.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      */
     protected function getPath($name)
@@ -199,6 +216,20 @@ class RepositoryMake extends GeneratorCommand
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
         return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'Repository.php';
+    }
+
+    /**
+     * Get the destination class path.
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    protected function getPathInterface($name)
+    {
+        $name = Str::replaceFirst($this->rootNamespace(), '', $name);
+
+        return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'.php';
     }
 
     /**

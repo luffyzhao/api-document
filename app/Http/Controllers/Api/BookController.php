@@ -10,20 +10,25 @@ use Illuminate\Validation\Rule;
 class BookController extends Controller
 {
     /**
-   * api仓库
-   * @var [type]
-   */
+     * api仓库.
+     *
+     * @var [type]
+     */
     protected $bookRepository;
+
     /**
-     * 构造函数
+     * 构造函数.
+     *
      * @method __construct
-     * @param  ApiRepository $bookRepository [description]
-     * author
+     *
+     * @param ApiRepository $bookRepository [description]
+     *                                      author
      */
     public function __construct(BookRepositoryInterface $bookRepository)
     {
         $this->bookRepository = $bookRepository;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,9 +40,22 @@ class BookController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return $this->response($this->bookRepository->find($id)->toArray());
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +64,7 @@ class BookController extends Controller
           'name' => ['required', 'max:255'],
           'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/', Rule::unique('book')],
           'description' => ['max:255'],
-          'status' => ['required', Rule::in([0,1])]
+          'status' => ['required', Rule::in([0, 1])],
         ]);
         $input = $request->only(['name', 'identify', 'description', 'status']);
 
@@ -56,8 +74,9 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -65,7 +84,7 @@ class BookController extends Controller
         $this->validate($request, [
           'name' => ['max:255'],
           'description' => ['max:255'],
-          'status' => [Rule::in([0,1])]
+          'status' => [Rule::in([0, 1])],
         ]);
         $input = $request->only(['name', 'description', 'status']);
 
@@ -79,11 +98,11 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
     }
 }

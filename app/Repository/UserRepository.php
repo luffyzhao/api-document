@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
-use App\Model\Role;
-use App\Repository\Interfaces\RoleRepositoryInterface;
+use App\Model\User;
+use App\Repository\Interfaces\UserRepositoryInterface;
 use App\Repository\Eloquent\Repository;
 
-class RoleRepository extends Repository implements RoleRepositoryInterface
+class UserRepository extends Repository implements UserRepositoryInterface
 {
     public function model()
     {
-        return Role::class;
+        return User::class;
     }
 
     /**
@@ -26,8 +26,8 @@ class RoleRepository extends Repository implements RoleRepositoryInterface
      */
     public function relation(array $input, int $id)
     {
-        $role = parent::find($id);
+        $user = parent::find($id);
 
-        return $role->perms()->sync($input['relation']);
+        return $user->roles()->sync($input['relation']);
     }
 }
