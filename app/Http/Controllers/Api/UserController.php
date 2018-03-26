@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\UserRepositoryInterface;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -39,15 +40,6 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -56,6 +48,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+          'username' => ['required', 'min:2', 'max:50'],
+          'email' => ['required', 'max:50', Rule::unique('users'), 'email'],
+          'phone' => ['required', 'integer'],
+          'password' => ['required_with:password_confirmation', 'min:6', 'max:20','confirmed'],
+        ]);
+        $input = $request->only(['username', 'email', 'phone', 'password']);
+
+        return $this->response($this->userRepository->create($input)->toArray());
     }
 
     /**
@@ -67,17 +68,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+        return $this->response($this->userRepository->find($id)->toArray());
     }
 
     /**
@@ -90,6 +81,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+          'username' => ['required', 'min:2', 'max:50'],
+          'email' => ['required', 'max:50', Rule::unique('users')->ignore($id), 'email'],
+          'phone' => ['required', 'integer'],
+        ]);
+        $input = $request->only(['username', 'email', 'phone']);
+
+        if ($this->userRepository->update($input, $id)) {
+            return $this->response([], '更新成功');
+        } else {
+            return $this->response([], '更新失败', 500);
+        }
     }
 
     /**
@@ -116,6 +119,29 @@ class UserController extends Controller
             return $this->response([], '关联成功');
         } else {
             return $this->response([], '关联失败', 500);
+        }
+    }
+
+    /**
+     * 修改用户密码
+     * @method password
+     * @param  [type]   $request [description]
+     * @param  [type]   $id      [description]
+     * @return [type]            [description]
+     * author
+     */
+    public function password(Request $request, $id)
+    {
+        $this->validate($request, [
+          'password' => ['required_with:password_confirmation', 'min:6', 'max:20','confirmed'],
+        ]);
+
+        $input = $request->only(['password']);
+
+        if ($this->userRepository->update($input, $id)) {
+            return $this->response([], '更新成功');
+        } else {
+            return $this->response([], '更新失败', 500);
         }
     }
 

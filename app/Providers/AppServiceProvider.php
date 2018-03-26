@@ -7,6 +7,7 @@ use App\Repository\BookRepository;
 use App\Repository\RoleRepository;
 use App\Repository\PermissionRepository;
 use App\Repository\UserRepository;
+use App\Repository\DocumentRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('App\Repository\Interfaces\UserRepositoryInterface', function () {
             return new UserRepository($this->app);
+        });
+
+        $this->app->singleton('App\Repository\Interfaces\DocumentRepositoryInterface', function () {
+            return new DocumentRepository($this->app);
         });
 
         // 添加门面

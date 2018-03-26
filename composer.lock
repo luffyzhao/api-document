@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ef211534d06d6ebbf929d30b72a4b4f",
+    "content-hash": "bccf841c20ea0f36a3392b847a937937",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -406,6 +406,42 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "joyqi/hyper-down",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SegmentFault/HyperDown.git",
+                "reference": "686d494534ee88810afc8c4e9dfa8f08014a37ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/SegmentFault/HyperDown/686d494534ee88810afc8c4e9dfa8f08014a37ed.zip",
+                "reference": "686d494534ee88810afc8c4e9dfa8f08014a37ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HyperDown\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "joyqi",
+                    "email": "joyqi@segmentfault.com"
+                }
+            ],
+            "description": "A light weight markdown parser library",
+            "time": "2018-02-26T04:49:48+00:00"
         },
         {
             "name": "laravel/framework",
@@ -4448,6 +4484,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "joyqi/hyper-down": 20,
         "tymon/jwt-auth": 5,
         "zizaco/entrust": 20
     },

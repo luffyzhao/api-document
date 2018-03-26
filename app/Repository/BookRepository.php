@@ -12,16 +12,11 @@ class BookRepository extends Repository implements BookRepositoryInterface
     {
         return Book::class;
     }
-    /**
-     * 获取我的项目并分页
-     * @method myPaginate
-     * @return [type]     [description]
-     * author
-     */
-    public function myPaginate($perPage = 20, $columns = ['*'])
+
+    public function setUserId(int $id = null)
     {
-        $this->model = $this->model->where('user_id', Auth::user()->id);
-        return parent::paginate($perPage, $columns);
+        $this->input['user_id'] = $id ?? Auth::user()->id;
+        return $this;
     }
 
     /**

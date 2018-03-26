@@ -30,4 +30,12 @@ class UserRepository extends Repository implements UserRepositoryInterface
 
         return $user->roles()->sync($input['relation']);
     }
+
+    public function update(array $data, $id, $attribute = "id")
+    {
+        if (array_key_exists('password', $data)) {
+            $data['password'] = bcrypt($data['password']);
+        }
+        return parent::update($data, $id, $attribute);
+    }
 }

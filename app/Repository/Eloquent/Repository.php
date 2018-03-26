@@ -17,10 +17,25 @@ abstract class Repository
      */
     protected $model;
 
+    protected $input = [];
+
     public function __construct(App $app)
     {
         $this->app = $app;
         $this->makeModel();
+    }
+
+    /**
+     * 设置input
+     * @method __set
+     * @param  [type] $key   [description]
+     * @param  [type] $value [description]
+     * author
+     */
+    public function __set($key, $value)
+    {
+        $this->input[$key] = $value;
+        return $input;
     }
 
     /**
@@ -55,6 +70,7 @@ abstract class Repository
      */
     public function paginate($perPage = 20, $columns = ['*'])
     {
+        $this->whereInput();
         return $this->model->paginate($perPage, $columns);
     }
 
@@ -67,6 +83,7 @@ abstract class Repository
      */
     public function create(array $input)
     {
+        $input = $this->mergeInput($input);
         return $this->model->create($input);
     }
 
@@ -76,6 +93,7 @@ abstract class Repository
      */
     public function all($columns = ['*'])
     {
+        $this->whereInput();
         return $this->model->get($columns);
     }
 
@@ -87,6 +105,7 @@ abstract class Repository
      */
     public function update(array $data, $id, $attribute = "id")
     {
+        $data = $this->mergeInput($data);
         return $this->model->where($attribute, '=', $id)->update($data);
     }
 
@@ -118,5 +137,33 @@ abstract class Repository
     public function findBy($attribute, $value, $columns = ['*'])
     {
         return $this->model->where($attribute, '=', $value)->first($columns);
+    }
+
+    /**
+     * 合并
+     * @method merge
+     * @param  array  $input [description]
+     * @return [type]        [description]
+     * author
+     */
+    protected function mergeInput(array $input)
+    {
+        $input = array_merge($this->input, $input);
+        $this->input = [];
+        return $input;
+    }
+    /**
+     * where
+     * @method whereInput
+     * @return [type]     [description]
+     * author
+     */
+    protected function whereInput()
+    {
+        if (!empty($this->input)) {
+            foreach ($this->input as $key => $value) {
+                $this->model = $this->model->where($key, $value);
+            }
+        }
     }
 }

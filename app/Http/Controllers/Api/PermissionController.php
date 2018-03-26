@@ -52,14 +52,6 @@ class PermissionController extends Controller
           'name' => ['required', 'min:2', 'max:255', Rule::unique('permissions')],
           'display_name' => ['required', 'max:255'],
           'description' => ['max:255'],
-        ], [
-          'name.required' => '权限名称不能为空！',
-          'name.min' => '权限名称不能小于2个字符！',
-          'name.max' => '权限名称不能超过255个字符！',
-          'name.unique' => '权限已存在！',
-          'display_name.required' => '权限介绍不能为空！',
-          'display_name.max' => '权限介绍不能超过255个字符！',
-          'description.max' => '权限描述不能超过255个字符！',
         ]);
         $input = $request->only(['name', 'display_name', 'description']);
 

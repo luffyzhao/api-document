@@ -106,7 +106,7 @@ class RepositoryMake extends GeneratorCommand
      */
     public function existsInterfaces($name)
     {
-        $class = 'Repository\\Interfaces\\'.$name.'RepositoryInterfaces';
+        $class = 'Repository\\Interfaces\\'.$name.'RepositoryInterface';
         $parentModelClass = $this->parseModel($class);
         if (!class_exists($parentModelClass)) {
             $this->makeInterfaces($parentModelClass, $name);
