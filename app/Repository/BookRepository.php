@@ -14,15 +14,43 @@ class BookRepository extends Repository implements BookRepositoryInterface
         return Book::class;
     }
 
-    public function setUserId(int $id = null)
+    /**
+     * 设置用户组.
+     *
+     * @method setUserId
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function setRoles()
     {
         $this->model = $this->model->where(function ($query) {
             Auth::user()->roles->each(function ($item, $index) use ($query) {
-                $query->whereRaw("FIND_IN_SET('{$item['id']}',roles)");
+                $query->whereRaw("FIND_IN_SET('{$item['id']}', `books`.`roles`)");
             });
         });
 
         return $this;
+    }
+
+    /**
+     * 分页.
+     *
+     * @method paginate
+     *
+     * @param int   $perPage [description]
+     * @param array $columns [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function paginate($perPage = 20, $columns = ['books.*'])
+    {
+        $this->booksSelect($columns);
+        $this->joinUser();
+        $lists = parent::paginate($perPage, $columns);
+
+        return $lists;
     }
 
     /**
@@ -70,5 +98,35 @@ class BookRepository extends Repository implements BookRepositoryInterface
         }
 
         return parent::create($input);
+    }
+
+    /**
+     * 关联用户表.
+     *
+     * @method joinUser
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    protected function joinUser()
+    {
+        $this->model = $this->model->leftJoin('users', 'users.id', '=', 'books.user_id')->addSelect(['users.username as username']);
+    }
+
+    /**
+     * 要查询的字段.
+     *
+     * @method booksSelect
+     *
+     * @param array $columns [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    protected function booksSelect($columns = ['books.*'])
+    {
+        $this->model = $this->model->select($columns);
     }
 }

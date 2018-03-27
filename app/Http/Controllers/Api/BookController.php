@@ -36,7 +36,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return $this->response($this->bookRepository->setUserId()->paginate()->toArray());
+        return $this->response($this->bookRepository->setRoles()->paginate());
     }
 
     /**

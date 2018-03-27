@@ -19268,12 +19268,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         'widht': 200
       }],
-      documentDatas: [{
-        "id": 21,
-        "name": " PHP项目地址端口",
-        "created_at": '2018-01-01 20:00:10',
-        "updated_at": '2018-01-01 20:00:10'
-      }],
+      documentDatas: [],
+      page: {
+        total: 40,
+        current: 1,
+        page_size: 20
+      },
       documentSearch: {
         name: ''
       },
@@ -19281,6 +19281,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       updateModalShow: false,
       updateId: 0
     };
+  },
+  mounted() {
+    this.getDocumentDatas(1);
   },
   methods: {
     search() {},
@@ -19298,6 +19301,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible;
+    },
+    getDocumentDatas(current) {
+      this.$get('book', {
+        page: current
+      }).then(res => {
+        this.documentDatas = res.data.data;
+        this.page.total = res.data.total;
+        this.page.current = res.data.current_page;
+        this.page.page_size = res.data.per_page;
+      }).catch(err => {
+        this.$Message.error('数据请求失败!');
+      });
     }
   },
   components: {
@@ -19849,10 +19864,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$Message.success('Success!');
-          _this.visibleChange(false);
-        } else {
-          _this.$Message.error('Fail!');
+          _this.$put('book/' + _this.updateId, _this.formItem).then(function (res) {
+            _this.visibleChange(false);
+            _this.$Message.error('数据请求成功!');
+          }).catch(function (err) {
+            _this.$Message.error('数据请求失败!');
+          });
         }
       });
       this.loadingVisible = false;
@@ -19863,13 +19880,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     modalShow: function modalShow(val, oldVal) {
+      var _this2 = this;
+
       if (val) {
-        this.formItem = {
-          name: '优惠劵管理筛选',
-          identify: 'ad1251',
-          status: 1,
-          description: '优惠劵管理筛选优惠劵管理筛选'
-        };
+        this.$get('book/' + this.updateId).then(function (res) {
+          _this2.formItem = res.data;
+        }).catch(function (err) {
+          _this2.$Message.error('数据请求失败!');
+        });
       }
     }
   }
@@ -20156,7 +20174,19 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("Page", {
-                attrs: { total: 40, size: "small", "show-total": "" }
+                attrs: {
+                  total: _vm.page.total,
+                  size: "small",
+                  current: _vm.page.current,
+                  "page-size": _vm.page.page_size,
+                  "show-total": ""
+                },
+                on: {
+                  "update:current": function($event) {
+                    _vm.$set(_vm.page, "current", $event)
+                  },
+                  "on-change": _vm.getDocumentDatas
+                }
               })
             ],
             1

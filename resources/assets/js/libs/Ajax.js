@@ -1,15 +1,17 @@
 import axios from 'axios'
 import Util from '@/libs/Util'
 
-// axios.defaults.baseURL = '/static/data/';
+axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
 axios.defaults.timeout = 3000;
 
 // 添加请求拦截器
 axios.interceptors.request.use((config) => {
-  config.data = JSON.stringify(config.data)
   config.headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json'
+  }
+  let token = null;
+  if ((token = Util.cache.get('token')) !== null) {
+    config.headers['authorization'] = 'bearer ' + token;
   }
   return config;
 }, (error) => {
@@ -18,7 +20,11 @@ axios.interceptors.request.use((config) => {
 
 // 添加响应拦截器
 axios.interceptors.response.use((response) => {
-  return response.data;
+  if( response.data.code === 200 ){
+    return response;
+  }else{
+    return Promise.reject(response);
+  }
 }, (error) => {
   return Promise.reject(error);
 });

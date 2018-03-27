@@ -136,8 +136,15 @@ class UserController extends Controller
     public function password(Request $request, $id)
     {
         $this->validate($request, [
+          'old_password' => ['required', 'min:6', 'max:20'],
           'password' => ['required_with:password_confirmation', 'min:6', 'max:20', 'confirmed'],
         ]);
+
+        $user = $this->userRepository->find($id);
+
+        if (!\Hash::check($request->input('old_password'), $user->password)) {
+            return $this->response([], '更新失败，原密码错误！', 423);
+        }
 
         $input = $request->only(['password']);
 

@@ -18,7 +18,7 @@
       <Card :bordered="false">
           <p slot="title">列表</p>
           <Table :columns="documentColumns" :data="documentDatas" size="small" ref="table"></Table>
-          <Page :total="40" size="small" show-total></Page>
+          <Page :total="page.total" size="small" :current.sync="page.current" :page-size="page.page_size" @on-change="getDocumentDatas" show-total></Page>
       </Card>
     </div>
 
@@ -65,12 +65,12 @@ export default {
           'widht': 200
         }
       ],
-      documentDatas: [{
-        "id": 21,
-        "name": " PHP项目地址端口",
-        "created_at": '2018-01-01 20:00:10',
-        "updated_at": '2018-01-01 20:00:10'
-      }],
+      documentDatas: [],
+      page: {
+        total: 40,
+        current: 1,
+        page_size: 20
+      },
       documentSearch: {
         name: ''
       },
@@ -78,6 +78,9 @@ export default {
       updateModalShow: false,
       updateId: 0
     }
+  },
+  mounted () {
+    this.getDocumentDatas(1);
   },
   methods: {
     search(){
@@ -97,6 +100,18 @@ export default {
     },
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible
+    },
+    getDocumentDatas(current) {
+      this.$get('book', {
+        page: current
+      }).then((res) => {
+        this.documentDatas = res.data.data;
+        this.page.total = res.data.total
+        this.page.current = res.data.current_page
+        this.page.page_size = res.data.per_page
+      }).catch((err) => {
+        this.$Message.error('数据请求失败!');
+      })
     }
   },
   components: {

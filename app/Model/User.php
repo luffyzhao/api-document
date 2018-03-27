@@ -14,6 +14,8 @@ class User extends Authenticatable implements JWTSubject
 
     protected $fillable = ['username', 'email', 'phone', 'password'];
 
+    protected $hidden = ['password', 'remember_token'];
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -33,11 +35,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
     /**
-     * 多对多关联文档
+     * 多对多关联文档.
+     *
      * @method apis
-     * @return boolean [description]
-     * author
+     *
+     * @return bool [description]
+     *              author
      */
     public function books()
     {

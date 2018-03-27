@@ -110,18 +110,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         phone: ''
       },
       formSetPassword: {
+        old_password: '',
         password: '',
-        newPassword: '',
-        confirmPassword: ''
+        password_confirmation: ''
       },
       setPassword: false
     };
   },
+  mounted() {
+    this.$get('auth/me').then(res => {
+      this.form = res.data;
+    }).catch(err => {
+      this.$Message.error('数据请求失败!');
+    });
+  },
   methods: {
     handlePassword(e) {
-      setTimeout(() => {
+      this.$put('auth/password', this.formSetPassword).then(res => {
+        this.$Message.success('密码修改成功!');
         this.$refs['modalSetPassword'].close();
-      }, 3000);
+      }).catch(err => {
+        this.$Message.error(err.response.data.msg);
+        this.$refs['modalSetPassword'].close();
+      });
+    },
+    submit(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          this.$put('auth/update', this.form).then(res => {
+            this.$Message.success('修改成功!');
+          }).catch(err => {
+            this.$Message.error(err.response.data.msg);
+          });
+        }
+      });
     }
   },
   components: {}
@@ -263,7 +285,12 @@ var render = function() {
                       "Button",
                       {
                         staticStyle: { width: "100px" },
-                        attrs: { type: "primary" }
+                        attrs: { type: "primary" },
+                        on: {
+                          click: function($event) {
+                            _vm.submit("form")
+                          }
+                        }
                       },
                       [_vm._v("保存")]
                     )
@@ -310,10 +337,38 @@ var render = function() {
                 {
                   attrs: {
                     label: "原密码",
-                    prop: "password",
+                    prop: "old_password",
                     rules: {
                       required: true,
                       message: "原密码不能为空！",
+                      trigger: "blur"
+                    }
+                  }
+                },
+                [
+                  _c("Input", {
+                    attrs: { type: "password" },
+                    model: {
+                      value: _vm.formSetPassword.old_password,
+                      callback: function($$v) {
+                        _vm.$set(_vm.formSetPassword, "old_password", $$v)
+                      },
+                      expression: "formSetPassword.old_password"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "FormItem",
+                {
+                  attrs: {
+                    label: "新密码",
+                    prop: "password",
+                    rules: {
+                      required: true,
+                      message: "密码不能为空！",
                       trigger: "blur"
                     }
                   }
@@ -337,36 +392,8 @@ var render = function() {
                 "FormItem",
                 {
                   attrs: {
-                    label: "新密码",
-                    prop: "newPassword",
-                    rules: {
-                      required: true,
-                      message: "密码不能为空！",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.newPassword,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "newPassword", $$v)
-                      },
-                      expression: "formSetPassword.newPassword"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                {
-                  attrs: {
                     label: "确认密码",
-                    prop: "confirmPassword",
+                    prop: "password_confirmation",
                     rules: {
                       required: true,
                       message: "确认密码不能为空！",
@@ -378,11 +405,15 @@ var render = function() {
                   _c("Input", {
                     attrs: { type: "password" },
                     model: {
-                      value: _vm.formSetPassword.confirmPassword,
+                      value: _vm.formSetPassword.password_confirmation,
                       callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "confirmPassword", $$v)
+                        _vm.$set(
+                          _vm.formSetPassword,
+                          "password_confirmation",
+                          $$v
+                        )
                       },
-                      expression: "formSetPassword.confirmPassword"
+                      expression: "formSetPassword.password_confirmation"
                     }
                   })
                 ],

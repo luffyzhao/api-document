@@ -77,10 +77,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     login(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
-          __WEBPACK_IMPORTED_MODULE_0__libs_Util__["a" /* default */].cache.set('token', 'dsfasdf');
-          this.$router.replace({ name: 'home' });
-        } else {
-          this.$Message.error('登录验证失败！');
+          this.$post('auth/login', this.form).then(res => {
+            __WEBPACK_IMPORTED_MODULE_0__libs_Util__["a" /* default */].cache.set('token', res.data.access_token);
+            this.$router.replace({ name: 'home' });
+          }).catch(err => {
+            this.$Message.error('登录验证失败！');
+          });
         }
       });
     }

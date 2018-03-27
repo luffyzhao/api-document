@@ -99,8 +99,6 @@ abstract class Repository
      */
     public function create(array $input)
     {
-        $input = $this->mergeInput($input);
-
         return $this->model->create($input);
     }
 
@@ -167,24 +165,6 @@ abstract class Repository
         $this->whereInput();
 
         return $this->model->where($attribute, '=', $value)->first($columns);
-    }
-
-    /**
-     * 合并.
-     *
-     * @method merge
-     *
-     * @param array $input [description]
-     *
-     * @return [type] [description]
-     *                author
-     */
-    protected function mergeInput(array $input)
-    {
-        $input = array_merge($this->input, $input);
-        $this->input = [];
-
-        return $input;
     }
 
     /**

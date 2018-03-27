@@ -9,14 +9,14 @@
         <FormItem label="项目唯一标识" prop="identify">
             {{ formItem.identify }}
         </FormItem>
-        
+
         <FormItem label="状态" prop="status">
             <i-switch v-model="formItem.status" :true-value="1" :false-value="0">
                 <span slot="open">开</span>
                 <span slot="close">关</span>
             </i-switch>
         </FormItem>
-      
+
         <FormItem label="项目说明">
             <Input v-model="formItem.description" type="textarea" :rows="4" placeholder="Enter something..."></Input>
         </FormItem>
@@ -89,10 +89,12 @@ export default {
       this.loadingVisible = true
       this.$refs[name].validate((valid) => {
           if (valid) {
-              this.$Message.success('Success!');
+            this.$put('book/' + this.updateId, this.formItem).then((res) => {
               this.visibleChange(false)
-          } else {
-              this.$Message.error('Fail!');
+              this.$Message.error('数据请求成功!');
+            }).catch((err) => {
+              this.$Message.error('数据请求失败!');
+            })
           }
       })
       this.loadingVisible = false
@@ -104,12 +106,11 @@ export default {
   watch: {
     modalShow: function (val, oldVal) {
       if(val){
-        this.formItem = {
-          name: '优惠劵管理筛选',
-          identify: 'ad1251',
-          status: 1,
-          description: '优惠劵管理筛选优惠劵管理筛选'
-        }
+          this.$get('book/' + this.updateId).then((res) => {
+            this.formItem = res.data;
+          }).catch((err) => {
+            this.$Message.error('数据请求失败!');
+          })
       }
     }
   }

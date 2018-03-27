@@ -17,7 +17,7 @@
               <Button type="text" @click="setPassword = true">修改密码</Button>
             </FormItem>
             <FormItem>
-              <Button type="primary" style="width: 100px">保存</Button>
+              <Button type="primary" @click="submit('form')" style="width: 100px">保存</Button>
             </FormItem>
           </Form>
         </div>
@@ -25,14 +25,14 @@
 
       <Modal ref="modalSetPassword" v-model="setPassword" title="修改密码" ok-text="提交" cancel-text="取消" :loading="true" @on-ok="handlePassword">
         <Form ref="formSetPassword" :model="formSetPassword" :label-width="100">
-          <FormItem label="原密码" prop="password" :rules="{required: true, message: '原密码不能为空！', trigger: 'blur'}">
+          <FormItem label="原密码" prop="old_password" :rules="{required: true, message: '原密码不能为空！', trigger: 'blur'}">
+            <Input type="password" v-model="formSetPassword.old_password"></Input>
+          </FormItem>
+          <FormItem label="新密码" prop="password" :rules="{required: true, message: '密码不能为空！', trigger: 'blur'}">
             <Input type="password" v-model="formSetPassword.password"></Input>
           </FormItem>
-          <FormItem label="新密码" prop="newPassword" :rules="{required: true, message: '密码不能为空！', trigger: 'blur'}">
-            <Input type="password" v-model="formSetPassword.newPassword"></Input>
-          </FormItem>
-          <FormItem label="确认密码" prop="confirmPassword" :rules="{required: true, message: '确认密码不能为空！', trigger: 'blur'}">
-            <Input type="password" v-model="formSetPassword.confirmPassword"></Input>
+          <FormItem label="确认密码" prop="password_confirmation" :rules="{required: true, message: '确认密码不能为空！', trigger: 'blur'}">
+            <Input type="password" v-model="formSetPassword.password_confirmation"></Input>
           </FormItem>
         </Form>
       </Modal>
@@ -49,18 +49,40 @@ export default {
         phone: ''
       },
       formSetPassword: {
+        old_password: '',
         password: '',
-        newPassword: '',
-        confirmPassword: ''
+        password_confirmation: ''
       },
       setPassword: false
     }
   },
+  mounted () {
+    this.$get('auth/me').then((res) => {
+      this.form = res.data;
+    }).catch((err) => {
+      this.$Message.error('数据请求失败!');
+    })
+  },
   methods: {
     handlePassword (e) {
-      setTimeout(() => {
-        this.$refs['modalSetPassword'].close()
-      }, 3000)
+      this.$put('auth/password', this.formSetPassword).then((res) => {
+        this.$Message.success('密码修改成功!');
+        this.$refs['modalSetPassword'].close();
+      }).catch((err) => {
+        this.$Message.error(err.response.data.msg);
+        this.$refs['modalSetPassword'].close();
+      })
+    },
+    submit(name){
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.$put('auth/update', this.form).then((res) => {
+            this.$Message.success('修改成功!');
+          }).catch((err) => {
+            this.$Message.error(err.response.data.msg);
+          })
+        }
+      });
     }
   },
   components: {}

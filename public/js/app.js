@@ -1721,34 +1721,37 @@ if (false) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = destroy;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__libs_Util__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__libs_Util__ = __webpack_require__(15);
 
 
 
 
-
-// axios.defaults.baseURL = '/static/data/';
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.timeout = 3000;
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.baseURL = 'http://127.0.0.1:8000/api/';
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.defaults.timeout = 3000;
 
 // 添加请求拦截器
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.interceptors.request.use(function (config) {
-  config.data = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(config.data);
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.request.use(function (config) {
   config.headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json'
   };
+  var token = null;
+  if ((token = __WEBPACK_IMPORTED_MODULE_2__libs_Util__["a" /* default */].cache.get('token')) !== null) {
+    config.headers['authorization'] = 'bearer ' + token;
+  }
   return config;
 }, function (error) {
   return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a.reject(error);
 });
 
 // 添加响应拦截器
-__WEBPACK_IMPORTED_MODULE_2_axios___default.a.interceptors.response.use(function (response) {
-  return response.data;
+__WEBPACK_IMPORTED_MODULE_1_axios___default.a.interceptors.response.use(function (response) {
+  if (response.data.code === 200) {
+    return response;
+  } else {
+    return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a.reject(response);
+  }
 }, function (error) {
   return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a.reject(error);
 });
@@ -1763,7 +1766,7 @@ function fetch(url) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(url, {
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get(url, {
       params: params
     }).then(function (response) {
       resolve(response.data);
@@ -1783,7 +1786,7 @@ function post(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(url, data).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.post(url, data).then(function (response) {
       resolve(response.data);
     }).catch(function (err) {
       reject(err);
@@ -1801,7 +1804,7 @@ function patch(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.patch(url, data).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch(url, data).then(function (response) {
       resolve(response.data);
     }).catch(function (err) {
       reject(err);
@@ -1819,7 +1822,7 @@ function put(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.put(url, data).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.put(url, data).then(function (response) {
       resolve(response.data);
     }).catch(function (err) {
       reject(err);
@@ -1837,7 +1840,7 @@ function head(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.head(url, data).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.head(url, data).then(function (response) {
       resolve(response.data);
     }).catch(function (err) {
       reject(err);
@@ -1855,7 +1858,7 @@ function destroy(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
   return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
-    __WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete(url, data).then(function (response) {
+    __WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete(url, data).then(function (response) {
       resolve(response.data);
     }).catch(function (err) {
       reject(err);
@@ -2573,23 +2576,8 @@ $export($export.S, 'Promise', { 'try': function (callbackfn) {
 
 
 /***/ }),
-/* 122 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(123), __esModule: true };
-
-/***/ }),
-/* 123 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var core = __webpack_require__(3);
-var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
-module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
-  return $JSON.stringify.apply($JSON, arguments);
-};
-
-
-/***/ }),
+/* 122 */,
+/* 123 */,
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 

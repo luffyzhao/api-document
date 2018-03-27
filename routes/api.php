@@ -23,6 +23,9 @@ Route::group([
     Route::post('auth/logout', 'Api\AuthController@logout')->name('auth.logout');
     Route::post('auth/refresh', 'Api\AuthController@refresh')->name('auth.refresh');
     Route::get('auth/me', 'Api\AuthController@me')->name('auth.me');
+    Route::put('auth/password', 'Api\AuthController@password')->name('auth.password');
+    Route::put('auth/update', 'Api\AuthController@update')->name('auth.update');
+
     // 项目
     Route::resource('book', 'Api\BookController', ['only' => ['show', 'index', 'store', 'update', 'destroy']]);
     Route::get('book/{id}/document', 'Api\DocumentController@index')->name('book.document.index');
