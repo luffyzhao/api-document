@@ -8,6 +8,7 @@ use App\Repository\RoleRepository;
 use App\Repository\PermissionRepository;
 use App\Repository\UserRepository;
 use App\Repository\DocumentRepository;
+use App\Repository\DocumentHistoryRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('App\Repository\Interfaces\DocumentRepositoryInterface', function () {
             return new DocumentRepository($this->app);
+        });
+
+        $this->app->singleton('App\Repository\Interfaces\DocumentHistoryRepositoryInterface', function () {
+            return new DocumentHistoryRepository($this->app);
         });
 
         // 添加门面

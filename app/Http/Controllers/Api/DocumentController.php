@@ -5,16 +5,14 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Interfaces\DocumentRepositoryInterface;
-use Illuminate\Validation\Rule;
 
 class DocumentController extends Controller
 {
-
-  /**
-   * 角色仓库.
-   *
-   * @var [type]
-   */
+    /**
+     * 角色仓库.
+     *
+     * @var [type]
+     */
     protected $documentRepository;
 
     /**
@@ -43,7 +41,8 @@ class DocumentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, $id)
@@ -61,45 +60,52 @@ class DocumentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
+     * @param int $id
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($bookid, $id)
     {
-        //
+        return $this->response($this->documentRepository->setBookId($bookid)->find($id)->toArray());
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $bookid, $id)
     {
-        //
+        $this->validate($request, [
+          'name' => ['min:2', 'max:50'],
+          'parent_id' => ['integer'],
+          'sort' => ['integer'],
+        ]);
+        $input = $request->only(['name', 'parent_id', 'sort', 'markdown']);
+
+        if ($this->documentRepository->setBookId($bookid)->update($input, $id)) {
+            return $this->response([], '更新成功');
+        } else {
+            return $this->response([], '更新失败', 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($bookid, $id)
     {
-        //
+        if ($this->documentRepository->setBookId($bookid)->delete($id)) {
+            return $this->response([], '删除成功');
+        } else {
+            return $this->response([], '删除失败', 500);
+        }
     }
 }

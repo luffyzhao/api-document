@@ -65,8 +65,10 @@ class BookController extends Controller
           'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/', Rule::unique('book')],
           'description' => ['max:255'],
           'status' => ['required', Rule::in([0, 1])],
+          'roles' => ['array'],
+          'roles.*' => ['integer'],
         ]);
-        $input = $request->only(['name', 'identify', 'description', 'status']);
+        $input = $request->only(['name', 'identify', 'description', 'status', 'roles']);
 
         return $this->response($this->bookRepository->create($input)->toArray());
     }
@@ -85,8 +87,10 @@ class BookController extends Controller
           'name' => ['max:255'],
           'description' => ['max:255'],
           'status' => [Rule::in([0, 1])],
+          'roles' => ['array'],
+          'roles.*' => ['integer'],
         ]);
-        $input = $request->only(['name', 'description', 'status']);
+        $input = $request->only(['name', 'description', 'status', 'roles']);
 
         if ($this->bookRepository->update($input, $id)) {
             return $this->response([], '更新成功');

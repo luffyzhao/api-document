@@ -52,7 +52,7 @@ class UserController extends Controller
           'username' => ['required', 'min:2', 'max:50'],
           'email' => ['required', 'max:50', Rule::unique('users'), 'email'],
           'phone' => ['required', 'integer'],
-          'password' => ['required_with:password_confirmation', 'min:6', 'max:20','confirmed'],
+          'password' => ['required_with:password_confirmation', 'min:6', 'max:20', 'confirmed'],
         ]);
         $input = $request->only(['username', 'email', 'phone', 'password']);
 
@@ -124,16 +124,19 @@ class UserController extends Controller
 
     /**
      * 修改用户密码
+     *
      * @method password
-     * @param  [type]   $request [description]
-     * @param  [type]   $id      [description]
-     * @return [type]            [description]
-     * author
+     *
+     * @param [type] $request [description]
+     * @param [type] $id      [description]
+     *
+     * @return [type] [description]
+     *                author
      */
     public function password(Request $request, $id)
     {
         $this->validate($request, [
-          'password' => ['required_with:password_confirmation', 'min:6', 'max:20','confirmed'],
+          'password' => ['required_with:password_confirmation', 'min:6', 'max:20', 'confirmed'],
         ]);
 
         $input = $request->only(['password']);

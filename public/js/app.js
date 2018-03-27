@@ -2785,7 +2785,7 @@ var loginRouter = {
     title: 'Login - 登录'
   },
   component: function component(resolve) {
-    __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(180)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(179)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2796,7 +2796,7 @@ var page404Router = {
     title: '404-页面不存在'
   },
   component: function component(resolve) {
-    __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(181)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(180)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2807,7 +2807,7 @@ var page403Router = {
   },
   name: 'error-403',
   component: function component(resolve) {
-    __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(182)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(181)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2818,7 +2818,7 @@ var page500Router = {
   },
   name: 'error-500',
   component: function component(resolve) {
-    __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(183)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(182)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2829,7 +2829,7 @@ var lockRouter = {
   },
   name: 'lock',
   component: function component(resolve) {
-    __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(184)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(183)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2840,7 +2840,7 @@ var documentWriting = {
   },
   name: 'document.writing',
   component: function component(resolve) {
-    __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(179)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(184)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -3833,7 +3833,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           name: item.name,
           title: item.meta.title,
           icon: item.meta.icon,
-          children: []
+          children: [],
+          parent: typeof item.component === 'undefined' ? true : false
         });
       });
 
@@ -3879,7 +3880,7 @@ var render = function() {
       _vm._v(" "),
       _vm._l(_vm.routerPages, function(pages, index) {
         return [
-          pages.children.length >= 1
+          pages.children.length >= 1 && pages.parent
             ? _c(
                 "Submenu",
                 { attrs: { name: pages.name } },
@@ -3914,18 +3915,20 @@ var render = function() {
                 ],
                 2
               )
-            : _c(
-                "MenuItem",
-                { attrs: { name: pages.name } },
-                [
-                  _c("Icon", { attrs: { type: "ios-home" } }),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "layout-text" }, [
-                    _vm._v(_vm._s(pages.title))
-                  ])
-                ],
-                1
-              )
+            : pages.parent === false
+              ? _c(
+                  "MenuItem",
+                  { attrs: { name: pages.name } },
+                  [
+                    _c("Icon", { attrs: { type: "ios-home" } }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "layout-text" }, [
+                      _vm._v(_vm._s(pages.title))
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e()
         ]
       })
     ],
@@ -4105,8 +4108,10 @@ var appRouter = [{
   name: 'admin',
   title: '后台管理',
   component: __WEBPACK_IMPORTED_MODULE_0__views_Main_vue___default.a,
-  children: [{ path: 'book.list', name: 'admin.book.list', meta: { title: '项目管理', icon: 'ios-bookmarks-outline' }, component: function component(resolve) {
-      __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(419)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+  children: [
+  // {path: 'book', name: 'admin.book', meta: {title: '项目管理', icon: 'ios-bookmarks-outline'}},
+  { path: 'book.list', name: 'admin.book.list', meta: { title: '项目管理', icon: 'ios-bookmarks-outline' /*, parent: 'admin.book'*/ }, component: function component(resolve) {
+      __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(187)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     } }]
 }];
 

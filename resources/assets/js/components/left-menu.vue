@@ -6,7 +6,7 @@
       <span class="layout-text">首页</span>
     </MenuItem>
     <template v-for="(pages, index) in routerPages">
-      <Submenu v-if="pages.children.length >= 1" :name="pages.name">
+      <Submenu v-if="pages.children.length >= 1 && pages.parent" :name="pages.name">
         <template slot="title">
           <Icon :type="pages.icon"></Icon>
           <span class="layout-text"> {{ pages.title }} </span>
@@ -16,7 +16,7 @@
           <span class="layout-text">{{ page.title }}</span>
         </MenuItem>
       </Submenu>
-      <MenuItem v-else :name="pages.name">
+      <MenuItem v-else-if="pages.parent === false" :name="pages.name">
         <Icon type="ios-home"></Icon>
         <span class="layout-text">{{ pages.title }}</span>
       </MenuItem>
@@ -49,7 +49,8 @@
             name: item.name,
             title: item.meta.title,
             icon: item.meta.icon,
-            children: []
+            children: [],
+            parent: typeof(item.component) === 'undefined' ? true : false
           })
         })
 
