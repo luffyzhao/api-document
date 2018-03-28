@@ -103,6 +103,7 @@ export default {
           markdown: this.document.markdown
         }).then((res) => {
           this.$Message.success('保存成功');
+          this.historyMarkdown = this.document.markdown
         })
       }
     }
