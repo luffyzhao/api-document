@@ -46,11 +46,11 @@ export const lockRouter = {
 }
 
 export const documentWriting = {
-  path: '/document.writing',
+  path: '/book.document.index',
   meta: {
     title: '编辑文档'
   },
-  name: 'document.writing',
+  name: 'book.document.index',
   component: resolve => { require(['@/views/document/writing.vue'], resolve) }
 }
 

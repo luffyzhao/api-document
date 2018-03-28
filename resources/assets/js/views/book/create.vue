@@ -9,14 +9,14 @@
         <FormItem label="项目唯一标识" prop="identify">
             <Input v-model="formItem.identify"></Input>
         </FormItem>
-        
+
         <FormItem label="状态" prop="status">
             <i-switch v-model="formItem.status" :true-value="1" :false-value="0">
                 <span slot="open">开</span>
                 <span slot="close">关</span>
             </i-switch>
         </FormItem>
-      
+
         <FormItem label="项目说明">
           <Input v-model="formItem.description" type="textarea" :rows="4" placeholder="Enter something..."></Input>
         </FormItem>
@@ -64,7 +64,7 @@ export default {
           { message: '项目说明最多500个字符', pattern: /^\.{0,500}$/, trigger: 'blur'}
         ],
         identify: [
-          { message: '项目标识只能包含小写字母、数字，以及“-”和“_”符号,并且只能小写字母开头', pattern: /^[a-z]+[0-9a-zA-Z-_]*$/, trigger: 'blur'}
+          { required: true, message: '项目标识只能包含小写字母、数字，以及“-”和“_”符号,并且只能小写字母开头', pattern: /^[a-z]+[0-9a-zA-Z-_]*$/, trigger: 'blur'}
         ],
         status: [
           { message: '项目状态必须选择', pattern: /^[0-1]{1}$/, trigger: 'change'}
@@ -82,10 +82,15 @@ export default {
       this.loadingVisible = true
       this.$refs[name].validate((valid) => {
           if (valid) {
-              this.$Message.success('Success!');
+            this.$post('book', {
+              name : this.formItem.name,
+              identify : this.formItem.identify,
+              status : this.formItem.status,
+              description : this.formItem.description,
+            }).then((res) => {
               this.visibleChange(false)
-          } else {
-              this.$Message.error('Fail!');
+              this.$Message.error('数据请求成功!');
+            })
           }
       })
       this.loadingVisible = false

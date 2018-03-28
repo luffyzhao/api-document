@@ -89,11 +89,14 @@ export default {
       this.loadingVisible = true
       this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$put('book/' + this.updateId, this.formItem).then((res) => {
+            this.$put('book/' + this.updateId, {
+              name : this.formItem.name,
+              identify : this.formItem.identify,
+              status : this.formItem.status,
+              description : this.formItem.description,
+            }).then((res) => {
               this.visibleChange(false)
-              this.$Message.error('数据请求成功!');
-            }).catch((err) => {
-              this.$Message.error('数据请求失败!');
+              this.$Message.success('数据请求成功!');
             })
           }
       })

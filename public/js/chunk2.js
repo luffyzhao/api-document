@@ -1,14 +1,14 @@
 webpackJsonp([2],{
 
-/***/ 179:
+/***/ 177:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(372)
+var __vue_script__ = __webpack_require__(226)
 /* template */
-var __vue_template__ = __webpack_require__(380)
+var __vue_template__ = __webpack_require__(234)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,13 +48,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 372:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Util__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Util__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_login_lock_vue__);
 
 
@@ -80,8 +80,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           this.$post('auth/login', this.form).then(res => {
             __WEBPACK_IMPORTED_MODULE_0__libs_Util__["a" /* default */].cache.set('token', res.data.access_token);
             this.$router.replace({ name: 'home' });
-          }).catch(err => {
-            this.$Message.error('登录验证失败！');
           });
         }
       });
@@ -91,19 +89,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 373:
+/***/ 227:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(374)
+  __webpack_require__(228)
 }
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(378)
+var __vue_script__ = __webpack_require__(232)
 /* template */
-var __vue_template__ = __webpack_require__(379)
+var __vue_template__ = __webpack_require__(233)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -143,13 +141,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 374:
+/***/ 228:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(375);
+var content = __webpack_require__(229);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -170,23 +168,23 @@ if(false) {
 
 /***/ }),
 
-/***/ 375:
+/***/ 229:
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(376);
+var escape = __webpack_require__(230);
 exports = module.exports = __webpack_require__(13)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.login {\n  width: 100%;\n  height: 100%;\n  background-image: url(" + escape(__webpack_require__(377)) + ");\n  background-size: cover;\n  background-position: 50%;\n  position: relative;\n}\n.login .login-con {\n    position: absolute;\n    right: 160px;\n    top: 50%;\n    -webkit-transform: translateY(-60%);\n    transform: translateY(-60%);\n    width: 300px;\n}\n.login .login-con .form-con {\n      padding: 10px 0 0;\n}\n.login .login-con .login-tip {\n      font-size: 10px;\n      text-align: center;\n      color: #c3c3c3;\n}\n", ""]);
+exports.push([module.i, "\n.login {\n  width: 100%;\n  height: 100%;\n  background-image: url(" + escape(__webpack_require__(231)) + ");\n  background-size: cover;\n  background-position: 50%;\n  position: relative;\n}\n.login .login-con {\n    position: absolute;\n    right: 160px;\n    top: 50%;\n    -webkit-transform: translateY(-60%);\n    transform: translateY(-60%);\n    width: 300px;\n}\n.login .login-con .form-con {\n      padding: 10px 0 0;\n}\n.login .login-con .login-tip {\n      font-size: 10px;\n      text-align: center;\n      color: #c3c3c3;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 376:
+/***/ 230:
 /***/ (function(module, exports) {
 
 module.exports = function escape(url) {
@@ -209,19 +207,19 @@ module.exports = function escape(url) {
 
 /***/ }),
 
-/***/ 377:
+/***/ 231:
 /***/ (function(module, exports) {
 
 module.exports = "/images/bg.jpg?38b7b76162212ed6715dc7ff6bf22ff5";
 
 /***/ }),
 
-/***/ 378:
+/***/ 232:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Util__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__libs_Util__ = __webpack_require__(16);
 
 
 
@@ -235,7 +233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 379:
+/***/ 233:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -285,7 +283,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 380:
+/***/ 234:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

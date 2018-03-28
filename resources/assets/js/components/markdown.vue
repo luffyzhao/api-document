@@ -1,21 +1,24 @@
 <template lang="html">
   <div class="markdown-editor">
-    <link rel="stylesheet" href="/css/github-markdown.css">
-    <div class="markdown-textarea" @keyup="update" contenteditable v-init-text='myValue'></div>
-    <div class="markdown-preview">
-        <div v-html="compiledMarkdown" class="markdown-body"></div>
-    </div>
+    <markdown
+    :mdValuesP="value"
+    :fullPageStatusP="false"
+    :editStatusP="false"
+    :previewStatusP="false"
+    :navStatusP="false"
+    :icoStatusP="true"
+    @childevent="childEventHandler">
+    </markdown>
   </div>
 </template>
 
-<script lang="babel">
-import hljs from 'highlight.js'
-import marked from 'marked'
 
+<script lang="babel">
+import markdown from './contenteditable'
 export default {
   data() {
     return {
-      myValue: this.value
+      innerText: this.value
     }
   },
   props: {
@@ -25,37 +28,14 @@ export default {
     }
   },
   computed: {
-    compiledMarkdown: function() {
-      marked.setOptions({
-        highlight: function(code) {
-          return hljs.highlightAuto(code).value;
-        }
-      });
-      return marked(this.myValue, {
-        sanitize: true,
-        code: true
-      })
-    }
+
+  },
+  components: {
+      markdown // 声明mardown组件
   },
   methods: {
-    update: _.debounce(function(e) {
-      this.myValue = e.target.innerText
-    }, 300)
-  },
-  watch: {
-    myValue(val) {
-      this.$emit("on-result-change", val)
-    }
-  },
-  directives: {
-    initText: {
-      inserted: function(el, {
-        value
-      }) {
-        if (value) {
-          el.innerHTML = value
-        }
-      }
+    childEventHandler:function(res){
+      this.$emit('input', res);
     }
   }
 }

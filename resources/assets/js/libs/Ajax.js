@@ -1,8 +1,16 @@
 import axios from 'axios'
 import Util from '@/libs/Util'
+import iView from 'iview';
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
 axios.defaults.timeout = 3000;
+
+const errorHandle = function(data){
+  iView.Message.error(data.msg);
+  if(data.code === 401){
+    Util.cache.delete('token')
+  }
+}
 
 // 添加请求拦截器
 axios.interceptors.request.use((config) => {
@@ -15,19 +23,23 @@ axios.interceptors.request.use((config) => {
   }
   return config;
 }, (error) => {
+  errorHandle(error.response.data)
   return Promise.reject(error);
 });
 
 // 添加响应拦截器
 axios.interceptors.response.use((response) => {
-  if( response.data.code === 200 ){
     return response;
-  }else{
-    return Promise.reject(response);
-  }
 }, (error) => {
+  try {
+    errorHandle(error.response.data)
+  } catch (e) {
+
+  }
   return Promise.reject(error);
 });
+
+
 
 /**
  * get方法

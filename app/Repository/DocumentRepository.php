@@ -7,6 +7,7 @@ use App\Repository\Interfaces\DocumentRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Repository\Eloquent\Repository;
 use HyperDown\Parser;
+use DB;
 
 class DocumentRepository extends Repository implements DocumentRepositoryInterface
 {
@@ -51,6 +52,18 @@ class DocumentRepository extends Repository implements DocumentRepositoryInterfa
     }
 
     /**
+     * @param array $columns
+     *
+     * @return mixed
+     */
+    public function all($columns = ['id', 'name', 'book_id', 'parent_id', 'sort', 'user_id', 'created_at', 'updated_at'])
+    {
+        $this->model = $this->model->orderBy('sort', 'asc')->orderBy('id', 'asc');
+
+        return parent::all();
+    }
+
+    /**
      * 更新.
      *
      * @method update
@@ -84,12 +97,15 @@ class DocumentRepository extends Repository implements DocumentRepositoryInterfa
      */
     public function create(array $input)
     {
-        if (!array_key_exists('user_id', $input)) {
+        if (!isset($input['user_id'])) {
             $input['user_id'] = Auth::user()->id;
         }
         if (isset($input['markdown'])) {
             $parser = new Parser();
             $input['content'] = $parser->makeHtml($text);
+        }
+        if (!isset($input['sort'])) {
+            $input['sort'] = DB::table('documents')->where('book_id', $this->input['book_id'])->max('sort') + 1;
         }
         $input = array_merge($this->input, $input);
 

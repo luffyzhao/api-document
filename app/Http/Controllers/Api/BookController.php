@@ -62,7 +62,7 @@ class BookController extends Controller
     {
         $this->validate($request, [
           'name' => ['required', 'max:255'],
-          'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/', Rule::unique('book')],
+          'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/', Rule::unique('books')],
           'description' => ['max:255'],
           'status' => ['required', Rule::in([0, 1])],
           'roles' => ['array'],

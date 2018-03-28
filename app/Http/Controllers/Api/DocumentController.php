@@ -35,7 +35,7 @@ class DocumentController extends Controller
      */
     public function index($id)
     {
-        return $this->response($this->documentRepository->setBookId($id)->paginate()->toArray());
+        return $this->response($this->documentRepository->setBookId($id)->all()->toArray());
     }
 
     /**
@@ -50,7 +50,7 @@ class DocumentController extends Controller
         $this->validate($request, [
           'name' => ['required', 'min:2', 'max:50'],
           'parent_id' => ['integer'],
-          'sort' => ['required', 'integer'],
+          'sort' => ['integer'],
         ]);
         $input = $request->only(['name', 'parent_id', 'sort', 'markdown']);
 

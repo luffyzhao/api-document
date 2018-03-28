@@ -9,7 +9,7 @@ export const appRouter = [
     component: Main,
     children: [
       // {path: 'book', name: 'admin.book', meta: {title: '项目管理', icon: 'ios-bookmarks-outline'}},
-      { path: 'book.list', name: 'admin.book.list', meta: {title: '项目管理', icon: 'ios-bookmarks-outline'/*, parent: 'admin.book'*/}, component: resolve => { require(['@/views/book/list.vue'], resolve) } },
+      { path: 'book.index', name: 'book.index', meta: {title: '项目管理', icon: 'ios-bookmarks-outline'/*, parent: 'admin.book'*/}, component: resolve => { require(['@/views/book/list.vue'], resolve) } },
     ]
   }
 ]

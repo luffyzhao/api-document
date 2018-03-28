@@ -7,6 +7,7 @@ import {fetch,post,patch,put,head,destroy} from '@/libs/Ajax'
 import {router} from '@/router/index'
 import store from './store'
 
+
 Vue.config.productionTip = false
 Vue.use(iView)
 

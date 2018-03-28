@@ -6,6 +6,7 @@ use App\Model\Book;
 use Illuminate\Support\Facades\Auth;
 use App\Repository\Eloquent\Repository;
 use App\Repository\Interfaces\BookRepositoryInterface;
+use Illuminate\Support\Str;
 
 class BookRepository extends Repository implements BookRepositoryInterface
 {
@@ -95,6 +96,10 @@ class BookRepository extends Repository implements BookRepositoryInterface
             $input['roles'] = Auth::user()->roles->pluck('id')->implode(',');
         } elseif (is_array($input['roles'])) {
             $input['roles'] = implode(',', $input['roles']);
+        }
+
+        if (!isset($input['identify'])) {
+            $input['identify'] = Str::random(18);
         }
 
         return parent::create($input);

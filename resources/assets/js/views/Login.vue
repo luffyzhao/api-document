@@ -42,8 +42,6 @@
             this.$post('auth/login', this.form).then((res) => {
               Util.cache.set('token', res.data.access_token)
               this.$router.replace({name: 'home'})
-            }).catch((err) => {
-              this.$Message.error('登录验证失败！');
             })
           }
         });

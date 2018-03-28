@@ -23,93 +23,41 @@
       </Col>
     </Row>
   </div>
+
   <div class="writing-content">
     <div class="api-list">
-      <div class="api-list-nav">
-        <div class="nav-item active">
-          <Icon type="navicon-round"></Icon> 列表
-        </div>
-        <div class="plus-right">
-          <div @click="addApiVisble = true"><Icon type="plus-round"></Icon></div>
-        </div>
-      </div>
+        <ApiList :data="documents" v-on:update="getDocuments"></ApiList>
     </div>
     <div class="api-content">
-      <markdown></markdown>
+      <markdown :value="document.markdown" v-on:onResultChange="onResultChange"></markdown>
     </div>
   </div>
 
-  <Modal v-model="addApiVisble" width="460" ok-text="保存">
-      <p slot="header">添加文档</p>
-      <div>
-          <Form ref="formValidate" :model="addApiModel" :rules="addApiValidate" :label-width="100">
-            <FormItem label="文档名称" prop="name">
-                <Input v-model="addApiModel.name"></Input>
-            </FormItem>
-            <FormItem label="文档唯王一标识" prop="identify">
-                <Input v-model="addApiModel.identify"></Input>
-            </FormItem>
-          </Form>
-      </div>
-  </Modal>
-
-  <Modal v-model="historyVisble" width="550">
-    <p slot="header">修改记录</p>
-    <div>
-      <Table :columns="historyColumns" :data="historyData"></Table>
-    </div>
-    <div slot="footer"></div>
-  </Modal>
-
+  <History v-on:visibleChange="historyVisble = false" :show="historyVisble"></History>
 </div>
 </template>
 
 <script>
 import markdown from '@/components/markdown.vue'
+import ApiList from './api-list.vue'
+import History from './history.vue'
+
 export default {
   computed: {
   },
   data () {
     return {
+      bookId: this.$route.query.id,
+      documents: [],
       loadingVisible: false,
-      addApiVisble: false,
       historyVisble: false,
-      addApiModel: {
-        name: "",
-        identify: ""
-      },
-      addApiValidate: {
-        name: [
-          { required: true, message: '文档名称不能为空！', trigger: 'blur' }
-        ],
-        identify: [
-          { message: '文档标识只能包含小写字母、数字，以及“-”和“_”符号,并且只能小写字母开头', pattern: /^[a-z]+[0-9a-zA-Z-_]*$/, trigger: 'blur'}
-        ]
-      },
-      historyColumns: [
-          {
-              title: 'ID',
-              key: 'id'
-          },
-          {
-              title: '修改时间',
-              key: 'updated_at'
-          },
-          {
-              title: '修改人',
-              key: 'address'
-          },
-          {
-              title: '版本',
-              key: 'version'
-          },
-          {
-              title: '操作',
-              key: 'address'
-          }
-      ],
-      historyData: []
+      document:{}
     }
+  },
+  computed: {
+  },
+  mounted () {
+    this.getDocuments();
   },
   methods: {
    goBack(){
@@ -119,11 +67,29 @@ export default {
     this.historyVisble = true
    },
    useHelp(){
-    window.open("http://wowubuntu.com/markdown/index.html");
-   }
+     window.open("http://wowubuntu.com/markdown/index.html");
+   },
+   onResultChange(string){
+     this.document.markdown = string
+   },
+   getDocuments(){
+      this.$get(`book/${this.bookId}/document`).then((res) => {
+        this.documents = res.data;
+        if(this.documents.length > 0){
+          this.getDocument(this.documents[0].id)
+        }
+      })
+    },
+    getDocument(id){
+      this.$get(`book/${this.bookId}/document/${id}`).then((res) => {
+        this.document = res.data
+      })
+    }
   },
   components: {
-    markdown
+    markdown,
+    ApiList,
+    History
   }
 }
 </script>
@@ -196,6 +162,34 @@ export default {
         clear: both;
         visibility: hidden;
       }
+      .api-list-center{
+        width: 199px;
+        overflow: hidden;
+        li{
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          line-height:30px;
+          position: relative;
+          .ivu-icon{
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            line-height:24px;
+          }
+          .ivu-icon-arrow-expand, strong{
+            cursor: pointer;
+          }
+          .hover-visble{
+            position: absolute;
+            top: 0;
+            right: 0;
+            .ivu-icon{
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
     .api-content{
       height: 100%;
@@ -203,7 +197,7 @@ export default {
       .markdown-editor{
         height: 100%;
       }
-    }   
+    }
   }
 }
 </style>

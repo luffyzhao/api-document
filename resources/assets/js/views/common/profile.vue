@@ -59,17 +59,12 @@ export default {
   mounted () {
     this.$get('auth/me').then((res) => {
       this.form = res.data;
-    }).catch((err) => {
-      this.$Message.error('数据请求失败!');
     })
   },
   methods: {
     handlePassword (e) {
       this.$put('auth/password', this.formSetPassword).then((res) => {
         this.$Message.success('密码修改成功!');
-        this.$refs['modalSetPassword'].close();
-      }).catch((err) => {
-        this.$Message.error(err.response.data.msg);
         this.$refs['modalSetPassword'].close();
       })
     },
@@ -78,8 +73,6 @@ export default {
         if (valid) {
           this.$put('auth/update', this.form).then((res) => {
             this.$Message.success('修改成功!');
-          }).catch((err) => {
-            this.$Message.error(err.response.data.msg);
           })
         }
       });
