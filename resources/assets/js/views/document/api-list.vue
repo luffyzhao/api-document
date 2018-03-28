@@ -13,7 +13,7 @@
   <ul>
     <li v-for="item in data">
       <Icon type="clipboard"></Icon>
-      <strong>{{item.name}}</strong>
+      <strong @click="changeDocument(item.id)">{{item.name}}</strong>
       <div class="hover-visble">
         <i class="ivu-icon ivu-icon-edit" @click="AddApiVisible=true; AddApiData = item;"></i>
         <i class="ivu-icon ivu-icon-trash-a" @click="deleteItem(item.id)"></i>
@@ -50,6 +50,9 @@ export default {
     },
     update(){
       this.$emit('update');
+    },
+    changeDocument(id){
+      this.$emit('change', id);
     }
   },
   filters: {},

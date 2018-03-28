@@ -7,7 +7,7 @@
           <Button icon="arrow-return-left" @click="goBack"></Button>
         </Tooltip>
         <Tooltip content="保存">
-          <Button type="success" icon="cube"></Button>
+          <Button type="success" icon="cube" @click="saveMarkdown"></Button>
         </Tooltip>
       </Col>
       <Col span="12" style="text-align: right;">
@@ -26,10 +26,18 @@
 
   <div class="writing-content">
     <div class="api-list">
-        <ApiList :data="documents" v-on:update="getDocuments"></ApiList>
+        <ApiList :data="documents" v-on:change="getDocument" v-on:update="getDocuments"></ApiList>
     </div>
     <div class="api-content">
-      <markdown :value="document.markdown" v-on:onResultChange="onResultChange"></markdown>
+      <markdown
+      :mdValuesP="document.markdown"
+      :fullPageStatusP="false"
+      :editStatusP="false"
+      :previewStatusP="false"
+      :navStatusP="true"
+      :icoStatusP="true"
+      @childevent="childEventHandler">
+      </markdown>
     </div>
   </div>
 
@@ -38,23 +46,25 @@
 </template>
 
 <script>
-import markdown from '@/components/markdown.vue'
 import ApiList from './api-list.vue'
 import History from './history.vue'
+import markdown from '@/components/markdown'
 
 export default {
-  computed: {
-  },
   data () {
     return {
       bookId: this.$route.query.id,
       documents: [],
       loadingVisible: false,
       historyVisble: false,
-      document:{}
+      document:{},
+      historyMarkdown: ''
     }
   },
   computed: {
+    isChange(){
+      return typeof(this.document.markdown) !== 'undefined' && this.historyMarkdown !=  this.document.markdown;
+    }
   },
   mounted () {
     this.getDocuments();
@@ -69,9 +79,6 @@ export default {
    useHelp(){
      window.open("http://wowubuntu.com/markdown/index.html");
    },
-   onResultChange(string){
-     this.document.markdown = string
-   },
    getDocuments(){
       this.$get(`book/${this.bookId}/document`).then((res) => {
         this.documents = res.data;
@@ -81,9 +88,23 @@ export default {
       })
     },
     getDocument(id){
+      this.saveMarkdown();
       this.$get(`book/${this.bookId}/document/${id}`).then((res) => {
         this.document = res.data
+        this.historyMarkdown = res.data.markdown
       })
+    },
+    childEventHandler:function(res){
+      this.document.markdown = res.mdValue
+    },
+    saveMarkdown(){
+      if(this.isChange){
+        this.$put(`book/${this.bookId}/document/${this.document.id}`, {
+          markdown: this.document.markdown
+        }).then((res) => {
+          this.$Message.success('保存成功');
+        })
+      }
     }
   },
   components: {

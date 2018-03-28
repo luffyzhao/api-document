@@ -80,7 +80,10 @@ class DocumentRepository extends Repository implements DocumentRepositoryInterfa
     {
         $model = parent::find($id);
         $this->saveAtHistory($model);
-
+        if (isset($data['markdown'])) {
+            $parser = new Parser();
+            $data['content'] = $parser->makeHtml($data['markdown']);
+        }
         return parent::update($data, $id, $attribute);
     }
 
@@ -102,7 +105,7 @@ class DocumentRepository extends Repository implements DocumentRepositoryInterfa
         }
         if (isset($input['markdown'])) {
             $parser = new Parser();
-            $input['content'] = $parser->makeHtml($text);
+            $input['content'] = $parser->makeHtml($input['markdown']);
         }
         if (!isset($input['sort'])) {
             $input['sort'] = DB::table('documents')->where('book_id', $this->input['book_id'])->max('sort') + 1;
