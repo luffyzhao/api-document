@@ -21110,6 +21110,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           markdown: this.document.markdown
         }).then(function (res) {
           _this3.$Message.success('保存成功');
+          _this3.historyMarkdown = _this3.document.markdown;
         });
       }
     }
