@@ -1,14 +1,14 @@
-webpackJsonp([12],{
+webpackJsonp([13],{
 
-/***/ 453:
+/***/ 450:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(454)
+var __vue_script__ = __webpack_require__(451)
 /* template */
-var __vue_template__ = __webpack_require__(455)
+var __vue_template__ = __webpack_require__(452)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\roles\\list.vue"
+Component.options.__file = "resources\\assets\\js\\views\\permissions\\list.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2501f38a", Component.options)
+    hotAPI.createRecord("data-v-e8cd8c3a", Component.options)
   } else {
-    hotAPI.reload("data-v-2501f38a", Component.options)
+    hotAPI.reload("data-v-e8cd8c3a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,14 +48,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 454:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
 
 
@@ -101,7 +101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 455:
+/***/ 452:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -191,21 +191,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-2501f38a", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-e8cd8c3a", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 464:
+/***/ 456:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(465)
+var __vue_script__ = __webpack_require__(459)
 /* template */
-var __vue_template__ = __webpack_require__(466)
+var __vue_template__ = __webpack_require__(460)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -222,7 +222,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\roles\\create.vue"
+Component.options.__file = "resources\\assets\\js\\views\\permissions\\create.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -231,9 +231,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6722ffe8", Component.options)
+    hotAPI.createRecord("data-v-f5fbd7fe", Component.options)
   } else {
-    hotAPI.reload("data-v-6722ffe8", Component.options)
+    hotAPI.reload("data-v-f5fbd7fe", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -245,7 +245,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 465:
+/***/ 459:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -306,7 +306,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 466:
+/***/ 460:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -377,21 +377,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-6722ffe8", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-f5fbd7fe", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 467:
+/***/ 461:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(468)
+var __vue_script__ = __webpack_require__(462)
 /* template */
-var __vue_template__ = __webpack_require__(469)
+var __vue_template__ = __webpack_require__(463)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -408,7 +408,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\roles\\update.vue"
+Component.options.__file = "resources\\assets\\js\\views\\permissions\\update.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -417,9 +417,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-03e2e935", Component.options)
+    hotAPI.createRecord("data-v-21c1fd4e", Component.options)
   } else {
-    hotAPI.reload("data-v-03e2e935", Component.options)
+    hotAPI.reload("data-v-21c1fd4e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -431,7 +431,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 468:
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -503,7 +503,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 469:
+/***/ 463:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -574,7 +574,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-03e2e935", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-21c1fd4e", module.exports)
   }
 }
 

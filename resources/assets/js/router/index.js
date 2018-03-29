@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
   if (Util.cache.get('locking') === 1 && to.name !== 'lock') {
     next({name: 'lock'})
   } else if (Util.cache.get('locking') === 0 && to.name === 'lock') {
-    next(false)
+    next({name: 'home'})
   } else {
     // 判断是否已经登录且前往的页面不是登录页
     if (!Util.cache.get('token') && to.name !== 'login') {

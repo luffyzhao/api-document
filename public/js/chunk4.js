@@ -4,19 +4,15 @@ webpackJsonp([4],{
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(424)
-}
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(426)
+var __vue_script__ = __webpack_require__(443)
 /* template */
-var __vue_template__ = __webpack_require__(427)
+var __vue_template__ = __webpack_require__(450)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -29,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\common\\home.vue"
+Component.options.__file = "resources\\assets\\js\\views\\permissions\\list.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9787ff5a", Component.options)
+    hotAPI.createRecord("data-v-e8cd8c3a", Component.options)
   } else {
-    hotAPI.reload("data-v-9787ff5a", Component.options)
+    hotAPI.reload("data-v-e8cd8c3a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,67 +48,229 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 424:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(425);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(14)("0bf95f40", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/_css-loader@0.28.11@css-loader/index.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9787ff5a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./home.vue", function() {
-     var newContent = require("!!../../../../../node_modules/_css-loader@0.28.11@css-loader/index.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9787ff5a\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/_sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./home.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 425:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(13)(false);
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 426:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(447);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
+
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data() {
+    const h = this.$createElement;
+
     return {
-      value: ''
+      Columns: [{
+        "title": "权限",
+        "key": "name"
+      }, {
+        "title": "权限名称",
+        "key": "display_name"
+      }, {
+        "title": "权限描述",
+        "key": "description"
+      }, {
+        'title': '操作',
+        'render': (h, {
+          row,
+          column,
+          index
+        }) => {
+          return h('button-group', [h(
+            'i-button',
+            {
+              on: {
+                'click': () => {
+                  this.updateButton(row);
+                }
+              },
+              attrs: { size: 'small' }
+            },
+            ['\u66F4\u65B0']
+          ), h(
+            'poptip',
+            {
+              attrs: { transfer: true, title: '\u60A8\u786E\u8BA4\u5220\u9664\u8FD9\u6761\u5185\u5BB9\u5417\uFF1F', confirm: true },
+              on: {
+                'on-ok': () => {
+                  this.deleteButton(row);
+                }
+              }
+            },
+            [h(
+              'i-button',
+              {
+                attrs: { size: 'small' }
+              },
+              ['\u5220\u9664']
+            )]
+          )]);
+        }
+      }],
+      Datas: [],
+      page: {
+        total: 40,
+        current: 1,
+        page_size: 20
+      },
+      createModalShow: false,
+      updateModalShow: false,
+      updateId: 0
     };
   },
-  components: {}
+  mounted() {
+    this.search(1);
+  },
+  methods: {
+    search(current) {
+      this.$get('permission', {
+        page: current
+      }).then(res => {
+        this.Datas = res.data.data;
+        this.page.total = res.data.total;
+        this.page.current = res.data.current_page;
+        this.page.page_size = res.data.per_page;
+      });
+    },
+    updateButton(row) {
+      this.updateId = row.id;
+      this.updateModalShow = true;
+    },
+    deleteButton(row) {},
+    visibleChangeCreate(visible) {
+      this.createModalShow = visible;
+      if (visible === false) {}
+    },
+    visibleChangeUpdate(visible) {
+      this.updateModalShow = visible;
+      if (visible === false) {}
+    }
+  },
+  components: {
+    Create: __WEBPACK_IMPORTED_MODULE_0__create_vue___default.a,
+    Update: __WEBPACK_IMPORTED_MODULE_1__update_vue___default.a
+  }
 });
 
 /***/ }),
 
-/***/ 427:
+/***/ 444:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(10)
+/* script */
+var __vue_script__ = __webpack_require__(445)
+/* template */
+var __vue_template__ = __webpack_require__(446)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\permissions\\create.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f5fbd7fe", Component.options)
+  } else {
+    hotAPI.reload("data-v-f5fbd7fe", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 445:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    modalShow: {
+      get: function get() {
+        return this.show;
+      },
+      set: function set() {}
+    }
+  },
+  data: function data() {
+    return {
+      loadingVisible: false,
+      formItem: {}
+    };
+  },
+
+  methods: {
+    visibleChange: function visibleChange(visible) {
+      if (visible === false) {
+        this.$emit('visibleChange', visible);
+      }
+    },
+    submit: function submit(name) {
+      this.loadingVisible = true;
+      this.$refs[name].validate(function (valid) {
+        if (valid) {}
+      });
+      this.loadingVisible = false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 446:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -122,17 +280,57 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("Card", { attrs: { bordered: false } }, [
-        _c("p", { attrs: { slot: "title" }, slot: "title" }, [
-          _vm._v("No border title")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Content of no border type. Content of no border type. Content of no border type. Content of no border type. "
+      _c(
+        "Modal",
+        {
+          attrs: {
+            title: "创建项目",
+            "mask-closable": false,
+            "class-name": "vertical-center-modal",
+            width: "auto",
+            "ok-text": "提交"
+          },
+          on: { "on-visible-change": _vm.visibleChange, "on-ok": _vm.submit },
+          model: {
+            value: _vm.modalShow,
+            callback: function($$v) {
+              _vm.modalShow = $$v
+            },
+            expression: "modalShow"
+          }
+        },
+        [
+          _c("Form", {
+            ref: "formItem",
+            attrs: { model: _vm.formItem, "label-width": 100 }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { attrs: { slot: "footer" }, slot: "footer" },
+            [
+              _c(
+                "Button",
+                {
+                  attrs: {
+                    type: "primary",
+                    size: "large",
+                    loading: _vm.loadingVisible
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.submit("formItem")
+                    }
+                  }
+                },
+                [_vm._v("提交")]
+              )
+            ],
+            1
           )
-        ])
-      ])
+        ],
+        1
+      )
     ],
     1
   )
@@ -143,7 +341,296 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-9787ff5a", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-f5fbd7fe", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 447:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(10)
+/* script */
+var __vue_script__ = __webpack_require__(448)
+/* template */
+var __vue_template__ = __webpack_require__(449)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\views\\permissions\\update.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-21c1fd4e", Component.options)
+  } else {
+    hotAPI.reload("data-v-21c1fd4e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 448:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    row: {
+      type: Number,
+      default: 0
+    }
+  },
+  computed: {
+    modalShow: {
+      get: function get() {
+        return this.show;
+      },
+      set: function set() {}
+    },
+    updateId: function updateId() {
+      return this.row;
+    }
+  },
+  data: function data() {
+    return {
+      loadingVisible: false,
+      formItem: {}
+    };
+  },
+
+  methods: {
+    visibleChange: function visibleChange(visible) {
+      if (visible === false) {
+        this.$emit('visibleChange', visible);
+      }
+    },
+    submit: function submit(name) {
+      this.loadingVisible = true;
+      this.$refs[name].validate(function (valid) {
+        if (valid) {}
+      });
+      this.loadingVisible = false;
+    }
+  },
+  watch: {
+    // 监听组件显示
+    modalShow: function modalShow(val, oldVal) {
+      if (val) {}
+    }
+  }
+});
+
+/***/ }),
+
+/***/ 449:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "Modal",
+        {
+          attrs: {
+            title: "修改文档",
+            "mask-closable": false,
+            "class-name": "vertical-center-modal",
+            width: "auto",
+            "ok-text": "提交"
+          },
+          on: { "on-visible-change": _vm.visibleChange, "on-ok": _vm.submit },
+          model: {
+            value: _vm.modalShow,
+            callback: function($$v) {
+              _vm.modalShow = $$v
+            },
+            expression: "modalShow"
+          }
+        },
+        [
+          _c("Form", {
+            ref: "formItem",
+            attrs: { model: _vm.formItem, "label-width": 100 }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { attrs: { slot: "footer" }, slot: "footer" },
+            [
+              _c(
+                "Button",
+                {
+                  attrs: {
+                    type: "primary",
+                    size: "large",
+                    loading: _vm.loadingVisible
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.submit("formItem")
+                    }
+                  }
+                },
+                [_vm._v("提交")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-21c1fd4e", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 450:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "box-flex" },
+    [
+      _c(
+        "div",
+        { staticClass: "box-flex-list" },
+        [
+          _c(
+            "Card",
+            { attrs: { bordered: false } },
+            [
+              _c(
+                "p",
+                { attrs: { slot: "title" }, slot: "title" },
+                [
+                  _c("span", [_vm._v("列表")]),
+                  _vm._v(" "),
+                  _c(
+                    "Button",
+                    {
+                      attrs: { size: "small", type: "success" },
+                      on: {
+                        click: function($event) {
+                          _vm.createModalShow = true
+                        }
+                      }
+                    },
+                    [_vm._v("添加")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("Table", {
+                ref: "table",
+                attrs: { columns: _vm.Columns, data: _vm.Datas, size: "small" }
+              }),
+              _vm._v(" "),
+              _c("Page", {
+                attrs: {
+                  total: _vm.page.total,
+                  size: "small",
+                  current: _vm.page.current,
+                  "page-size": _vm.page.page_size,
+                  "show-total": ""
+                },
+                on: {
+                  "update:current": function($event) {
+                    _vm.$set(_vm.page, "current", $event)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("Create", {
+        attrs: { show: _vm.createModalShow },
+        on: { visibleChange: _vm.visibleChangeCreate }
+      }),
+      _vm._v(" "),
+      _c("Update", {
+        attrs: { show: _vm.updateModalShow, row: _vm.updateId },
+        on: { visibleChange: _vm.visibleChangeUpdate }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-e8cd8c3a", module.exports)
   }
 }
 

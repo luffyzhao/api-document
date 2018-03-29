@@ -1,6 +1,6 @@
 <template>
 <div>
-  <Modal title="创建文档" v-model="modalShow" :mask-closable="false" @on-visible-change="visibleChange" class-name="vertical-center-modal" width="auto" @on-ok="submit" ok-text="提交">
+  <Modal title="修改文档" v-model="modalShow" :mask-closable="false" @on-visible-change="visibleChange" class-name="vertical-center-modal" width="auto" @on-ok="submit" ok-text="提交">
       <Form ref="formItem" :model="formItem" :rules="formRules" :label-width="100">
         <FormItem label="项目名称" prop="name">
           <Input v-model="formItem.name" placeholder="Enter something..." style="width:500px;"></Input>

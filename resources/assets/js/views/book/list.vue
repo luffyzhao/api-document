@@ -7,7 +7,7 @@
             <Button size="small" type="success" @click="() => {this.createModalShow = true}">添加</Button>
           </p>
           <Table :columns="documentColumns" :data="documentDatas" size="small" ref="table"></Table>
-          <Page :total="page.total" size="small" :current.sync="page.current" :page-size="page.page_size" @on-change="getBooks" show-total></Page>
+          <Page :total="page.total" size="small" :current.sync="page.current" :page-size="page.page_size" @on-change="search" show-total></Page>
       </Card>
     </div>
 
@@ -80,12 +80,9 @@ export default {
     }
   },
   mounted () {
-    this.getBooks(1);
+    this.search(1);
   },
   methods: {
-    search(){
-
-    },
     updateButton (row) {
       this.updateId = row.id
       this.updateModalShow = true
@@ -99,16 +96,16 @@ export default {
     visibleChangeCreate(visible) {
       this.createModalShow = visible
       if(visible === false){
-        this.getBooks(1)
+        this.search(1)
       }
     },
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible
       if(visible === false){
-        this.getBooks(this.page.current)
+        this.search(this.page.current)
       }
     },
-    getBooks(current) {
+    search(current) {
       this.$get('book', {
         page: current
       }).then((res) => {

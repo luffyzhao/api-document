@@ -36,7 +36,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        return $this->response($this->permissionRepository->all()->toArray());
+        return $this->response($this->permissionRepository->paginate()->toArray());
     }
 
     /**
