@@ -26,14 +26,14 @@ export default {
   data() {
     return {
       Columns: [{
-        "title": "角色",
-        "key": "name"
+        "title": "用户名",
+        "key": "username"
       },{
-        "title": "角色名称",
-        "key": "display_name"
+        "title": "邮箱",
+        "key": "email"
       },{
-        "title": "角色描述",
-        "key": "description"
+        "title": "手机号码",
+        "key": "phone"
       },{
         'title': '操作',
         'render': (h, {
@@ -44,13 +44,12 @@ export default {
           return (<button-group>
             <i-button on-click={()=>{this.updateButton(row)}} size="small">更新</i-button>
             <i-button on-click={()=>{this.allotButton(row)}} size="small">分配</i-button>
-            <poptip transfer title="您确认删除这条内容吗？" confirm on-on-ok={()=>{this.deleteButton(row)}}><i-button size="small">删除</i-button></poptip>
           </button-group>)
         }
       }],
       Datas: [],
       page: {
-        total: 40,
+        total: 0,
         current: 1,
         page_size: 20
       },
@@ -66,7 +65,7 @@ export default {
   },
   methods: {
     search(current){
-      this.$get('role',{
+      this.$get('user',{
         page: current
       }).then((res) => {
         this.Datas = res.data.data;
@@ -83,16 +82,10 @@ export default {
       this.allotId = row.id
       this.allotModalShow = true
     },
-    deleteButton (row) {
-      this.$delete(`role/${row.id}`).then((res) => {
-        this.$Message.error('角色删除成功!');
-        this.search(this.page.current)
-      })
-    },
     visibleChangeCreate(visible) {
       this.createModalShow = visible
       if(visible === false){
-        this.search(1)
+        this.search(1);
       }
     },
     visibleChangeAllot (visible) {
@@ -101,7 +94,7 @@ export default {
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible
       if(visible === false){
-        this.search(this.page.current)
+        this.search(this.page.current);
       }
     }
   },

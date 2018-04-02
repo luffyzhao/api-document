@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {loginRouter, page404Router, page403Router, page500Router, lockRouter, commonRouter, documentWriting} from './modules/common'
+import {loginRouter, page404Router, page403Router, page500Router, lockRouter, commonRouter, documentWriting, documentView} from './modules/common'
 import {appRouter} from './modules/app'
 import iView from 'iview'
 import Util from '@/libs/Util'
@@ -13,6 +13,7 @@ export const router = new VueRouter({
     loginRouter,
     lockRouter,
     documentWriting,
+    documentView,
     ...appRouter,
     commonRouter,
     page500Router,

@@ -133,11 +133,9 @@ abstract class Repository
      *
      * @return mixed
      */
-    public function delete($id)
+    public function destroy($id)
     {
-        $this->whereInput();
-
-        return $this->model->destroy($id);
+        return $this->model()::destroy($id);
     }
 
     /**

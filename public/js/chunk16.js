@@ -1,14 +1,14 @@
-webpackJsonp([5],{
+webpackJsonp([16],{
 
-/***/ 183:
+/***/ 467:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(444)
+var __vue_script__ = __webpack_require__(468)
 /* template */
-var __vue_template__ = __webpack_require__(451)
+var __vue_template__ = __webpack_require__(475)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\permissions\\list.vue"
+Component.options.__file = "resources\\assets\\js\\views\\users\\list.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e8cd8c3a", Component.options)
+    hotAPI.createRecord("data-v-432e0ec2", Component.options)
   } else {
-    hotAPI.reload("data-v-e8cd8c3a", Component.options)
+    hotAPI.reload("data-v-432e0ec2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,14 +48,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 444:
+/***/ 468:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(469);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
 
 
@@ -68,15 +68,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     return {
       Columns: [{
-        "title": "权限",
-        "key": "name"
-      }, {
-        "title": "权限名称",
-        "key": "display_name"
-      }, {
-        "title": "权限描述",
-        "key": "description"
-      }, {
         'title': '操作',
         'render': (h, {
           row,
@@ -120,7 +111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }],
       Datas: [],
       page: {
-        total: 40,
+        total: 0,
         current: 1,
         page_size: 20
       },
@@ -133,37 +124,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.search(1);
   },
   methods: {
-    search(current) {
-      this.$get('permission', {
-        page: current
-      }).then(res => {
-        this.Datas = res.data.data;
-        this.page.total = res.data.total;
-        this.page.current = res.data.current_page;
-        this.page.page_size = res.data.per_page;
-      });
-    },
+    search(current) {},
     updateButton(row) {
       this.updateId = row.id;
       this.updateModalShow = true;
     },
-    deleteButton(row) {
-      this.$delete(`permission/${row.id}`).then(res => {
-        this.$Message.error('权限删除成功!');
-        this.search(this.page.current);
-      });
-    },
+    deleteButton(row) {},
     visibleChangeCreate(visible) {
       this.createModalShow = visible;
-      if (visible === false) {
-        this.search(1);
-      }
+      if (visible === false) {}
     },
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible;
-      if (visible === false) {
-        this.search(this.page.current);
-      }
+      if (visible === false) {}
     }
   },
   components: {
@@ -174,15 +147,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 445:
+/***/ 469:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(446)
+var __vue_script__ = __webpack_require__(470)
 /* template */
-var __vue_template__ = __webpack_require__(447)
+var __vue_template__ = __webpack_require__(471)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -199,7 +172,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\permissions\\create.vue"
+Component.options.__file = "resources\\assets\\js\\views\\users\\create.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -208,9 +181,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f5fbd7fe", Component.options)
+    hotAPI.createRecord("data-v-62dd13bd", Component.options)
   } else {
-    hotAPI.reload("data-v-f5fbd7fe", Component.options)
+    hotAPI.reload("data-v-62dd13bd", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -222,20 +195,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 446:
+/***/ 470:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -278,21 +242,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     visibleChange: function visibleChange(visible) {
       if (visible === false) {
         this.$emit('visibleChange', visible);
-      } else {
-        this.formItem = {};
       }
     },
     submit: function submit(name) {
-      var _this = this;
-
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
-        if (valid) {
-          _this.$post('permission', _this.formItem).then(function (res) {
-            _this.visibleChange(false);
-            _this.$Message.error('权限添加成功!');
-          });
-        }
+        if (valid) {}
       });
       this.loadingVisible = false;
     }
@@ -301,7 +256,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 447:
+/***/ 471:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -315,7 +270,7 @@ var render = function() {
         "Modal",
         {
           attrs: {
-            title: "创建权限",
+            title: "创建项目",
             "mask-closable": false,
             "class-name": "vertical-center-modal",
             width: "auto",
@@ -331,96 +286,10 @@ var render = function() {
           }
         },
         [
-          _c(
-            "Form",
-            {
-              ref: "formItem",
-              attrs: { model: _vm.formItem, "label-width": 100 }
-            },
-            [
-              _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "权限",
-                    prop: "name",
-                    rules: {
-                      required: true,
-                      message: "权限验证不通过!",
-                      trigger: "blur",
-                      pattern: /^[a-z]+.([a-z]+.)*[a-z]+$/
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: { placeholder: "Enter something..." },
-                    model: {
-                      value: _vm.formItem.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "name", $$v)
-                      },
-                      expression: "formItem.name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "权限名称",
-                    prop: "display_name",
-                    rules: {
-                      required: true,
-                      message: "权限名称验证不通过!",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: { placeholder: "Enter something..." },
-                    model: {
-                      value: _vm.formItem.display_name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "display_name", $$v)
-                      },
-                      expression: "formItem.display_name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                { attrs: { label: "权限描述", prop: "description" } },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: {
-                      type: "textarea",
-                      placeholder: "Enter something..."
-                    },
-                    model: {
-                      value: _vm.formItem.description,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "description", $$v)
-                      },
-                      expression: "formItem.description"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
+          _c("Form", {
+            ref: "formItem",
+            attrs: { model: _vm.formItem, "label-width": 100 }
+          }),
           _vm._v(" "),
           _c(
             "div",
@@ -458,21 +327,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-f5fbd7fe", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-62dd13bd", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 448:
+/***/ 472:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(10)
 /* script */
-var __vue_script__ = __webpack_require__(449)
+var __vue_script__ = __webpack_require__(473)
 /* template */
-var __vue_template__ = __webpack_require__(450)
+var __vue_template__ = __webpack_require__(474)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -489,7 +358,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\permissions\\update.vue"
+Component.options.__file = "resources\\assets\\js\\views\\users\\update.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -498,9 +367,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-21c1fd4e", Component.options)
+    hotAPI.createRecord("data-v-00c605ec", Component.options)
   } else {
-    hotAPI.reload("data-v-21c1fd4e", Component.options)
+    hotAPI.reload("data-v-00c605ec", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -512,19 +381,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 449:
+/***/ 473:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -571,25 +432,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     visibleChange: function visibleChange(visible) {
       if (visible === false) {
-        this.formItem = {};
         this.$emit('visibleChange', visible);
       }
     },
     submit: function submit(name) {
-      var _this = this;
-
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
-        if (valid) {
-          _this.$put('permission/' + _this.updateId, {
-            name: _this.formItem.name,
-            display_name: _this.formItem.display_name,
-            description: _this.formItem.description
-          }).then(function (res) {
-            _this.visibleChange(false);
-            _this.$Message.error('权限更新成功!');
-          });
-        }
+        if (valid) {}
       });
       this.loadingVisible = false;
     }
@@ -597,20 +446,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   watch: {
     // 监听组件显示
     modalShow: function modalShow(val, oldVal) {
-      var _this2 = this;
-
-      if (val) {
-        this.$get('permission/' + this.updateId).then(function (res) {
-          _this2.formItem = res.data;
-        });
-      }
+      if (val) {}
     }
   }
 });
 
 /***/ }),
 
-/***/ 450:
+/***/ 474:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -640,96 +483,10 @@ var render = function() {
           }
         },
         [
-          _c(
-            "Form",
-            {
-              ref: "formItem",
-              attrs: { model: _vm.formItem, "label-width": 100 }
-            },
-            [
-              _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "权限",
-                    prop: "name",
-                    rules: {
-                      required: true,
-                      message: "权限验证不通过!",
-                      trigger: "blur",
-                      pattern: /^[a-z]+.([a-z]+.)*[a-z]+$/
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: { placeholder: "Enter something..." },
-                    model: {
-                      value: _vm.formItem.name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "name", $$v)
-                      },
-                      expression: "formItem.name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "权限名称",
-                    prop: "display_name",
-                    rules: {
-                      required: true,
-                      message: "权限验证不通过!",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: { placeholder: "Enter something..." },
-                    model: {
-                      value: _vm.formItem.display_name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "display_name", $$v)
-                      },
-                      expression: "formItem.display_name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                { attrs: { label: "权限描述", prop: "description" } },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: {
-                      type: "textarea",
-                      placeholder: "Enter something..."
-                    },
-                    model: {
-                      value: _vm.formItem.description,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "description", $$v)
-                      },
-                      expression: "formItem.description"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
+          _c("Form", {
+            ref: "formItem",
+            attrs: { model: _vm.formItem, "label-width": 100 }
+          }),
           _vm._v(" "),
           _c(
             "div",
@@ -767,13 +524,13 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-21c1fd4e", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-00c605ec", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 451:
+/***/ 475:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -830,8 +587,7 @@ var render = function() {
                 on: {
                   "update:current": function($event) {
                     _vm.$set(_vm.page, "current", $event)
-                  },
-                  "on-change": _vm.search
+                  }
                 }
               })
             ],
@@ -860,7 +616,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-e8cd8c3a", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-432e0ec2", module.exports)
   }
 }
 

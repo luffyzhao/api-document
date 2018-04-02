@@ -40,6 +40,22 @@ class PermissionController extends Controller
     }
 
     /**
+     * 获取全部的权限.
+     *
+     * @method all
+     *
+     * @param Request $request [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function all(Request $request)
+    {
+        return $this->response($this->permissionRepository->all(['id', 'name', 'display_name']));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -81,15 +97,12 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+          'name' => ['required', 'min:2', 'max:255', Rule::unique('permissions')->ignore($id)],
           'display_name' => ['required', 'max:255'],
           'description' => ['max:255'],
-        ], [
-          'display_name.required' => '权限介绍不能为空！',
-          'display_name.max' => '权限介绍不能超过255个字符！',
-          'description.max' => '权限描述不能超过255个字符！',
         ]);
 
-        $input = $request->only(['display_name', 'description']);
+        $input = $request->only(['display_name', 'description', 'name']);
         if ($this->permissionRepository->update($input, $id)) {
             return $this->response([], '更新成功');
         } else {
@@ -106,5 +119,10 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
+        if ($this->permissionRepository->destroy($id)) {
+            return $this->response([], '删除成功');
+        }
+
+        return $this->response([], '删除失败', 500);
     }
 }

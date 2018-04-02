@@ -7,7 +7,7 @@
             <Button size="small" type="success" @click="createModalShow = true">添加</Button>
           </p>
           <Table :columns="Columns" :data="Datas" size="small" ref="table"></Table>
-          <Page :total="page.total" size="small" :current.sync="page.current" :page-size="page.page_size" show-total></Page>
+          <Page :total="page.total" size="small" :current.sync="page.current" :page-size="page.page_size" @on-change="search" show-total></Page>
       </Card>
     </div>
 
@@ -75,18 +75,21 @@ export default {
       this.updateModalShow = true
     },
     deleteButton (row) {
-
+      this.$delete(`permission/${row.id}`).then((res) => {
+        this.$Message.error('权限删除成功!');
+        this.search(this.page.current)
+      })
     },
     visibleChangeCreate(visible) {
       this.createModalShow = visible
       if(visible === false){
-
+        this.search(1)
       }
     },
     visibleChangeUpdate(visible) {
       this.updateModalShow = visible
       if(visible === false){
-
+        this.search(this.page.current)
       }
     }
   },

@@ -38,9 +38,13 @@ Route::group([
     Route::resource('user', 'Api\UserController', ['only' => ['show', 'index', 'store', 'update', 'destroy']]);
     Route::post('user/{id}/role', 'Api\UserController@relation')->name('user.role');
     Route::put('user/{id}/password', 'Api\UserController@password')->name('user.password');
+    Route::get('user/{id}/allot', 'Api\UserController@allot')->name('user.allot');
     // 角色
+    Route::get('role/all', 'Api\RoleController@all')->name('role.all');
     Route::resource('role', 'Api\RoleController', ['only' => ['show', 'index', 'store', 'update', 'destroy']]);
     Route::post('role/{id}/permission', 'Api\RoleController@relation')->name('role.permission');
+    Route::get('role/{id}/allot', 'Api\RoleController@allot')->name('role.allot');
     // 权限
+    Route::get('permission/all', 'Api\PermissionController@all')->name('permission.all');
     Route::resource('permission', 'Api\PermissionController', ['only' => ['show', 'index', 'store', 'update', 'destroy']]);
 });

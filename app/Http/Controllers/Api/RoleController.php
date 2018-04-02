@@ -41,7 +41,7 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->response($this->roleRepository->all()->toArray());
+        return $this->response($this->roleRepository->paginate()->toArray());
     }
 
     /**
@@ -54,6 +54,22 @@ class RoleController extends Controller
     public function show($id)
     {
         return $this->response($this->roleRepository->find($id)->toArray());
+    }
+
+    /**
+     * 获取全部的角色.
+     *
+     * @method all
+     *
+     * @param Request $request [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function all(Request $request)
+    {
+        return $this->response($this->roleRepository->all(['id', 'name', 'display_name']));
     }
 
     /**
@@ -129,6 +145,24 @@ class RoleController extends Controller
     }
 
     /**
+     * 获取关联权限.
+     *
+     * @method allot
+     *
+     * @param Request $request [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function allot(Request $request, $id)
+    {
+        $role = $this->roleRepository->find($id);
+
+        return $this->response($role->perms);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param int $id
@@ -137,5 +171,10 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        if ($this->roleRepository->destroy($id)) {
+            return $this->response([], '删除成功');
+        }
+
+        return $this->response([], '删除失败', 500);
     }
 }

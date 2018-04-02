@@ -10,7 +10,7 @@
             <FormItem label="登录邮箱:" prop="email" :rules="{required: true, type: 'email', message: '请输出正确的邮箱号码！', trigger: 'blur'}">
               <Input v-model="form.email" style="width: 300px"></Input>
             </FormItem>
-            <FormItem label="手机号码:">
+            <FormItem label="手机号码:" prop="phone" :rules="{length: 11, type: 'number', message: '手机号码格式不正确！', trigger: 'blur'}">
               <Input v-model="form.phone" style="width: 300px"></Input>
             </FormItem>
             <FormItem label="登录密码:">

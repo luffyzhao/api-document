@@ -51,7 +51,7 @@ class UserController extends Controller
         $this->validate($request, [
           'username' => ['required', 'min:2', 'max:50'],
           'email' => ['required', 'max:50', Rule::unique('users'), 'email'],
-          'phone' => ['required', 'integer'],
+          'phone' => ['regex:/^1[34578][0-9]{9}$/'],
           'password' => ['required_with:password_confirmation', 'min:6', 'max:20', 'confirmed'],
         ]);
         $input = $request->only(['username', 'email', 'phone', 'password']);
@@ -120,6 +120,24 @@ class UserController extends Controller
         } else {
             return $this->response([], '关联失败', 500);
         }
+    }
+
+    /**
+     * 获取关联角色.
+     *
+     * @method allot
+     *
+     * @param Request $request [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function allot(Request $request, $id)
+    {
+        $user = $this->userRepository->find($id);
+
+        return $this->response($user->roles);
     }
 
     /**

@@ -3,7 +3,7 @@ import Util from '@/libs/Util'
 const app = {
   state: {
     currentPage: 'home',
-    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock', 'book.document.index'],
+    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock', 'book.document.index', 'book.document.view'],
     openPageList: [{
       meta: {title: '首页'},
       path: '/home',
