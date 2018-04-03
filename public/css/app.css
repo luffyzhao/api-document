@@ -746,22 +746,6 @@ div::-webkit-scrollbar-track {
   background: #EDEDED;
 }
 
-.vertical-center-modal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.vertical-center-modal .ivu-modal {
-  top: 0;
-}
-
 .box-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -853,5 +837,282 @@ div::-webkit-scrollbar-track {
 
 .box-flex .box-flex-list .ivu-card .ivu-card-body .ivu-page {
   text-align: right;
+}
+
+.vertical-center-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vertical-center-modal .ivu-modal {
+  top: 0;
+}
+
+.writing-box {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.writing-box .writing-title {
+  -ms-flex-preferred-size: 40px;
+      flex-basis: 40px;
+  border-bottom: 1px solid #DDDDDD;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 3px 10px;
+}
+
+.writing-box .writing-content {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 100%;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.writing-box .writing-content .api-list {
+  -ms-flex-preferred-size: 200px;
+      flex-basis: 200px;
+  border-right: 1px solid #ddd;
+}
+
+.writing-box .writing-content .api-list .api-list-nav {
+  font-size: 14px;
+  color: #333333;
+  font-weight: 200;
+  zoom: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.writing-box .writing-content .api-list .api-list-nav .nav-item {
+  font-size: 14px;
+  padding: 0 9px;
+  cursor: pointer;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  color: #666;
+}
+
+.writing-box .writing-content .api-list .api-list-nav .nav-item.active {
+  border-bottom: 1px solid #fafafa;
+  margin-bottom: -1px;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.writing-box .writing-content .api-list .api-list-nav .plus-right {
+  float: right;
+  color: #999;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.writing-box .writing-content .api-list .api-list-nav:after {
+  display: block;
+  content: '';
+  clear: both;
+  visibility: hidden;
+}
+
+.writing-box .writing-content .api-list .api-list-center {
+  width: 199px;
+  overflow: hidden;
+}
+
+.writing-box .writing-content .api-list .api-list-center li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 30px;
+  position: relative;
+}
+
+.writing-box .writing-content .api-list .api-list-center li .ivu-icon {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.writing-box .writing-content .api-list .api-list-center li .ivu-icon-arrow-expand,
+.writing-box .writing-content .api-list .api-list-center li strong {
+  cursor: pointer;
+}
+
+.writing-box .writing-content .api-list .api-list-center li .hover-visble {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.writing-box .writing-content .api-list .api-list-center li .hover-visble .ivu-icon {
+  cursor: pointer;
+}
+
+.writing-box .writing-content .api-content {
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.writing-box .writing-content .api-content .markdown-editor {
+  height: 100%;
+}
+
+.mdContainer {
+  width: 100%;
+  height: 100%;
+  background: lightblue;
+}
+
+.mdContainer.fullPage {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+}
+
+.mdContainer .navContainer {
+  width: 100%;
+  height: 36px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 10px;
+}
+
+.mdContainer .navContainer .nameContainer {
+  color: lightblue;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.mdContainer .navContainer .markContainer {
+  width: auto;
+  height: 100%;
+  margin-left: 0px;
+}
+
+.mdContainer .navContainer .markContainer ul.markListGroup {
+  height: 100%;
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mdContainer .navContainer .markContainer ul.markListGroup li.markListItem {
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  margin: 0 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333;
+}
+
+.mdContainer .navContainer .markContainer ul.markListGroup li.markListItem:hover {
+  background: #eee;
+}
+
+.mdContainer .mdBodyContainer {
+  width: 100%;
+  height: calc(100% - 36px);
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.mdContainer .mdBodyContainer.noMenu {
+  height: 100%;
+}
+
+.editContainer {
+  height: 100%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-right: 1px solid #ddd;
+  background: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.editContainer .mdEditor {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  outline: none;
+  color: #fff;
+  resize: none;
+}
+
+.previewContainer {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #fff;
+  overflow: auto;
+  padding: 10px;
 }
 

@@ -43,7 +43,7 @@
     import marked from 'marked'
     import scroll from 'vue-scroll'
     import range from '@/libs/rangeFn'
-    import hljs from 'highlight.js'
+    // import hljs from 'highlight.js'
 
     Vue.use(scroll)
 
@@ -56,9 +56,10 @@
         sanitize: true,
         smartLists: true,
         smartypants: false,
-        highlight: function(code) {
-            return hljs.highlightAuto(code).value
-        }
+        // highlight: function(code) {
+        //   return code
+        //     return hljs.highlightAuto(code).value
+        // }
     });
 
     function insertContent(val, that) {
@@ -283,101 +284,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-    .mdContainer {
-        width: 100%;
-        height: 100%;
-        background: lightblue;
-        &.fullPage {
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-        }
-        .navContainer {
-            width: 100%;
-            height: 36px;
-            background: #fff;
-            box-sizing: border-box;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            padding: 0 10px;
-            .nameContainer {
-                color: lightblue;
-                margin-right: 10px;
-                cursor:pointer;
-            }
-            .markContainer {
-                width: auto;
-                height: 100%;
-                margin-left: 0px;
-                ul.markListGroup {
-                    height: 100%;
-                    width: auto;
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    li.markListItem {
-                        list-style: none;
-                        width: 20px;
-                        height: 20px;
-                        margin: 0 2px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        cursor: pointer;
-                        font-size: 12px;
-                        color: #333;
-                        &:hover {
-                            background: #eee;
-                        }
-                    }
-                }
-            }
-        }
-        .mdBodyContainer {
-            width: 100%;
-            height: calc(100% - 36px);
-            background: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
-            &.noMenu{
-                height: 100%;
-            }
-        }
-    }
-
-    // 编辑区域
-    .editContainer {
-        height: 100%;
-        width: 100%;
-        box-sizing: border-box;
-        border-right: 1px solid #ddd;
-        background: #333;
-        color: #fff;
-        padding: 10px;
-        .mdEditor {
-            height: 100%;
-            width: 100%;
-            background: transparent;
-            outline: none;
-            color: #fff;
-            resize: none;
-        }
-    }
-
-    // 预览区
-    .previewContainer {
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        background: #fff;
-        overflow: auto;
-        padding: 10px;
-    }
-</style>

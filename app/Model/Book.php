@@ -24,6 +24,20 @@ class Book extends Model
     }
 
     /**
+     * 项目文档.
+     *
+     * @method documents
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function documents()
+    {
+        return $this->hasMany('App\Model\Document')->orderBy('sort', 'asc')->orderBy('id', 'asc');
+    }
+
+    /**
      * 访问器.
      *
      * @method getRulesAttribute

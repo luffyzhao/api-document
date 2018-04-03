@@ -10,6 +10,7 @@
         "joyqi/hyper-down": "dev-master",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "michelf/php-markdown": "^1.8",
         "spatie/laravel-backup": "3.0.0",
         "tymon/jwt-auth": "1.0.0-rc.2",
         "zizaco/entrust": "dev-master"

@@ -2624,7 +2624,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["default"]({
-  routes: [__WEBPACK_IMPORTED_MODULE_3__modules_common__["e" /* loginRouter */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["d" /* lockRouter */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["c" /* documentWriting */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["b" /* documentView */]].concat(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default()(__WEBPACK_IMPORTED_MODULE_4__modules_app__["a" /* appRouter */]), [__WEBPACK_IMPORTED_MODULE_3__modules_common__["a" /* commonRouter */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["h" /* page500Router */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["f" /* page403Router */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["g" /* page404Router */]])
+  routes: [__WEBPACK_IMPORTED_MODULE_3__modules_common__["d" /* loginRouter */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["c" /* lockRouter */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["b" /* documentWriting */]].concat(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_toConsumableArray___default()(__WEBPACK_IMPORTED_MODULE_4__modules_app__["a" /* appRouter */]), [__WEBPACK_IMPORTED_MODULE_3__modules_common__["a" /* commonRouter */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["g" /* page500Router */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["e" /* page403Router */], __WEBPACK_IMPORTED_MODULE_3__modules_common__["f" /* page404Router */]])
 });
 
 router.beforeEach(function (to, from, next) {
@@ -2759,13 +2759,12 @@ module.exports = function (object, index, value) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return loginRouter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return page404Router; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return page403Router; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return page500Router; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return lockRouter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return documentWriting; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return documentView; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return loginRouter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return page404Router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return page403Router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return page500Router; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return lockRouter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return documentWriting; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return commonRouter; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Main_vue__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__views_Main_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__views_Main_vue__);
@@ -2778,7 +2777,7 @@ var loginRouter = {
     title: 'Login - 登录'
   },
   component: function component(resolve) {
-    __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(174)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(174)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2822,7 +2821,7 @@ var lockRouter = {
   },
   name: 'lock',
   component: function component(resolve) {
-    __webpack_require__.e/* require */(15).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(178)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+    __webpack_require__.e/* require */(11).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(178)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -2834,17 +2833,6 @@ var documentWriting = {
   name: 'book.document.index',
   component: function component(resolve) {
     __webpack_require__.e/* require */(0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(179)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
-  }
-};
-
-var documentView = {
-  path: '/book.document.view',
-  meta: {
-    title: '编辑文档'
-  },
-  name: 'book.document.view',
-  component: function component(resolve) {
-    __webpack_require__.e/* require */(11).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(479)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
   }
 };
 
@@ -4050,9 +4038,9 @@ var appRouter = [{
     } }, { path: 'permissions.index', name: 'permissions.index', meta: { title: '权限管理' }, component: function component(resolve) {
       __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(183)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     } }, { path: 'roles.index', name: 'roles.index', meta: { title: '角色管理' }, component: function component(resolve) {
-      __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(184)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+      __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(184)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     } }, { path: 'users.index', name: 'users.index', meta: { title: '用户管理' }, component: function component(resolve) {
-      __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(185)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+      __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(185)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     } }]
 }];
 
@@ -5048,7 +5036,7 @@ var index_esm = {
 var app = {
   state: {
     currentPage: 'home',
-    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock', 'book.document.index', 'book.document.view'],
+    notCachePages: ['login', 'error-404', 'error-403', 'error-500', 'lock', 'book.document.index'],
     openPageList: [{
       meta: { title: '首页' },
       path: '/home',

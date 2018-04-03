@@ -7,6 +7,7 @@ use App\Repository\Interfaces\DocumentRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Repository\Eloquent\Repository;
 use HyperDown\Parser;
+use Michelf\MarkdownExtra;
 use DB;
 
 class DocumentRepository extends Repository implements DocumentRepositoryInterface
@@ -81,9 +82,13 @@ class DocumentRepository extends Repository implements DocumentRepositoryInterfa
         $model = parent::find($id);
         $this->saveAtHistory($model);
         if (isset($data['markdown'])) {
-            $parser = new Parser();
-            $data['content'] = $parser->makeHtml($data['markdown']);
+            // $parser = new Parser();
+            // $data['content'] = $parser->makeHtml($data['markdown']);
+            $parser = new MarkdownExtra();
+            $parser->code_class_prefix = 'lang-';
+            $data['content'] = $parser->transform($data['markdown']);
         }
+
         return parent::update($data, $id, $attribute);
     }
 
@@ -132,6 +137,25 @@ class DocumentRepository extends Repository implements DocumentRepositoryInterfa
         $this->saveAtHistory($model);
 
         return $model->delete();
+    }
+
+    /**
+     * [findBy description].
+     *
+     * @method findBy
+     *
+     * @param [type] $attribute [description]
+     * @param [type] $value     [description]
+     * @param array  $columns   [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function findBy($attribute, $value, $columns = ['*'])
+    {
+        $this->model = $this->model->orderBy('sort', 'asc')->orderBy('id', 'asc');
+        parent::findBy($attribute, $value, $columns);
     }
 
     /**

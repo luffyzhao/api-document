@@ -54,15 +54,6 @@ export const documentWriting = {
   component: resolve => { require(['@/views/document/writing.vue'], resolve) }
 }
 
-export const documentView = {
-  path: '/book.document.view',
-  meta: {
-    title: '编辑文档'
-  },
-  name: 'book.document.view',
-  component: resolve => { require(['@/views/document/view.vue'], resolve) }
-}
-
 export const commonRouter = {
   path: '/',
   name: 'commonRouter',
