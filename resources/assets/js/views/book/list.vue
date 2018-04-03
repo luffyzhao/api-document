@@ -57,7 +57,7 @@ export default {
             index
           }) => {
             return (<button-group>
-              <i-button size="small" on-click={() => this.viewBook(row.identify)}>查看文档</i-button>
+              <i-button size="small" on-click={() => this.viewBook(row.id)}>查看文档</i-button>
               <i-button size="small" on-click={()=>{this.updateButton(row)}}>更新</i-button>
               <i-button on-click={()=>{this.writingButton(row)}} size="small">编写文档</i-button>
             </button-group>)
@@ -87,8 +87,8 @@ export default {
       this.updateId = row.id
       this.updateModalShow = true
     },
-    viewBook (identify) {
-      window.open(`/book/${identify}`);
+    viewBook (id) {
+      window.open(`/book?id=${id}`);
     },
     writingButton(row){
       this.$router.push({

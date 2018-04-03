@@ -16,6 +16,11 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('login', 'Api\AuthController@login')->name('login');
 });
 
+Route::get('book', 'Api\BookController@index')->name('book.index');
+Route::get('book/{id}', 'Api\BookController@show')->name('book.show');
+Route::get('book/{id}/document', 'Api\DocumentController@index')->name('book.document.index');
+Route::get('book/{bookid}/document/{id}', 'Api\DocumentController@show')->name('book.document.show');
+// 需要验证登录
 Route::group([
 'middleware' => ['auth:api'/*'role:api'*/],
 ], function ($router) {
@@ -26,11 +31,10 @@ Route::group([
     Route::put('auth/password', 'Api\AuthController@password')->name('auth.password');
     Route::put('auth/update', 'Api\AuthController@update')->name('auth.update');
 
-    // 项目
-    Route::resource('book', 'Api\BookController', ['only' => ['show', 'index', 'store', 'update', 'destroy']]);
-    Route::get('book/{id}/document', 'Api\DocumentController@index')->name('book.document.index');
+    Route::post('book', 'Api\BookController@store');
+    Route::put('book/{id}', 'Api\BookController@update');
+    Route::delete('book/{id}', 'Api\BookController@destroy');
     Route::post('book/{id}/document', 'Api\DocumentController@store')->name('book.document.store');
-    Route::get('book/{bookid}/document/{id}', 'Api\DocumentController@show')->name('book.document.show');
     Route::put('book/{bookid}/document/{id}', 'Api\DocumentController@update')->name('book.document.update');
     Route::delete('book/{bookid}/document/{id}', 'Api\DocumentController@destroy')->name('book.document.destroy');
 

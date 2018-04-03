@@ -66,7 +66,7 @@ class DocumentController extends Controller
      */
     public function show($bookid, $id)
     {
-        return $this->response($this->documentRepository->setBookId($bookid)->find($id)->toArray());
+        return $this->response($this->documentRepository->setBookId($bookid)->find($id, ['id', 'markdown'])->toArray());
     }
 
     /**

@@ -1,7 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/github-markdown.css": "/css/github-markdown.css",
-    "/js/vendor.js": "/js/vendor.js",
-    "/js/manifest.js": "/js/manifest.js"
+    "/js/admin/app.js": "/js/admin/app.js",
+    "/css/admin/app.css": "/css/admin/app.css",
+    "/css/admin/github-markdown.css": "/css/admin/github-markdown.css",
+    "/js/admin/vendor.js": "/js/admin/vendor.js",
+    "/js/admin/manifest.js": "/js/admin/manifest.js"
 }

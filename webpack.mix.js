@@ -23,7 +23,7 @@ mix.webpackConfig({
     // 依据该路径进行编译以及异步加载
     publicPath: '',
     // 注意开发期间不加 hash，以免自动刷新失败
-    chunkFilename: `js/chunk[name].${ mix.inProduction() ? '[chunkhash].' : '' }js`
+    chunkFilename: `js/admin/chunk[name].${ mix.inProduction() ? '[chunkhash].' : '' }js`
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -39,7 +39,7 @@ mix.webpackConfig({
 })
 
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js('resources/assets/js/app.js', 'public/js/admin')
   .extract([
     'axios',
     'lodash',
@@ -51,10 +51,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
     vue: ['Vue']
   });
 
-mix.copyDirectory('node_modules/iview/dist/styles/', 'public/css');
+mix.copyDirectory('node_modules/iview/dist/styles/', 'public/css/admin');
 
-mix.sass('resources/assets/sass/app.scss', 'public/css').options({
+mix.sass('resources/assets/sass/app.scss', 'public/css/admin').options({
   processCssUrls: true
 });
 
-mix.sass('resources/assets/sass/github-markdown.scss', 'public/css')
+mix.sass('resources/assets/sass/github-markdown.scss', 'public/css/admin')

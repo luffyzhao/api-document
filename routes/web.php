@@ -12,7 +12,9 @@
 */
 
 Route::get('/admin/', function () {
-    return view('welcome');
+    return view('admin');
 });
 
-Route::get('/book/{identify}', 'Web\BookController@index');
+Route::get('/book', function () {
+    return view('book');
+});
