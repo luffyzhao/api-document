@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
 axios.defaults.timeout = 3000;
 
 const errorHandle = function(data){
-  iView.LoadingBar.finish();
+  iView.LoadingBar.error();
   iView.Message.error(data.msg);
   if(data.code === 401){
     Util.cache.delete('token')
@@ -15,6 +15,7 @@ const errorHandle = function(data){
 
 // 添加请求拦截器
 axios.interceptors.request.use((config) => {
+  console.log(config)
   iView.LoadingBar.start();
   config.headers = {
     'Accept': 'application/json'

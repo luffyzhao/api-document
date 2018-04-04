@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import App from './modules/app'
+import App from './modules/admin'
 import Messages from './modules/messages'
 import Markdown from './modules/markdown'
 

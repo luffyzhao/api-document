@@ -1,7 +1,6 @@
 require('./bootstrap');
 
 import Vue from 'vue'
-import iView from 'iview'
 import App from '@/App.vue'
 import {fetch,post,patch,put,head,destroy} from '@/libs/Ajax'
 import {router} from '@/router/index'
@@ -9,7 +8,6 @@ import store from './store'
 
 
 Vue.config.productionTip = false
-Vue.use(iView)
 
 Vue.prototype.$get = fetch
 Vue.prototype.$post = post

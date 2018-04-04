@@ -1,49 +1,78 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import {loginRouter, page404Router, page403Router, page500Router, lockRouter, commonRouter, documentWriting} from './modules/common'
-import {appRouter} from './modules/app'
+import {adminRouter} from './modules/admin'
+import {commonRouter} from './modules/common'
+import {homeRouter} from './modules/home'
 import iView from 'iview'
 import Util from '@/libs/Util'
+
+import Admin from '@/views/Admin.vue'
+import Common from '@/views/Common.vue'
+import Home from '@/views/Home.vue'
 
 Vue.use(VueRouter);
 
 
 export const router = new VueRouter({
   routes: [
-    loginRouter,
-    lockRouter,
-    documentWriting,
-    ...appRouter,
-    commonRouter,
-    page500Router,
-    page403Router,
-    page404Router
+    {
+      path: '/admin',
+      icon: 'key',
+      name: 'admin',
+      title: '后台模块',
+      component: Admin,
+      children: [...adminRouter]
+    },
+    {
+      path: '/common',
+      icon: 'key',
+      name: 'common',
+      title: '公共模块',
+      component: Common,
+      children: [...commonRouter]
+    },
+    {
+      path: '/home',
+      icon: 'key',
+      name: 'home',
+      title: '前台模块',
+      component: Home,
+      children: [...homeRouter]
+    }
   ]
 })
 
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()
-  // 判断当前是否是锁定状态
-  if (Util.cache.get('locking') === 1 && to.name !== 'lock') {
-    next({name: 'lock'})
-  } else if (Util.cache.get('locking') === 0 && to.name === 'lock') {
-    next({name: 'home'})
-  } else {
-    // 判断是否已经登录且前往的页面不是登录页
-    if (!Util.cache.get('token') && to.name !== 'login') {
-      next({name: 'login'})
-      // 判断是否已经登录且前往的是登录页
-    } else if (Util.cache.get('token') && to.name === 'login') {
-      next({name: 'home'})
+  if(to.matched.length > 0 && to.matched[0].name === 'admin'){
+    // 判断当前是否是锁定状态
+    if (Util.cache.get('locking') === 1 && to.name !== 'common.lock') {
+      next({name: 'common.lock'})
+    } else if (Util.cache.get('locking') === 0 && to.name === 'common.lock') {
+      next({name: 'admin.home'})
     } else {
-      next()
+      // 判断是否已经登录且前往的页面不是登录页
+      if (!Util.cache.get('token') && to.name !== 'common.login') {
+        next({name: 'common.login'})
+        // 判断是否已经登录且前往的是登录页
+      } else if (Util.cache.get('token') && to.name === 'common.login') {
+        next({name: 'admin.home'})
+      } else {
+        next()
+      }
     }
+  }else if(to.matched.length === 0){
+    next({name: 'common.error-404'})
+  }else{
+    next()
   }
 })
 
 router.afterEach((to) => {
-  router.app.$store.commit('openPage', to)
+  if(router.currentRoute.matched.length > 0 && to.matched[0].name === 'admin'){
+    router.app.$store.commit('openPage', to)
+  }
   iView.LoadingBar.finish()
   window.scrollTo(0, 0)
 })

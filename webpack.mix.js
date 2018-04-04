@@ -57,4 +57,4 @@ mix.sass('resources/assets/sass/app.scss', 'public/css/admin').options({
   processCssUrls: true
 });
 
-mix.sass('resources/assets/sass/github-markdown.scss', 'public/css/admin')
+// mix.sass('resources/assets/sass/github-markdown.scss', 'public/css/admin')

@@ -22,11 +22,11 @@ class BookRepository extends Repository implements BookRepositoryInterface
      *
      * @author luffyzhao@vip.126.com
      */
-    public function setRoles()
+    public function setGroup()
     {
         $this->model = $this->model->where(function ($query) {
-            Auth::user()->roles->each(function ($item, $index) use ($query) {
-                $query->whereRaw("FIND_IN_SET('{$item['id']}', `books`.`roles`)");
+            Auth::user()->groups->each(function ($item, $index) use ($query) {
+                $query->whereRaw("FIND_IN_SET('{$item['id']}', `books`.`groups`)");
             });
         });
 
@@ -69,11 +69,30 @@ class BookRepository extends Repository implements BookRepositoryInterface
      */
     public function update(array $data, $id, $attribute = 'id')
     {
-        if (isset($input['roles']) && is_array($input['roles'])) {
-            $input['roles'] = implode(',', $input['roles']);
+        if (isset($data['groups']) && is_array($data['groups'])) {
+            $data['groups'] = implode(',', $data['groups']);
         }
 
         return parent::update($data, $id, $attribute);
+    }
+
+    /**
+     * 更新用户组.
+     *
+     * @method group
+     *
+     * @param array  $data [description]
+     * @param [type] $id   [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function group(array $data, $id)
+    {
+        $groups = implode(',', $data['relation']);
+
+        return parent::update(['groups' => $groups], $id, 'id');
     }
 
     /**
@@ -92,10 +111,10 @@ class BookRepository extends Repository implements BookRepositoryInterface
             $input['user_id'] = Auth::user()->id;
         }
 
-        if (!isset($input['roles'])) {
-            $input['roles'] = Auth::user()->roles->pluck('id')->implode(',');
-        } elseif (is_array($input['roles'])) {
-            $input['roles'] = implode(',', $input['roles']);
+        if (!isset($input['groups'])) {
+            $input['groups'] = Auth::user()->groups->pluck('id')->implode(',');
+        } elseif (is_array($input['groups'])) {
+            $input['groups'] = implode(',', $input['groups']);
         }
 
         if (!isset($input['identify'])) {

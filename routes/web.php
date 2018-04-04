@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/admin/', function () {
+Route::get('/', function () {
     return view('admin');
-});
-
-Route::get('/book', function () {
-    return view('book');
 });

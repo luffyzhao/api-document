@@ -37,6 +37,16 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * Many-to-Many relations with Role.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_user', 'user_id', 'group_id');
+    }
+
+    /**
      * 多对多关联文档.
      *
      * @method apis

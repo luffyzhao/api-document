@@ -32,6 +32,25 @@ class UserRepository extends Repository implements UserRepositoryInterface
     }
 
     /**
+     * 关联用户组.
+     *
+     * @method postgroup
+     *
+     * @param array $input [description]
+     * @param int   $id    [description]
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function postgroup(array $input, int $id)
+    {
+        $user = parent::find($id);
+
+        return $user->groups()->sync($input['relation']);
+    }
+
+    /**
      * 更新.
      *
      * @method update

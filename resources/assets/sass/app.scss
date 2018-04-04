@@ -1,5 +1,6 @@
 @import "./reset";
 @import "./atom-one-dark.min.css";
+@import "./github-markdown";
 
 html,body,#app{
   height: 100%;
@@ -138,7 +139,7 @@ html,body,#app{
         }
     }
 }
-.ivu-menu{
+.layout-menu-left > .ivu-menu{
   padding-top: 15px;
   height: 100%;
 }
@@ -398,6 +399,7 @@ div::-webkit-scrollbar-track {
             }
           }
         }
+        li.active{background-color:#e5e5e5;}
       }
     }
     .api-content{
