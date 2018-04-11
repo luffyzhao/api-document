@@ -15,7 +15,6 @@ const errorHandle = function(data){
 
 // 添加请求拦截器
 axios.interceptors.request.use((config) => {
-  console.log(config)
   iView.LoadingBar.start();
   config.headers = {
     'Accept': 'application/json'

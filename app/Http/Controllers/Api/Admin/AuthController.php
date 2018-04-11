@@ -43,6 +43,22 @@ class AuthController extends Controller
     }
 
     /**
+     * 获取用户权限组级下级权限.
+     *
+     * @method perms
+     *
+     * @return [type] [description]
+     *
+     * @author luffyzhao@vip.126.com
+     */
+    public function perms()
+    {
+        return $this->response(auth()->user()->roles()->select(['id', 'name', 'display_name'])->with(['perms' => function ($query) {
+            $query->select(['id', 'name', 'display_name']);
+        }])->get());
+    }
+
+    /**
      * 修改用户密码
      *
      * @method password

@@ -6,9 +6,9 @@ webpackJsonp([8],{
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(452)
+var __vue_script__ = __webpack_require__(453)
 /* template */
-var __vue_template__ = __webpack_require__(459)
+var __vue_template__ = __webpack_require__(460)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,14 +48,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 452:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(457);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
 
 
@@ -131,7 +131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     search(current) {
-      this.$get('group', {
+      this.$get('admin/group', {
         page: current
       }).then(res => {
         this.Datas = res.data.data;
@@ -145,7 +145,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.updateModalShow = true;
     },
     deleteButton(row) {
-      this.$delete(`group/${row.id}`).then(res => {
+      this.$delete(`admin/group/${row.id}`).then(res => {
         this.$Message.error('权限删除成功!');
         this.search(this.page.current);
       });
@@ -171,15 +171,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 453:
+/***/ 454:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(454)
+var __vue_script__ = __webpack_require__(455)
 /* template */
-var __vue_template__ = __webpack_require__(455)
+var __vue_template__ = __webpack_require__(456)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -219,7 +219,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 454:
+/***/ 455:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -282,7 +282,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$post('group', _this.formItem).then(function (res) {
+          _this.$post('admin/group', _this.formItem).then(function (res) {
             _this.$Message.error('用户组添加成功!');
             _this.loadingVisible = false;
             _this.visibleChange(false);
@@ -295,7 +295,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 455:
+/***/ 456:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -428,15 +428,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 456:
+/***/ 457:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(457)
+var __vue_script__ = __webpack_require__(458)
 /* template */
-var __vue_template__ = __webpack_require__(458)
+var __vue_template__ = __webpack_require__(459)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -476,7 +476,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 457:
+/***/ 458:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -543,7 +543,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$put('group/' + _this.updateId, {
+          _this.$put('admin/group/' + _this.updateId, {
             name: _this.formItem.name,
             description: _this.formItem.description
           }).then(function (res) {
@@ -561,7 +561,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       if (val) {
-        this.$get('group/' + this.updateId).then(function (res) {
+        this.$get('admin/group/' + this.updateId).then(function (res) {
           _this2.formItem = res.data;
         });
       } else {
@@ -573,7 +573,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 458:
+/***/ 459:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -706,7 +706,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 459:
+/***/ 460:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

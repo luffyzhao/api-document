@@ -6,9 +6,9 @@ webpackJsonp([4],{
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(438)
+var __vue_script__ = __webpack_require__(439)
 /* template */
-var __vue_template__ = __webpack_require__(451)
+var __vue_template__ = __webpack_require__(452)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,18 +48,18 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 438:
+/***/ 439:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(440);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(443);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allot_vue__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allot_vue__ = __webpack_require__(446);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allot_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__allot_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_vue__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_vue__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__group_vue__);
 
 
@@ -149,7 +149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     search(current) {
-      this.$get('user', {
+      this.$get('admin/user', {
         page: current
       }).then(res => {
         this.Datas = res.data.data;
@@ -199,15 +199,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 439:
+/***/ 440:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(440)
+var __vue_script__ = __webpack_require__(441)
 /* template */
-var __vue_template__ = __webpack_require__(441)
+var __vue_template__ = __webpack_require__(442)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -247,7 +247,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 440:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -318,7 +318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$post('user', _this.formItem).then(function (res) {
+          _this.$post('admin/user', _this.formItem).then(function (res) {
             _this.loadingVisible = false;
             _this.visibleChange(false);
             _this.$Message.error('用户添加成功!');
@@ -333,7 +333,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 441:
+/***/ 442:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -556,15 +556,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 442:
+/***/ 443:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(443)
+var __vue_script__ = __webpack_require__(444)
 /* template */
-var __vue_template__ = __webpack_require__(444)
+var __vue_template__ = __webpack_require__(445)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -604,7 +604,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 443:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -688,7 +688,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     handlePassword: function handlePassword(e) {
       var _this = this;
 
-      this.$put('user/' + this.updateId + '/password', this.formSetPassword).then(function (res) {
+      this.$put('admin/user/' + this.updateId + '/password', this.formSetPassword).then(function (res) {
         _this.$Message.success('密码修改成功!');
         _this.$refs['modalSetPassword'].close();
       });
@@ -704,7 +704,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this2.$put('user/' + _this2.updateId, {
+          _this2.$put('admin/user/' + _this2.updateId, {
             username: _this2.formItem.username,
             phone: _this2.formItem.phone,
             email: _this2.formItem.email
@@ -725,7 +725,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this3 = this;
 
       if (val) {
-        this.$get('user/' + this.updateId).then(function (res) {
+        this.$get('admin/user/' + this.updateId).then(function (res) {
           _this3.formItem = res.data;
         });
       } else {
@@ -737,7 +737,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 444:
+/***/ 445:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1045,15 +1045,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 445:
+/***/ 446:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(446)
+var __vue_script__ = __webpack_require__(447)
 /* template */
-var __vue_template__ = __webpack_require__(447)
+var __vue_template__ = __webpack_require__(448)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1093,7 +1093,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 446:
+/***/ 447:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1168,7 +1168,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       this.loadingVisible = true;
-      this.$post('user/' + this.allotId + '/role', {
+      this.$post('admin/user/' + this.allotId + '/role', {
         relation: this.formItem.data
       }).then(function (res) {
         _this.loadingVisible = false;
@@ -1182,10 +1182,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       if (val) {
-        this.$get('role/all').then(function (res) {
+        this.$get('admin/role/all').then(function (res) {
           _this2.formItem.permission = res.data;
         });
-        this.$get('user/' + this.allotId + '/role').then(function (res) {
+        this.$get('admin/user/' + this.allotId + '/role').then(function (res) {
           _this2.formItem.data = res.data.map(function (v) {
             return v.id;
           });
@@ -1199,7 +1199,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 447:
+/***/ 448:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1313,15 +1313,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 448:
+/***/ 449:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(449)
+var __vue_script__ = __webpack_require__(450)
 /* template */
-var __vue_template__ = __webpack_require__(450)
+var __vue_template__ = __webpack_require__(451)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1361,7 +1361,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 449:
+/***/ 450:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1436,7 +1436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       this.loadingVisible = true;
-      this.$post('user/' + this.allotId + '/group', {
+      this.$post('admin/user/' + this.allotId + '/group', {
         relation: this.formItem.data
       }).then(function (res) {
         _this.loadingVisible = false;
@@ -1450,10 +1450,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       if (val) {
-        this.$get('group/all').then(function (res) {
+        this.$get('admin/group/all').then(function (res) {
           _this2.formItem.permission = res.data;
         });
-        this.$get('user/' + this.allotId + '/group').then(function (res) {
+        this.$get('admin/user/' + this.allotId + '/group').then(function (res) {
           _this2.formItem.data = res.data.map(function (v) {
             return v.id;
           });
@@ -1467,7 +1467,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 450:
+/***/ 451:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1581,7 +1581,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 451:
+/***/ 452:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

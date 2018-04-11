@@ -18,7 +18,7 @@ Route::get('book/{id}/document', 'Api\Home\DocumentController@index');
 Route::get('book/{bookid}/document/{id}', 'Api\Home\DocumentController@show');
 
 // 后台 管理平台接口
-Route::group(['prefix' => 'auth'], function ($router) {
+Route::group(['prefix' => 'admin/auth'], function ($router) {
     Route::post('login', 'Api\Admin\AuthController@login')->name('login');
 });
 // 需要验证登录
@@ -32,6 +32,8 @@ Route::group([
     Route::get('auth/me', 'Api\Admin\AuthController@me')->name('auth.me');
     Route::put('auth/password', 'Api\Admin\AuthController@password')->name('auth.password');
     Route::put('auth/update', 'Api\Admin\AuthController@update')->name('auth.update');
+    // 登录用户所有权限
+    Route::get('auth/perms', 'Api\Admin\AuthController@perms')->name('auth.perms');
     // 角色
     Route::get('role/all', 'Api\Admin\RoleController@all')->name('role.all');
     // 权限
@@ -41,7 +43,7 @@ Route::group([
 
     // 需检查权限的接口
     Route::group([
-      'middleware' => ['permission:api'],
+      'middleware' => ['permission'],
     ], function ($router) {
         Route::post('book', 'Api\Admin\BookController@store')->name('book.store');
         Route::put('book/{id}', 'Api\Admin\BookController@update')->name('book.update');

@@ -39,7 +39,7 @@
       login (name) {
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$post('auth/login', this.form).then((res) => {
+            this.$post('admin/auth/login', this.form).then((res) => {
               Util.cache.set('token', res.data.access_token)
               this.$router.replace({name: 'admin.home'})
             })

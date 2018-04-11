@@ -6,9 +6,9 @@ webpackJsonp([5],{
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(427)
+var __vue_script__ = __webpack_require__(428)
 /* template */
-var __vue_template__ = __webpack_require__(437)
+var __vue_template__ = __webpack_require__(438)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,16 +48,16 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 427:
+/***/ 428:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(428);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(429);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(431);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(432);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allot_vue__ = __webpack_require__(434);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allot_vue__ = __webpack_require__(435);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__allot_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__allot_vue__);
 
 
@@ -150,7 +150,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     search(current) {
-      this.$get('role', {
+      this.$get('admin/role', {
         page: current
       }).then(res => {
         this.Datas = res.data.data;
@@ -168,7 +168,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.allotModalShow = true;
     },
     deleteButton(row) {
-      this.$delete(`role/${row.id}`).then(res => {
+      this.$delete(`admin/role/${row.id}`).then(res => {
         this.$Message.error('权限组删除成功!');
         this.search(this.page.current);
       });
@@ -198,15 +198,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 428:
+/***/ 429:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(429)
+var __vue_script__ = __webpack_require__(430)
 /* template */
-var __vue_template__ = __webpack_require__(430)
+var __vue_template__ = __webpack_require__(431)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -246,7 +246,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 429:
+/***/ 430:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -312,7 +312,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$post('role', _this.formItem).then(function (res) {
+          _this.$post('admin/role', _this.formItem).then(function (res) {
             _this.loadingVisible = false;
             _this.visibleChange(false);
             _this.$Message.error('权限组添加成功!');
@@ -325,7 +325,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 430:
+/***/ 431:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -488,15 +488,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 431:
+/***/ 432:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(432)
+var __vue_script__ = __webpack_require__(433)
 /* template */
-var __vue_template__ = __webpack_require__(433)
+var __vue_template__ = __webpack_require__(434)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -536,7 +536,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 432:
+/***/ 433:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -604,7 +604,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$put('role/' + _this.updateId, {
+          _this.$put('admin/role/' + _this.updateId, {
             name: _this.formItem.name,
             display_name: _this.formItem.display_name,
             description: _this.formItem.description
@@ -623,7 +623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       if (val) {
-        this.$get('role/' + this.updateId).then(function (res) {
+        this.$get('admin/role/' + this.updateId).then(function (res) {
           _this2.formItem = res.data;
         });
       }
@@ -633,7 +633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 433:
+/***/ 434:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -796,15 +796,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 434:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(435)
+var __vue_script__ = __webpack_require__(436)
 /* template */
-var __vue_template__ = __webpack_require__(436)
+var __vue_template__ = __webpack_require__(437)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -844,7 +844,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 435:
+/***/ 436:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -919,7 +919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       this.loadingVisible = true;
-      this.$post('role/' + this.allotId + '/permission', {
+      this.$post('admin/role/' + this.allotId + '/permission', {
         relation: this.formItem.data
       }).then(function (res) {
         _this.loadingVisible = false;
@@ -933,10 +933,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       if (val) {
-        this.$get('permission/all').then(function (res) {
+        this.$get('admin/permission/all').then(function (res) {
           _this2.formItem.permission = res.data;
         });
-        this.$get('role/' + this.allotId + '/permission').then(function (res) {
+        this.$get('admin/role/' + this.allotId + '/permission').then(function (res) {
           _this2.formItem.data = res.data.map(function (v) {
             return v.id;
           });
@@ -950,7 +950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 436:
+/***/ 437:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1064,7 +1064,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 437:
+/***/ 438:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

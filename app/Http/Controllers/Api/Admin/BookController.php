@@ -65,7 +65,7 @@ class BookController extends Controller
           'identify' => ['regex:/^[a-z]+[0-9a-zA-Z-_]*$/', Rule::unique('books')],
           'description' => ['max:255'],
           'status' => ['required', Rule::in([0, 1])],
-          '' => ['array'],
+          'groups' => ['array'],
           'groups.*' => ['integer'],
         ]);
         $input = $request->only(['name', 'identify', 'description', 'status', 'groups']);

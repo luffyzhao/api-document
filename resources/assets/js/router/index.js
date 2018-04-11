@@ -32,10 +32,11 @@ export const router = new VueRouter({
       children: [...commonRouter]
     },
     {
-      path: '/home',
+      path: '/',
       icon: 'key',
       name: 'home',
       title: '前台模块',
+      redirect: '/books',
       component: Home,
       children: [...homeRouter]
     }

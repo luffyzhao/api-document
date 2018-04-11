@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Input;
 
 class SqlListen
 {
@@ -15,8 +16,9 @@ class SqlListen
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -37,32 +39,41 @@ class SqlListen
 
         return $response;
     }
+
     /**
-     * 开始
+     * 开始.
+     *
      * @method   begin
      * @DateTime 2017-10-14T14:07:41+0800
-     * @return   [type]                   [description]
+     *
+     * @return [type] [description]
      */
     protected function begin()
     {
         log::info(sprintf($this->hr, 'begin'));
         Log::info($this->header());
     }
+
     /**
      * 结束
+     *
      * @method   end
      * @DateTime 2017-10-14T14:14:13+0800
-     * @return   [type]                   [description]
+     *
+     * @return [type] [description]
      */
     protected function end()
     {
-        log::info(sprintf($this->hr, 'end') . "\r\n\r\n");
+        log::info(sprintf($this->hr, 'end')."\r\n\r\n");
     }
+
     /**
-     * Sql监听
+     * Sql监听.
+     *
      * @method   sqlListen
      * @DateTime 2017-10-14T14:04:32+0800
-     * @return   [type]                   [description]
+     *
+     * @return [type] [description]
      */
     protected function sqlListen()
     {
@@ -81,14 +92,20 @@ class SqlListen
             Log::info($query);
         });
     }
+
     /**
-     * 日志头
+     * 日志头.
+     *
      * @method   header
      * @DateTime 2017-10-14T14:09:58+0800
-     * @return   [type]                   [description]
+     *
+     * @return [type] [description]
      */
     protected function header()
     {
-        return (string) $this->request;
+        Log::info(sprintf('%s %s', $this->request->getMethod(), $this->request->getRequestUri()));
+        if ($this->request->isMethod('post')) {
+            Log::info(json_encode(Input::all()));
+        }
     }
 }

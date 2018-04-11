@@ -11,7 +11,7 @@ class Book extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'identify', 'description', 'status', 'user_id', 'roles'];
+    protected $fillable = ['name', 'identify', 'description', 'status', 'user_id', 'groups'];
 
     protected $hidden = ['user_id'];
 

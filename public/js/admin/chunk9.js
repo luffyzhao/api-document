@@ -1,18 +1,18 @@
 webpackJsonp([9],{
 
-/***/ 182:
+/***/ 194:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(400)
+  __webpack_require__(495)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(402)
+var __vue_script__ = __webpack_require__(497)
 /* template */
-var __vue_template__ = __webpack_require__(403)
+var __vue_template__ = __webpack_require__(498)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\admin\\common\\profile.vue"
+Component.options.__file = "resources\\assets\\js\\views\\home\\books\\index.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3656d85c", Component.options)
+    hotAPI.createRecord("data-v-a65877e0", Component.options)
   } else {
-    hotAPI.reload("data-v-3656d85c", Component.options)
+    hotAPI.reload("data-v-a65877e0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,23 +52,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 400:
+/***/ 495:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(401);
+var content = __webpack_require__(496);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(28)("3df7f540", content, false, {});
+var update = __webpack_require__(27)("56298ca4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3656d85c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./profile.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3656d85c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/_sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./profile.vue");
+   module.hot.accept("!!../../../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a65877e0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/_css-loader@0.28.9@css-loader/index.js!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a65877e0\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/_vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -79,72 +79,93 @@ if(false) {
 
 /***/ }),
 
-/***/ 401:
+/***/ 496:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(27)(false);
+exports = module.exports = __webpack_require__(26)(false);
 // imports
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n.book-content{\n    padding: 15px;\n}\n.thumbnail-box{\n    padding: 10px;\n}\n.thumbnail {\n      display: block;\n      padding: 4px;\n      margin-bottom: 20px;\n      line-height: 1.42857143;\n      background-color: #fff;\n      border: 1px solid #ddd;\n      -webkit-transition: border .2s ease-in-out;\n      transition: border .2s ease-in-out;\n      height: 300px;\n      color: #495060;\n}\n.thumbnail:hover{\n    color: #495060;\n}\n.thumbnail .img{\n    text-align: center;\n    margin-bottom: 10px;\n}\n.thumbnail img,.thumbnail .img{\n    max-width: 100%;\n    height: 248px;\n}\n.ivu-layout{\n    height: 100%;\n}\n.ivu-layout-sider{\n    background-color: #fff;\n}\n.layout{\n    /* border: 1px solid #d7dde4; */\n    background: #f5f7f9;\n    position: relative;\n    border-radius: 4px;\n    overflow: hidden;\n}\n.layout-logo{\n    width: 100px;\n    height: 30px;\n    background: #5b6270;\n    border-radius: 3px;\n    float: left;\n    position: relative;\n    top: 15px;\n    left: 20px;\n}\n.layout-nav{\n    width: 120px;\n    margin: 0 auto;\n    margin-right: 20px;\n}\n.layout-footer-center{\n    text-align: center;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 402:
+/***/ 497:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data() {
+  data: function data() {
     return {
-      form: {
-        username: '',
-        email: '',
-        phone: ''
-      },
-      formSetPassword: {
-        old_password: '',
-        password: '',
-        password_confirmation: ''
-      },
-      setPassword: false
+      lists: []
     };
   },
-  mounted() {
-    this.$get('auth/me').then(res => {
-      this.form = res.data;
-    });
+
+  computed: {},
+  mounted: function mounted() {
+    this.list(1);
   },
+
   methods: {
-    handlePassword(e) {
-      this.$put('auth/password', this.formSetPassword).then(res => {
-        this.$Message.success('密码修改成功!');
-        this.$refs['modalSetPassword'].close();
+    list: function list(id) {
+      var _this = this;
+
+      axios.get("book").then(function (res) {
+        _this.lists = res.data.data;
       });
     },
-    submit(name) {
-      this.$refs[name].validate(valid => {
-        if (valid) {
-          this.$put('auth/update', this.form).then(res => {
-            this.$Message.success('修改成功!');
-          });
-        }
+    menuRouter: function menuRouter(name) {
+      this.$router.push({
+        name: name
       });
     }
-  },
-  components: {}
+  }
 });
 
 /***/ }),
 
-/***/ 403:
+/***/ 498:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -152,283 +173,100 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "Layout",
     [
-      _c("Card", { attrs: { bordered: false } }, [
-        _c(
-          "p",
-          { attrs: { slot: "title" }, slot: "title" },
-          [_c("Icon", { attrs: { type: "ios-person" } }), _vm._v("个人信息")],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c(
-              "Form",
-              {
-                ref: "form",
-                attrs: {
-                  model: _vm.form,
-                  "label-position": "right",
-                  "label-width": 100
-                }
-              },
-              [
-                _c(
-                  "FormItem",
-                  {
-                    attrs: {
-                      label: "用户姓名:",
-                      prop: "username",
-                      rules: {
-                        required: true,
-                        message: "用户姓名不能为空！",
-                        trigger: "blur"
-                      }
-                    }
-                  },
-                  [
-                    _c("Input", {
-                      staticStyle: { width: "300px" },
-                      model: {
-                        value: _vm.form.username,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "username", $$v)
-                        },
-                        expression: "form.username"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  {
-                    attrs: {
-                      label: "登录邮箱:",
-                      prop: "email",
-                      rules: {
-                        required: true,
-                        type: "email",
-                        message: "请输出正确的邮箱号码！",
-                        trigger: "blur"
-                      }
-                    }
-                  },
-                  [
-                    _c("Input", {
-                      staticStyle: { width: "300px" },
-                      model: {
-                        value: _vm.form.email,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "email", $$v)
-                        },
-                        expression: "form.email"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  {
-                    attrs: {
-                      label: "手机号码:",
-                      prop: "phone",
-                      rules: {
-                        length: 11,
-                        type: "number",
-                        message: "手机号码格式不正确！",
-                        trigger: "blur"
-                      }
-                    }
-                  },
-                  [
-                    _c("Input", {
-                      staticStyle: { width: "300px" },
-                      model: {
-                        value: _vm.form.phone,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "phone", $$v)
-                        },
-                        expression: "form.phone"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  { attrs: { label: "登录密码:" } },
-                  [
-                    _c(
-                      "Button",
-                      {
-                        attrs: { type: "text" },
-                        on: {
-                          click: function($event) {
-                            _vm.setPassword = true
-                          }
-                        }
-                      },
-                      [_vm._v("修改密码")]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "FormItem",
-                  [
-                    _c(
-                      "Button",
-                      {
-                        staticStyle: { width: "100px" },
-                        attrs: { type: "primary" },
-                        on: {
-                          click: function($event) {
-                            _vm.submit("form")
-                          }
-                        }
-                      },
-                      [_vm._v("保存")]
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
       _c(
-        "Modal",
-        {
-          ref: "modalSetPassword",
-          attrs: {
-            title: "修改密码",
-            "ok-text": "提交",
-            "cancel-text": "取消",
-            loading: true
-          },
-          on: { "on-ok": _vm.handlePassword },
-          model: {
-            value: _vm.setPassword,
-            callback: function($$v) {
-              _vm.setPassword = $$v
-            },
-            expression: "setPassword"
-          }
-        },
+        "Header",
         [
           _c(
-            "Form",
+            "Menu",
             {
-              ref: "formSetPassword",
-              attrs: { model: _vm.formSetPassword, "label-width": 100 }
+              attrs: { mode: "horizontal", theme: "dark", "active-name": "1" },
+              on: { "on-select": _vm.menuRouter }
             },
             [
-              _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "原密码",
-                    prop: "old_password",
-                    rules: {
-                      required: true,
-                      message: "原密码不能为空！",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.old_password,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "old_password", $$v)
-                      },
-                      expression: "formSetPassword.old_password"
-                    }
-                  })
-                ],
-                1
-              ),
+              _c("div", { staticClass: "layout-logo" }),
               _vm._v(" "),
               _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "新密码",
-                    prop: "password",
-                    rules: {
-                      required: true,
-                      message: "密码不能为空！",
-                      trigger: "blur"
-                    }
-                  }
-                },
+                "div",
+                { staticClass: "layout-nav" },
                 [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.password,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formSetPassword, "password", $$v)
-                      },
-                      expression: "formSetPassword.password"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                {
-                  attrs: {
-                    label: "确认密码",
-                    prop: "password_confirmation",
-                    rules: {
-                      required: true,
-                      message: "确认密码不能为空！",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    attrs: { type: "password" },
-                    model: {
-                      value: _vm.formSetPassword.password_confirmation,
-                      callback: function($$v) {
-                        _vm.$set(
-                          _vm.formSetPassword,
-                          "password_confirmation",
-                          $$v
-                        )
-                      },
-                      expression: "formSetPassword.password_confirmation"
-                    }
-                  })
+                  _c(
+                    "MenuItem",
+                    { attrs: { name: "admin.home" } },
+                    [
+                      _c("Icon", { attrs: { type: "ios-navigate" } }),
+                      _vm._v("\n                  登录\n              ")
+                    ],
+                    1
+                  )
                 ],
                 1
               )
-            ],
-            1
+            ]
           )
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c(
+        "Layout",
+        [
+          _c("Sider", { attrs: { "hide-trigger": "" } }),
+          _vm._v(" "),
+          _c(
+            "Content",
+            { staticClass: "book-content" },
+            [
+              _c(
+                "Row",
+                _vm._l(_vm.lists.data, function(item, index) {
+                  return _c(
+                    "Col",
+                    {
+                      key: index,
+                      staticClass: "thumbnail-box",
+                      attrs: { span: "4" }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "thumbnail",
+                          attrs: {
+                            to: {
+                              name: "home.documents",
+                              query: { id: item.id }
+                            }
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "img" }, [
+                            _c("img", {
+                              attrs: { src: "/images/book-default-bg.png" }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [_vm._v(_vm._s(item.name))])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("Sider", { attrs: { "hide-trigger": "" } })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("Footer", { staticClass: "layout-footer-center" }, [
+        _vm._v("\n      2018-2018 © LuffyZhao\n    ")
+      ])
     ],
     1
   )
@@ -439,7 +277,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-3656d85c", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-a65877e0", module.exports)
   }
 }
 
