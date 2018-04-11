@@ -2,7 +2,7 @@ import axios from 'axios'
 import Util from '@/libs/Util'
 import iView from 'iview';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
+axios.defaults.baseURL = '/api/';
 axios.defaults.timeout = 3000;
 
 const errorHandle = function(data){
