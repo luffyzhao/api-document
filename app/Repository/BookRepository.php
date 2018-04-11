@@ -26,7 +26,9 @@ class BookRepository extends Repository implements BookRepositoryInterface
     {
         $this->model = $this->model->where(function ($query) {
             Auth::user()->groups->each(function ($item, $index) use ($query) {
-                $query->whereRaw("FIND_IN_SET('{$item['id']}', `books`.`groups`)");
+                $query->orWhere(function ($query) use ($item) {
+                    $query->whereRaw("FIND_IN_SET('{$item['id']}', `books`.`groups`)");
+                });
             });
         });
 
