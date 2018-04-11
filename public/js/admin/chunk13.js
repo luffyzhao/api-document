@@ -29,7 +29,7 @@ Component.options.__file = "resources\\assets\\js\\views\\common\\error-page\\40
 
 /* hot reload */
 if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), false)
   if (!hotAPI.compatible) return
   module.hot.accept()
@@ -79,7 +79,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-20afa084", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-20afa084", module.exports)
   }
 }
 

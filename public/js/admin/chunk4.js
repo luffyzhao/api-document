@@ -29,7 +29,7 @@ Component.options.__file = "resources\\assets\\js\\views\\admin\\users\\list.vue
 
 /* hot reload */
 if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), false)
   if (!hotAPI.compatible) return
   module.hot.accept()
@@ -89,44 +89,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           column,
           index
         }) => {
-          return h(
-            'button-group',
-            null,
-            [h(
-              'i-button',
-              {
-                on: {
-                  'click': () => {
-                    this.updateButton(row);
-                  }
-                },
-                attrs: { size: 'small' }
+          return h('button-group', [h(
+            'i-button',
+            {
+              on: {
+                'click': () => {
+                  this.updateButton(row);
+                }
               },
-              ['\u66F4\u65B0']
-            ), h(
-              'i-button',
-              {
-                on: {
-                  'click': () => {
-                    this.allotButton(row);
-                  }
-                },
-                attrs: { size: 'small' }
+              attrs: { size: 'small' }
+            },
+            ['\u66F4\u65B0']
+          ), h(
+            'i-button',
+            {
+              on: {
+                'click': () => {
+                  this.allotButton(row);
+                }
               },
-              ['\u5206\u914D\u6743\u9650']
-            ), h(
-              'i-button',
-              {
-                on: {
-                  'click': () => {
-                    this.groupButton(row);
-                  }
-                },
-                attrs: { size: 'small' }
+              attrs: { size: 'small' }
+            },
+            ['\u5206\u914D\u6743\u9650']
+          ), h(
+            'i-button',
+            {
+              on: {
+                'click': () => {
+                  this.groupButton(row);
+                }
               },
-              ['\u5206\u914D\u7528\u6237\u7EC4']
-            )]
-          );
+              attrs: { size: 'small' }
+            },
+            ['\u5206\u914D\u7528\u6237\u7EC4']
+          )]);
         }
       }],
       Datas: [],
@@ -228,7 +224,7 @@ Component.options.__file = "resources\\assets\\js\\views\\admin\\users\\create.v
 
 /* hot reload */
 if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), false)
   if (!hotAPI.compatible) return
   module.hot.accept()
@@ -550,7 +546,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-c321e62c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-c321e62c", module.exports)
   }
 }
 
@@ -585,7 +581,7 @@ Component.options.__file = "resources\\assets\\js\\views\\admin\\users\\update.v
 
 /* hot reload */
 if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), false)
   if (!hotAPI.compatible) return
   module.hot.accept()
@@ -1039,7 +1035,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-3b2ef637", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3b2ef637", module.exports)
   }
 }
 
@@ -1074,7 +1070,7 @@ Component.options.__file = "resources\\assets\\js\\views\\admin\\users\\allot.vu
 
 /* hot reload */
 if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), false)
   if (!hotAPI.compatible) return
   module.hot.accept()
@@ -1307,7 +1303,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-313268c8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-313268c8", module.exports)
   }
 }
 
@@ -1342,7 +1338,7 @@ Component.options.__file = "resources\\assets\\js\\views\\admin\\users\\group.vu
 
 /* hot reload */
 if (false) {(function () {
-  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), false)
   if (!hotAPI.compatible) return
   module.hot.accept()
@@ -1575,7 +1571,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-7a6910fe", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7a6910fe", module.exports)
   }
 }
 
@@ -1677,7 +1673,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-fadd4de8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-fadd4de8", module.exports)
   }
 }
 
