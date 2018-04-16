@@ -332,6 +332,7 @@ div::-webkit-scrollbar-track {
     .api-list{
       flex-basis: 200px;
       border-right: 1px solid #ddd;
+      overflow-y: auto;
       .api-list-nav{
         font-size: 14px;
         color: #333333;
