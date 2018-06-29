@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 184:
+/***/ 187:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(420)
+var __vue_script__ = __webpack_require__(472)
 /* template */
-var __vue_template__ = __webpack_require__(427)
+var __vue_template__ = __webpack_require__(479)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\admin\\permissions\\list.vue"
+Component.options.__file = "resources\\assets\\js\\views\\admin\\groups\\list.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4e00d490", Component.options)
+    hotAPI.createRecord("data-v-f784d008", Component.options)
   } else {
-    hotAPI.reload("data-v-4e00d490", Component.options)
+    hotAPI.reload("data-v-f784d008", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48,14 +48,14 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 420:
+/***/ 472:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__create_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__create_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(424);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue__ = __webpack_require__(476);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_vue__);
 
 
@@ -68,13 +68,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     return {
       Columns: [{
-        "title": "权限",
+        "title": "用户组名称",
         "key": "name"
       }, {
-        "title": "权限名称",
-        "key": "display_name"
-      }, {
-        "title": "权限描述",
+        "title": "用户组描述",
         "key": "description"
       }, {
         'title': '操作',
@@ -116,7 +113,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }],
       Datas: [],
       page: {
-        total: 40,
+        total: 0,
         current: 1,
         page_size: 20
       },
@@ -130,7 +127,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     search(current) {
-      this.$get('admin/permission', {
+      this.$get('admin/group', {
         page: current
       }).then(res => {
         this.Datas = res.data.data;
@@ -144,7 +141,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.updateModalShow = true;
     },
     deleteButton(row) {
-      this.$delete(`admin/permission/${row.id}`).then(res => {
+      this.$delete(`admin/group/${row.id}`).then(res => {
         this.$Message.error('权限删除成功!');
         this.search(this.page.current);
       });
@@ -170,15 +167,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 421:
+/***/ 473:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(422)
+var __vue_script__ = __webpack_require__(474)
 /* template */
-var __vue_template__ = __webpack_require__(423)
+var __vue_template__ = __webpack_require__(475)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -195,7 +192,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\admin\\permissions\\create.vue"
+Component.options.__file = "resources\\assets\\js\\views\\admin\\groups\\create.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -204,9 +201,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4bedb76e", Component.options)
+    hotAPI.createRecord("data-v-33f1604c", Component.options)
   } else {
-    hotAPI.reload("data-v-4bedb76e", Component.options)
+    hotAPI.reload("data-v-33f1604c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -218,14 +215,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 422:
+/***/ 474:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //
@@ -284,10 +278,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$post('admin/permission', _this.formItem).then(function (res) {
+          _this.$post('admin/group', _this.formItem).then(function (res) {
+            _this.$Message.error('用户组添加成功!');
             _this.loadingVisible = false;
             _this.visibleChange(false);
-            _this.$Message.error('权限添加成功!');
           });
         }
       });
@@ -297,7 +291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 423:
+/***/ 475:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -311,7 +305,7 @@ var render = function() {
         "Modal",
         {
           attrs: {
-            title: "创建权限",
+            title: "创建用户组",
             "mask-closable": false,
             "class-name": "vertical-center-modal",
             width: "auto",
@@ -338,13 +332,12 @@ var render = function() {
                 "FormItem",
                 {
                   attrs: {
-                    label: "权限",
+                    label: "用户组",
                     prop: "name",
                     rules: {
                       required: true,
-                      message: "权限验证不通过!",
-                      trigger: "blur",
-                      pattern: /^[a-z]+.([a-z]+.)*[a-z]+$/
+                      message: "用户组验证不通过!",
+                      trigger: "blur"
                     }
                   }
                 },
@@ -366,36 +359,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "FormItem",
-                {
-                  attrs: {
-                    label: "权限名称",
-                    prop: "display_name",
-                    rules: {
-                      required: true,
-                      message: "权限名称验证不通过!",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: { placeholder: "Enter something..." },
-                    model: {
-                      value: _vm.formItem.display_name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "display_name", $$v)
-                      },
-                      expression: "formItem.display_name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                { attrs: { label: "权限描述", prop: "description" } },
+                { attrs: { label: "用户组描述", prop: "description" } },
                 [
                   _c("Input", {
                     staticStyle: { width: "500px" },
@@ -454,21 +418,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4bedb76e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-33f1604c", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 424:
+/***/ 476:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(425)
+var __vue_script__ = __webpack_require__(477)
 /* template */
-var __vue_template__ = __webpack_require__(426)
+var __vue_template__ = __webpack_require__(478)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -485,7 +449,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\views\\admin\\permissions\\update.vue"
+Component.options.__file = "resources\\assets\\js\\views\\admin\\groups\\update.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -494,9 +458,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2ea4be8a", Component.options)
+    hotAPI.createRecord("data-v-fa718db2", Component.options)
   } else {
-    hotAPI.reload("data-v-2ea4be8a", Component.options)
+    hotAPI.reload("data-v-fa718db2", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -508,14 +472,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 425:
+/***/ 477:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
 //
 //
 //
@@ -567,8 +528,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     visibleChange: function visibleChange(visible) {
       if (visible === false) {
-        this.formItem = {};
         this.$emit('visibleChange', visible);
+      } else {
+        this.formItem = {};
       }
     },
     submit: function submit(name) {
@@ -577,9 +539,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loadingVisible = true;
       this.$refs[name].validate(function (valid) {
         if (valid) {
-          _this.$put('admin/permission/' + _this.updateId, {
+          _this.$put('admin/group/' + _this.updateId, {
             name: _this.formItem.name,
-            display_name: _this.formItem.display_name,
             description: _this.formItem.description
           }).then(function (res) {
             _this.loadingVisible = false;
@@ -596,9 +557,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       if (val) {
-        this.$get('admin/permission/' + this.updateId).then(function (res) {
+        this.$get('admin/group/' + this.updateId).then(function (res) {
           _this2.formItem = res.data;
         });
+      } else {
+        this.formItem = {};
       }
     }
   }
@@ -606,7 +569,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 426:
+/***/ 478:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -620,7 +583,7 @@ var render = function() {
         "Modal",
         {
           attrs: {
-            title: "修改权限",
+            title: "修改文档",
             "mask-closable": false,
             "class-name": "vertical-center-modal",
             width: "auto",
@@ -647,13 +610,12 @@ var render = function() {
                 "FormItem",
                 {
                   attrs: {
-                    label: "权限",
+                    label: "用户组",
                     prop: "name",
                     rules: {
                       required: true,
-                      message: "权限验证不通过!",
-                      trigger: "blur",
-                      pattern: /^[a-z]+.([a-z]+.)*[a-z]+$/
+                      message: "用户组验证不通过!",
+                      trigger: "blur"
                     }
                   }
                 },
@@ -675,36 +637,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "FormItem",
-                {
-                  attrs: {
-                    label: "权限名称",
-                    prop: "display_name",
-                    rules: {
-                      required: true,
-                      message: "权限验证不通过!",
-                      trigger: "blur"
-                    }
-                  }
-                },
-                [
-                  _c("Input", {
-                    staticStyle: { width: "500px" },
-                    attrs: { placeholder: "Enter something..." },
-                    model: {
-                      value: _vm.formItem.display_name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.formItem, "display_name", $$v)
-                      },
-                      expression: "formItem.display_name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "FormItem",
-                { attrs: { label: "权限描述", prop: "description" } },
+                { attrs: { label: "用户组描述", prop: "description" } },
                 [
                   _c("Input", {
                     staticStyle: { width: "500px" },
@@ -763,13 +696,13 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2ea4be8a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-fa718db2", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 427:
+/***/ 479:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -826,8 +759,7 @@ var render = function() {
                 on: {
                   "update:current": function($event) {
                     _vm.$set(_vm.page, "current", $event)
-                  },
-                  "on-change": _vm.search
+                  }
                 }
               })
             ],
@@ -856,7 +788,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4e00d490", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f784d008", module.exports)
   }
 }
 

@@ -1,0 +1,30 @@
+@import "./common/_variables.scss";
+@import "./plugin/_codemirror.scss";
+@import "./plugin/_github-markdown.scss";
+
+.container {
+  display: flex;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.preview, .codemirror-box{
+  flex-basis: 50%;
+  width: 50%;
+  overflow-y: auto;
+}
+
+.input {
+  transition: all 0.2s;
+  &.open {
+    flex-basis: 100%;
+    width: 100%;
+  }
+  /deep/ .vue-codemirror,
+  /deep/ .CodeMirror {
+    height: 100%;
+    width: 100%;
+  }
+}

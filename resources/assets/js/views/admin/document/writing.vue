@@ -29,15 +29,7 @@
         <ApiList :data="documents" v-on:change="getDocument" v-on:update="getDocuments"></ApiList>
     </div>
     <div class="api-content">
-      <markdown
-      :mdValuesP="document.markdown"
-      :fullPageStatusP="false"
-      :editStatusP="false"
-      :previewStatusP="false"
-      :navStatusP="true"
-      :icoStatusP="true"
-      @childevent="childEventHandler">
-      </markdown>
+      <my-markdown v-model="document.markdown"></my-markdown>
     </div>
   </div>
 
@@ -48,7 +40,7 @@
 <script>
 import ApiList from './api-list.vue'
 import History from './history.vue'
-import markdown from '@/views/admin/components/markdown'
+import MyMarkdown from "@/views/admin/components/editor/markdown";
 
 export default {
   data () {
@@ -90,12 +82,10 @@ export default {
     getDocument(id){
       this.saveMarkdown();
       this.$get(`admin/book/${this.bookId}/document/${id}`).then((res) => {
-        this.document = res.data
-        this.historyMarkdown = res.data.markdown
+        let data = JSON.parse(JSON.stringify(res.data));
+        this.document = data
+        this.historyMarkdown = data.markdown
       })
-    },
-    childEventHandler:function(res){
-      this.document.markdown = res.mdValue
     },
     saveMarkdown(){
       if(this.isChange){
@@ -109,7 +99,7 @@ export default {
     }
   },
   components: {
-    markdown,
+    MyMarkdown,
     ApiList,
     History
   }

@@ -187,6 +187,8 @@ return [
 
         // 权限
         Zizaco\Entrust\EntrustServiceProvider::class,
+
+        luffyzhao\laravelTools\Providers\LaravelServiceProvider::class
     ],
 
     /*
